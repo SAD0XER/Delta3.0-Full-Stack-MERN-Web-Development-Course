@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,50 +9,25 @@
 
   <body>
     <form action="/action">
+      <h1>Registration Form</h1>
       <div>
-        <input type="radio" name="fruit" id="apple" value="apple" />
-        <label for="apple">Apple</label>
-        <input type="radio" name="fruit" id="mango" value="mango" />
-        <label for="mango">Mango</label>
-        <input type="radio" name="fruit" id="banaba" value="banana" />
-        <label for="banaba">Banana</label>
+        <input type="text" name="fname" placeholder="First Name" />
+        <input type="text" name="lname" placeholder="Last Name" />
       </div>
-      <br />
       <div>
-        <input type="checkbox" name="sub" id="math" value="math" />
-        <label for="math">Mathematics</label>
-        <input type="checkbox" name="sub" id="sci" value="sci" />
-        <label for="sci">Science</label>
-        <input type="checkbox" name="sub" id="eng" value="eng" />
-        <label for="eng">English</label>
-      </div>
-      <br />
-      <div>
-        <label for="profession">Choose Your Profession:</label>
-        <select name="profession" id="profession">
-          <option value="null" hidden>--Select Your Option--</option>
-          <option value="student">Student</option>
-          <option value="developer">Developer</option>
-          <option>WebDeveloper</option>
+        <label for="gender">Please Select Gender</label>
+        <select id="gender" name="gender">
+          <option value="m">Male</option>
+          <option value="f">Female</option>
+          <option value="o">Other</option>
         </select>
       </div>
-      <br />
       <div>
-        <label for="volume">Volume</label>
-        <input type="range" min="0" max="100" step="1" value="50" name="vol" id="volume" />
+        Do you agree to all terms of service?
+        <input type="checkbox" name="tos_agree" id="tos_agree" />
+        <label for="tos_agree">Yes, I agree</label>
       </div>
-      <br />
-      <div>
-        <label for="feedback">Please provide your valuable feedback: </label>
-        <textarea
-          name="feedback"
-          id="feedback"
-          placeholder="Write your feedback Here..."
-          rows="5"
-          cols="20"
-        ></textarea>
-      </div>
-      <button>Submit</button>
+      <button>Register</button>
     </form>
   </body>
 </html>
