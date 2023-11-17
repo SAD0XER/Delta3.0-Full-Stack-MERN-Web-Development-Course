@@ -1,33 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HTML (Level 3)</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTML (Level 3) Practice Set</title>
+</head>
 
-  <body>
-    <form action="/action">
-      <h1>Registration Form</h1>
-      <div>
-        <input type="text" name="fname" placeholder="First Name" />
-        <input type="text" name="lname" placeholder="Last Name" />
-      </div>
-      <div>
-        <label for="gender">Please Select Gender</label>
-        <select id="gender" name="gender">
-          <option value="m">Male</option>
-          <option value="f">Female</option>
-          <option value="o">Other</option>
-        </select>
-      </div>
-      <div>
-        Do you agree to all terms of service?
-        <input type="checkbox" name="tos_agree" id="tos_agree" />
-        <label for="tos_agree">Yes, I agree</label>
-      </div>
-      <button>Register</button>
-    </form>
-  </body>
+<body>
+  <!-- Question 1 -->
+  <table border="">
+    <caption>
+      Student Information
+    </caption>
+    <tr>
+      <th rowspan="6">Info</th>
+      <th rowspan="2">Name</th>
+      <th colspan="2">Address</th>
+    </tr>
+    <t>
+      <th>City</th>
+      <th>House</th>
+      </tr>
+      <tr>
+        <td>A</td>
+        <td>Delhi</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>B</td>
+        <td>Mumbai</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>C</td>
+        <td>Kolkata</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>D</td>
+        <td>Pune</td>
+        <td>4</td>
+      </tr>
+  </table>
+  <hr />
+
+  <!-- Question 2 -->
+  <form>
+    <label for="name">Name: </label>
+    <input type="text" name="name" id="name">
+    <br /><br />
+
+    <label>Sex: </label>
+    <input type="radio" name="sex" id="male`" value="male">
+    <label for="sex">Male</label>
+    <input type="radio" name="sex" id="female" value="female">
+    <label for="sex">Female</label>
+    <br /><br />
+
+    <label for="country">Country: </label>
+    <select name="country" id="country">
+      <option value="null" hidden>Select an option</option>
+      <option value="india">India</option>
+      <option value="nepal">Nepal</option>
+      <option value="USA">USA</option>
+      <option value="canada">Canada</option>
+    </select>
+    <br /><br />
+
+    <label for="msg">Message: </label><br />
+    <textarea name="msg" id="msg" rows="5" cols="30"></textarea>
+    <br /><br />
+
+    <input type="checkbox" name="sub" id="sub">
+    <label for="sub">Subscribe?</label>
+    <br /><br />
+
+    <button>Submit</button>
+  </form>
+  <hr />
+
+  <!-- Question 3 -->
+  <h1>Feedback Form</h1>
+  <form>
+    <label for="name">Name: </label>
+    <input type="text" name="name" id="name" placeholder="Write your name">
+    <br /><br />
+
+    <label for="email">Email: </label>
+    <input type="text" name="email" id="email" placeholder="Write your Email">
+    <br /><br />
+
+    <label for="msg">Message: </label><br />
+    <textarea name="msg" id="msg" rows="5" cols="30" value="null"></textarea>
+    <br /><br />
+
+    <label>Rate us out of 5: </label><br />
+    <input type="radio" name="rateUs" id="one" value="1">
+    <label for="one">1</label><br />
+    <input type="radio" name="rateUs" id="two" value="2">
+    <label for="two">2</label><br />
+    <input type="radio" name="rateUs" id="three" value="3">
+    <label for="three">3</label><br />
+    <input type="radio" name="rateUs" id="four" value="4">
+    <label for="four">4</label><br />
+    <input type="radio" name="rateUs" id="five" value="5">
+    <label for="five">5</label>
+    <br /><br />
+
+    <button>Send Your Message!</button>
+  </form>
+</body>
+
 </html>
