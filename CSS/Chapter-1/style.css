@@ -1,14 +1,13 @@
-h1 {
-    color: blue;
-    background-color: gray;
+h2 {
+    color: orange;
 }
 
 p {
-    color: aqua;
-    background-color: bisque;
+    color: white;
+    background-color: black;
 }
 
 button {
-    color: gold;
-    background-color: brown;
+    color: white;
+    background-color: blue;
 }
