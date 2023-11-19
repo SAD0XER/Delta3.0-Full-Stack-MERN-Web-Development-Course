@@ -1,16 +1,25 @@
 * {
-    font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
 }
 
 h1 {
-    color: #1b74e4;
+  color: #1b74e4;
 }
 
 #searchbtn {
-    background-color: black;
-    color: white;
+  background-color: black;
+  color: white;
 }
 
 .userbtn {
-    background-color: aqua;
+  background-color: aqua;
+}
+
+/* Practice Question 2 */
+/* #myid p {
+    color: green;
+} */
+
+div[id="myid"] p {
+  color: green;
 }
