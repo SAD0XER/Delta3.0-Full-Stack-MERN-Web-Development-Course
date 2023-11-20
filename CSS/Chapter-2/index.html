@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CSS Chapter 2: Selectors</title>
     <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
+</head>
+
+<body>
     <header>
-        <h1>Quora 
+        <h1>Quora
             <button id="login">Log in</button>
             <button id="signup">Sign up</button>
         </h1>
@@ -28,42 +30,34 @@
         <hr>
     </header>
     <main>
-        <p>
-        Adam &nbsp;&nbsp;
-        <a class="follow" href="/adam">Follow /abc</a></span>
-        </p>
-        <h3>What is the highest salary for a spacex engineer?</h3>
-        <span>
-            <button class="upvote">+upvote</button>
-            <button>answer</button>
-        </span>
-        <hr />
-
-        <p>
-        Bob &nbsp;&nbsp;
-        <a class="follow" href="/bob">Follow xyz</a>
-        </p>
-        <h3>What is the syllabus for JEE 2024?</h3>
-        <span>
-            <button class="upvote">+upvote</button>
-            <button>answer</button>
-        </span>
-        <hr />
-
-        <p>
-        Catlyn &nbsp;&nbsp;&nbsp;&nbsp;
-        <a class="follow" href="/catlyn">Follow pqr</a>
-        </p>
-        <h3>Why is the sky blue?</h3>
-        <span>
-            <button class="upvote">+upvote</button>
-            <button>answer</button>
-        </span>
-        <hr />
-
-        <p>
-            Dan &nbsp;&nbsp;&nbsp;&nbsp;
-            <a class="follow" href="/dan">Follow pqr</a>
+        <div>
+            <p>
+                Adam &nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="follow" href="/adam">Follow /abc</a></span>
+            </p>
+            <h3>What is the highest salary for a spacex engineer?</h3>
+            <span>
+                <button class="upvote">+upvote</button>
+                <button>answer</button>
+            </span>
+            <hr />
+        </div>
+        <div>
+            <p>
+                Bob &nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="follow" href="/bob">Follow xyz</a>
+            </p>
+            <h3>What is the syllabus for JEE 2024?</h3>
+            <span>
+                <button class="upvote">+upvote</button>
+                <button>answer</button>
+            </span>
+            <hr />
+        </div>
+        <div>
+            <p>
+                Cat &nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="follow" href="/cat">Follow pqr</a>
             </p>
             <h3>Why is the sky blue?</h3>
             <span>
@@ -71,6 +65,33 @@
                 <button>answer</button>
             </span>
             <hr />
+        </div>
+        <div>
+            <p>
+                Dan &nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="follow" href="/dan">Follow pqr</a>
+            </p>
+            <h3>Why is the sky blue?</h3>
+            <span>
+                <button class="upvote">+upvote</button>
+                <button>answer</button>
+            </span>
+            <hr />
+        </div>
+        <div>
+            <input type="radio" name="agree" id="yes">
+            <label for="yes">Yes</label>
+            <input type="radio" name="agree" id="no">
+            <label for="no">No</label>
+            <hr />
+            <input type="checkbox" name="check" id="1">
+            <label for="1">First</label>
+            <input type="checkbox" name="check" id="2">
+            <label for="2">Second</label>
+            <input type="checkbox" name="check" id="3">
+            <label for="3">Third</label>
+        </div>
     </main>
-  </body>
+</body>
+
 </html>

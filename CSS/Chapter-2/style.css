@@ -69,3 +69,41 @@ input[type="password"] {
 input[type] {
   background-color: ghostwhite;
 }
+
+/* Pseudo Class */
+/* :hover */
+button:hover {
+  color: white;
+  background-color: black;
+}
+
+h3:hover {
+  text-decoration: none;
+}
+
+/* :active */
+button:active {
+  background-color: darkorange;
+  color: black;
+}
+
+p:active {
+  font-weight: bold;
+  color: darkslategrey;
+}
+
+/* :checked */
+input[type="radio"]:checked + label {
+  color: rgb(37, 63, 255);
+  font-weight: bold;
+}
+
+input[type="checkbox"]:checked + label {
+  color: rgb(37, 63, 255);
+  font-weight: bold;
+}
+
+/* :nth-of-type() */
+div:nth-of-type(2n) {
+  background-color: aqua;
+}
