@@ -107,3 +107,20 @@ input[type="checkbox"]:checked + label {
 div:nth-of-type(2n) {
   background-color: aqua;
 }
+
+/* Pseudo Element */
+
+/* ::first-letter */
+h1::first-letter {
+  color: #000;
+}
+
+/* ::first-line */
+p::first-line {
+  color: red;
+}
+
+/* ::selection */
+p::selection {
+  background-color: yellow;
+}
