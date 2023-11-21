@@ -1,0 +1,13 @@
+/* Inheritance Example */
+div {
+    background-color: blueviolet;
+}
+
+/* CSS for Excepted elements */
+input {
+    background-color: inherit;
+}
+
+button {
+    background-color: inherit;
+}
