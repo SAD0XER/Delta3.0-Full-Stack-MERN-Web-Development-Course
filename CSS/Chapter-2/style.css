@@ -1,141 +1,47 @@
-/* Universal Selector */
+/* Part-A: Selectors */
+#mainTopic {
+  color: blue;
+}
+
 * {
-  font-family: "Courier New", Courier, monospace;
+  text-align: center;
 }
 
-/* Element Selector */
-h1 {
-  color: #b93327;
+h1, h3, h5 {
+  font-family: georgia;
 }
 
-h3 {
-  color: purple;
-}
-
-/* h1, h2, h3  {property: value;} */
-
-/* ID Selector */
-#login {
-  background-color: white;
-}
-
-#signup {
-  background-color: #b93327;
+.p {
   color: white;
-}
-
-/* #Id1, #Id2 {property: value} */
-
-/* Class Selector */
-.upvote {
-  background-color: green;
-  color: white;
-}
-
-/* Descendent Selector */
-p a {
-  color: aqua;
-  background-color: purple;
-}
-
-nav ul li a {
-  color: yellowgreen;
-}
-
-/* Adjacent Sibling Combinator */
-p + h3 {
-  text-decoration: underline;
-}
-
-.upvote + button {
   background-color: cornflowerblue;
-  color: darkblue;
 }
 
-/* Child Combinator */
-div > input {
-  background-color: darkorange;
+div button {
+  background-color: purple;
+  color: azure;
 }
 
-/* Attribute Selectors */
-input[type="text"] {
-  color: green;
-}
-
-input[type="password"] {
-  color: red;
-}
-
-input[type] {
-  background-color: ghostwhite;
-}
-
-/* Pseudo Class */
-/* :hover */
+/* Part-B: Pseudo Class & Elements */
 button:hover {
-  color: white;
-  background-color: black;
+  background-color: yellow;
+  color: blue;
 }
 
-h3:hover {
-  text-decoration: none;
+#p:nth-of-type(odd) { /* 2n+1 */
+  color: yellow;
 }
 
-/* :active */
-button:active {
-  background-color: darkorange;
-  color: black;
-}
-
-p:active {
-  font-weight: bold;
-  color: darkslategrey;
-}
-
-/* :checked */
-input[type="radio"]:checked + label {
-  color: rgb(37, 63, 255);
-  font-weight: bold;
-}
-
-input[type="checkbox"]:checked + label {
-  color: rgb(37, 63, 255);
-  font-weight: bold;
-}
-
-/* :nth-of-type() */
-div:nth-of-type(2n) {
-  background-color: aqua;
-}
-
-/* Pseudo Element */
-
-/* ::first-letter */
 h1::first-letter {
-  color: #000;
-}
-
-/* ::first-line */
-p::first-line {
   color: red;
 }
 
-/* ::selection */
-p::selection {
-  background-color: yellow;
+#yes:checked + label {
+  color: darkgreen;
 }
 
-/* CSS Cascade Algorithm */
-h3 {
-  color: #000;
-}
-
-/* This is the final style.*/
-h3 {
-  color: maroon;
-}
-
-/* Specificity Algorithm */
-main h3 {
-  color: brown;
-}
+/* 
+- #mainContent    (100)
+- div.main    (011)
+- .main     (010)
+- h1    (001)
+*/
