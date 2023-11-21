@@ -124,3 +124,18 @@ p::first-line {
 p::selection {
   background-color: yellow;
 }
+
+/* CSS Cascade Algorithm */
+h3 {
+  color: #000;
+}
+
+/* This is the final style.*/
+h3 {
+  color: maroon;
+}
+
+/* Specificity Algorithm */
+main h3 {
+  color: brown;
+}
