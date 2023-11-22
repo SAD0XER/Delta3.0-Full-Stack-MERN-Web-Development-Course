@@ -2,4 +2,18 @@ div {
   height: 200px;
   width: 400px;
   background-color: lightslategray;
+
+  /* border-width: 5px;
+  border-style: solid;
+  border-color: black; */
+  border: 5px solid black;
+  border-radius: 10px;
+}
+
+h1 {
+  /* border-width: 5px;
+    border-style: dashed;
+    border-color: maroon; */
+  border: 5px solid maroon; /* Border Shorthand */
+  /* border-radius: 5%; */
 }
