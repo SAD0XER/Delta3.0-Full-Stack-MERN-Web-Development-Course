@@ -1,33 +1,34 @@
-div {
+#outer {
+  background-color: white;
   height: 200px;
-  width: 400px;
-  background-color: lightslategray;
-
-  /* border-width: 5px;
-  border-style: solid;
-  border-color: black; */
-  border: 5px solid black;
-  border-radius: 10px;
-  /* margin-bottom: 25px;
-  margin-left: 25px;
-  margin-right: 10px; */
-  margin: 40px 30px 20px 10px;
+  width: 75px;
+  border: 2px solid black;
+  padding: 10px;
 }
 
-h1 {
-  /* border-width: 5px;
-    border-style: dashed;
-    border-color: maroon; */
-  border: 5px solid maroon; /* Border Shorthand */
-  /* border-radius: 5%; */
-  margin: 0px;
+#red {
+  background-color: red;
+  height: 50px;
+  width: 50px;
+  border: 2px solid black;
+  border-radius: 50%;
+  margin: 10px;
 }
 
-button {
-  background-color: blueviolet;
-  border: 2px solid green;
-  /* border-radius: 10px; */
-  /* padding-right: 25px;
-  padding-left: 25px; */
-  padding: 10px 20px 30px 40px;
+#yellow {
+  background-color: yellow;
+  height: 50px;
+  width: 50px;
+  border: 2px solid black;
+  border-radius: 50%;
+  margin: 10px;
+}
+
+#green {
+  background-color: green;
+  height: 50px;
+  width: 50px;
+  border: 2px solid black;
+  border-radius: 50%;
+  margin: 10px;
 }
