@@ -1,34 +1,18 @@
+h1 {
+  border: 2px solid;
+  width: 50%;
+}
+
 #outer {
-  background-color: white;
-  height: 200px;
-  width: 75px;
-  border: 2px solid black;
-  padding: 10px;
-}
-
-#red {
+  height: 500px;
+  width: 500px;
   background-color: red;
-  height: 50px;
-  width: 50px;
-  border: 2px solid black;
-  border-radius: 50%;
-  margin: 10px;
+  margin: 50px;
 }
 
-#yellow {
+#inner {
+  height: 100px;
+  width: 100px;
   background-color: yellow;
-  height: 50px;
-  width: 50px;
-  border: 2px solid black;
-  border-radius: 50%;
-  margin: 10px;
-}
-
-#green {
-  background-color: green;
-  height: 50px;
-  width: 50px;
-  border: 2px solid black;
-  border-radius: 50%;
-  margin: 10px;
+  margin-left: 10%;
 }
