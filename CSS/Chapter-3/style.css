@@ -8,6 +8,10 @@ div {
   border-color: black; */
   border: 5px solid black;
   border-radius: 10px;
+  /* margin-bottom: 25px;
+  margin-left: 25px;
+  margin-right: 10px; */
+  margin: 40px 30px 20px 10px;
 }
 
 h1 {
@@ -16,6 +20,7 @@ h1 {
     border-color: maroon; */
   border: 5px solid maroon; /* Border Shorthand */
   /* border-radius: 5%; */
+  margin: 0px;
 }
 
 button {
