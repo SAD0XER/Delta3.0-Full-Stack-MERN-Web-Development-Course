@@ -17,3 +17,12 @@ h1 {
   border: 5px solid maroon; /* Border Shorthand */
   /* border-radius: 5%; */
 }
+
+button {
+  background-color: blueviolet;
+  border: 2px solid green;
+  /* border-radius: 10px; */
+  /* padding-right: 25px;
+  padding-left: 25px; */
+  padding: 10px 20px 30px 40px;
+}
