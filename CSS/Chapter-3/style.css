@@ -1,18 +1,11 @@
-h1 {
-  border: 2px solid;
-  width: 50%;
-}
+div {
+  /* Em: Used to size object relative to it's parent element.
+  Useful for 2 level of nesting but more than that.
+  This will create Snowball effect. */
+  /* font-size: 2em; */
 
-#outer {
-  height: 500px;
-  width: 500px;
-  background-color: red;
-  margin: 50px;
-}
-
-#inner {
-  height: 100px;
-  width: 100px;
-  background-color: yellow;
-  margin-left: 10%;
+  /* Rem: Used to size object relative to is Root element.
+  Useful in nesting elements.
+  To avoid snowball effect use Rem Unit (Rem = Root Em) */
+  font-size: 2rem;
 }
