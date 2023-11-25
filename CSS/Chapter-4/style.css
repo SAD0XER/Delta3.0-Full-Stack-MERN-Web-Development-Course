@@ -1,15 +1,17 @@
-/* Color Opacity */
-#c {
-  height: 100px;
-  width: 100px;
-  /* background-color: rgba(0, 0, 255, 1); */
-  background-color: #000000ff;
-}
-
 /* Element Opacity */
 #e {
   height: 100px;
   width: 100px;
-  background-color: #f0f;
-  opacity: 1.000;
+  background-color: #0ff;
+  opacity: 1;
+  margin: auto;
+  margin-top: 30px;
+  transition: margin-top 2s ease 0s;
+}
+
+/* CSS Transition */
+#e:hover {
+  margin-top: 400px;
+  background-color: #ff0;
+  border-radius: 50%;
 }
