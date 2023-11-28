@@ -1,0 +1,24 @@
+/* Hover Card Effect */
+.card {
+  width: 200px;
+  height: auto;
+  border: 2px solid black;
+  display: inline-block;
+  margin: 10px;
+  box-shadow: 2px 4px 8px black;
+  transition: 0.5s;
+  border-radius: 5px;
+}
+
+.desc {
+  padding: 0 2px 0 2px;
+}
+
+.card img {
+  width: 100%; /* This will fix the img-size according to parents size. */
+  border-radius: 5px;
+}
+
+.card:hover {
+  box-shadow: 2px 4px 20px black;
+}
