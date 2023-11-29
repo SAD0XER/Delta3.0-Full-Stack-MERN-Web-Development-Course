@@ -1,0 +1,42 @@
+/* Position Property */
+div {
+  height: 100px;
+  width: 100px;
+  background-color: green;
+  text-align: center;
+  border: 3px solid black;
+  margin: 20px;
+  display: inline-block;
+}
+
+/* #1 static */
+#static {
+  background-color: yellow;
+  position: static;
+  top: 100px;
+  left: 100px;
+}
+
+/* #2 Relative */
+#relative {
+  background-color: yellow;
+  position: relative;
+  top: 100px; /* Offset */
+  left: 100px; /* Offset */
+}
+
+/* #3 Absolute */
+#absolute {
+  background-color: yellow;
+  position: absolute;
+  top: 100px; /* Offset */
+  left: 300px; /* Offset */
+}
+
+/* #4 Fixed */
+#fixed {
+  background-color: yellow;
+  position: fixed;
+  top: 100px; /* Offset */
+  left: 100px; /* Offset */
+}
