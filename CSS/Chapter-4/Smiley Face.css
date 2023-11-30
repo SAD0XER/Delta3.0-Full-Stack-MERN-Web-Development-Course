@@ -1,0 +1,36 @@
+/* Smiley Face */
+.face {
+  height: 400px;
+  width: 400px;
+  background-color: yellow;
+  border-radius: 50%;
+  border: 5px solid black;
+}
+
+.mouth {
+  width: 200px;
+  height: 75px;
+  background-color: whitesmoke;
+  border-radius: 0px 0px 75px 75px;
+  position: absolute;
+  top: 250px;
+  left: 100px;
+  border: 5px solid black;
+}
+
+.left-eye,
+.right-eye {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: blue;
+  display: inline-block;
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  border: 5px solid black;
+}
+
+.right-eye {
+  left: 250px;
+}
