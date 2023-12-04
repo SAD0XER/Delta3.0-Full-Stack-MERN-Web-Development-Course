@@ -5,18 +5,9 @@
   margin: 10px auto;
   border: 2px solid black;
   display: flex;
-
-  /* Main Axis from Left to Right. */
   flex-direction: row;
-
-  /* Main Axis from Right to Left. */
-  flex-direction: row-reverse;
-
-  /* Main Axis from Top to Bottom. */
-  flex-direction: column;
-
-  /* Main Axis from Bottom to Top. */
-  flex-direction: column-reverse;
+  justify-content: flex-start;
+  flex-wrap: wrap; /* 'nowrap' is the default value.*/
 }
 
 h1 {
