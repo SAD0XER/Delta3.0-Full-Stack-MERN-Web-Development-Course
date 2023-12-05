@@ -1,5 +1,5 @@
 #container {
-  height: 300px;
+  height: 600px;
   width: 80%;
   background-color: azure;
   margin: 10px auto;
@@ -8,6 +8,7 @@
   flex-direction: row;
   justify-content: flex-start;
   flex-wrap: wrap; /* 'nowrap' is the default value.*/
+  align-items: baseline;
 }
 
 h1 {
