@@ -7,8 +7,9 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  flex-wrap: wrap; /* 'nowrap' is the default value.*/
-  align-items: baseline;
+  flex-wrap: wrap;
+  /* align-items: baseline; */
+  align-content: baseline;
 }
 
 h1 {
