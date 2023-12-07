@@ -7,9 +7,13 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   /* align-items: baseline; */
-  align-content: baseline;
+  align-content: flex-start;
+}
+
+#org {
+  align-self: baseline;
 }
 
 h1 {
