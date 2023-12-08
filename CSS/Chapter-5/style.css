@@ -1,11 +1,11 @@
 #container {
   height: 600px;
-  width: 80%;
+  width: 60%;
   background-color: azure;
   margin: 10px auto;
   border: 2px solid black;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-start;
   /* flex-wrap: wrap; */
   /* align-items: baseline; */
@@ -14,6 +14,17 @@
 
 #org {
   align-self: baseline;
+  /* flex-basis: 50px; */
+  /* flex-grow: 1; */
+  flex-shrink: 1;
+}
+
+#blue {
+  /* flex-basis: 400px; */
+  /* flex-grow: 1;
+  min-width: 100px;
+  max-width: 300px; */
+  flex-shrink: 3;
 }
 
 h1 {
