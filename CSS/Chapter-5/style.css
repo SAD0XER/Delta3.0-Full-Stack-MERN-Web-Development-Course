@@ -5,7 +5,7 @@
   margin: 10px auto;
   border: 2px solid black;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: flex-start;
   /* flex-wrap: wrap; */
   /* align-items: baseline; */
@@ -16,7 +16,7 @@
   align-self: baseline;
   /* flex-basis: 50px; */
   /* flex-grow: 1; */
-  flex-shrink: 1;
+  flex: 2 2 100px; /* flex-grow | flex-shrink | flex-basis */
 }
 
 #blue {
@@ -24,7 +24,7 @@
   /* flex-grow: 1;
   min-width: 100px;
   max-width: 300px; */
-  flex-shrink: 3;
+  flex-grow: 2;
 }
 
 h1 {
@@ -33,7 +33,7 @@ h1 {
 
 #container div {
   height: 100px;
-  width: 300px;
+  width: 50px;
   color: white;
   text-align: center;
   font-size: 1.5em;
