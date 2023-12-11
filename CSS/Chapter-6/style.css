@@ -3,12 +3,21 @@
   height: 300px;
   background-color: black;
   display: grid;
+  border-radius: 10px;
+  /* grid-template-columns: 200px 200px 200px; */
+
+  /* grid-template-rows: auto auto auto; */
+
+  /* grid-template-columns: repeat(3, 1fr); */
+
+  grid-template-rows: 1fr 1fr 1fr;
 }
 
 .item {
-  width: 100px;
-  height: 50px;
+  /* width: 100px;
+  height: 50px; */
   background-color: greenyellow;
   border: 2px solid black;
   text-align: center;
+  border-radius: 10px;
 }
