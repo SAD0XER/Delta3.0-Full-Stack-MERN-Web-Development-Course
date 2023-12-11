@@ -5,12 +5,12 @@
   display: grid;
   border-radius: 10px;
   /* grid-template-columns: 200px 200px 200px; */
-
   /* grid-template-rows: auto auto auto; */
-
-  /* grid-template-columns: repeat(3, 1fr); */
-
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr 1fr 1fr;
+  /* row-gap: 100px; */
+  /* column-gap: 100px; */
+  grid-gap: 50px 50px;
 }
 
 .item {
