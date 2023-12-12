@@ -10,7 +10,8 @@
   grid-template-rows: 1fr 1fr 1fr;
   /* row-gap: 100px; */
   /* column-gap: 100px; */
-  grid-gap: 50px 50px;
+  /* grid-gap: 50px 50px; */
+  grid-gap: 10px;
 }
 
 .item {
@@ -20,4 +21,14 @@
   border: 2px solid black;
   text-align: center;
   border-radius: 10px;
+}
+
+.one {
+  grid-column-start: 1;
+  grid-column-end: 4;
+
+  /* Grid Column short/hands */
+  /* grid-column: 1/4; */
+  grid-column: 1 / span 4;
+  /* grid-column: span 1/4; */
 }
