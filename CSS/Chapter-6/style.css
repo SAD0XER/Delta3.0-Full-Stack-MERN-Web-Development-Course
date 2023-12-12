@@ -32,3 +32,10 @@
   grid-column: 1 / span 4;
   /* grid-column: span 1/4; */
 }
+
+.two {
+  /* grid-row-start: 1;
+  grid-row-end: 3; */
+  /* grid-row: 1/4; */
+  grid-row: 1 / span 3;
+}
