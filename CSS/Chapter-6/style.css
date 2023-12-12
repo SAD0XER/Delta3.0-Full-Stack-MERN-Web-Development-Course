@@ -12,11 +12,20 @@
   /* column-gap: 100px; */
   /* grid-gap: 50px 50px; */
   grid-gap: 10px;
+
+  /* For Container */
+  /* justify-items: end; */
+
+  /* For Individual Items */
+  /* align-items: end; */
+
+  /* Use when the values for both Vertical & Horizontal Containers are same. */
+  place-items: center;
 }
 
 .item {
-  /* width: 100px;
-  height: 50px; */
+  width: 100px;
+  height: 50px;
   background-color: greenyellow;
   border: 2px solid black;
   text-align: center;
@@ -24,18 +33,30 @@
 }
 
 .one {
-  grid-column-start: 1;
-  grid-column-end: 4;
+  /* grid-column-start: 1;
+  grid-column-end: 4; */
 
-  /* Grid Column short/hands */
+  /* Grid Column shorthands */
   /* grid-column: 1/4; */
-  grid-column: 1 / span 4;
+  /* grid-column: 1 / span 4; */
   /* grid-column: span 1/4; */
+
+  /* For Container */
+  /* justify-self: start; */
+
+  /* For Individual Items */
+  /* justify-self: end; */
+
+  /* For same values of both Vertical & Horizontal Items. */
+  place-self: start;
 }
 
 .two {
   /* grid-row-start: 1;
   grid-row-end: 3; */
   /* grid-row: 1/4; */
-  grid-row: 1 / span 3;
+  /* grid-row: 1 / span 3; */
+
+  /* For same values of both Vertical & Horizontal Items. */
+  place-self: end;
 }
