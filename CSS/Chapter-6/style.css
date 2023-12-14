@@ -1,57 +1,59 @@
-.box {
-  height: 100px;
-  width: 300px;
-  background-color: skyblue;
-
-  /* animation-name: widthAnime;
-  animation-duration: 5s;
-  animation-timing-function: ease-in-out;
-  animation-delay: 0;
-  animation-iteration-count: infinite;
-  animation-direction: normal; */
-
-  /* Animation Shorthand */
-  animation: inThisTogether 5s ease-in-out 0s infinite normal running;
+h1 {
+  background-color: yellow;
+  border: 2px solid black;
 }
 
-@keyframes inThisTogether {
-  from {
-    width: 10px;
-    font-size: 20px;
-    border-radius: 0%;
-    background-color: green;
+@media (width: 400px) {
+  h1 {
+    background-color: pink;
   }
-  to {
-    width: 300px;
-    font-size: 40px;
-    border-radius: 50%;
+
+  div {
+    height: 200px;
+    width: 384px;
+    background-color: blueviolet;
+  }
+}
+
+/* @media (min-width: 200px) {
+  h1 {
+    background-color: magenta;
+  }
+
+  div {
+    height: 200px;
+    width: 384px;
+    background-color: blueviolet;
+  }
+} */
+
+/* @media (max-width: 600px) {
+  h1 {
     background-color: red;
   }
-}
 
-@keyframes widthAnime {
-  from {
-    width: 10px;
+  div {
+    height: 200px;
+    width: 384px;
+    background-color: blueviolet;
   }
-  to {
-    width: 300px;
-  }
-}
+} */
 
-@keyframes fontAnime {
-  from {
-    font-size: 20px;
-  }
-  to {
-    font-size: 40px;
-  }
-}
-
-@keyframes colorAnime {
-  from {
+@media (min-width: 700px) and (max-width: 800px) {
+  h1 {
     background-color: green;
   }
-  to {
-    background-color: red;
+
+  div {
+    height: 200px;
+    width: 384px;
+    background-color: blueviolet;
+  }
+}
+
+@media (orientation: landscape) {
+  h1 {
+    color: blue;
+    background-color: burlywood;
   }
 }
