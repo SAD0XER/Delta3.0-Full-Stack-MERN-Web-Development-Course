@@ -1,0 +1,53 @@
+body {
+  background-color: #d56f3e;
+}
+
+#pets {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #3c787e;
+  border-radius: 25px;
+}
+
+.card {
+  width: 400px;
+  border: 2px solid black;
+  border-radius: 25px;
+  padding: 10px;
+  margin: 10px;
+  background-color: #d56f3e;
+}
+
+img {
+  width: 100%;
+  border-radius: 25px;
+}
+
+h1 {
+  text-align: center;
+  margin: auto;
+  border-radius: 20px;
+  background-color: #3c787e;
+}
+
+h2 {
+  color: #ffffff;
+  background-color: #3c787e;
+  border-radius: 15px;
+  text-align: center;
+}
+
+h4 {
+  text-align: right;
+  color: #3c787e;
+}
+
+span {
+  color: #ffffff;
+}
+
+@media (max-width: 700px) {
+  #pets {
+    flex-wrap: wrap;
+  }
+}
