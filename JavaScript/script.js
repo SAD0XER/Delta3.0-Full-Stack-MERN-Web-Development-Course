@@ -1,41 +1,33 @@
-// JS Assignment Question Set (Direct Part 3)
+let todo = [];
 
-//Question 1
-let array = [7, 9, 0, -2], n = 3;
-console.log(array.slice(0, n));
+let req = prompt("Please Enter Your Request");
 
-//Question 2
-console.log(array.slice(-n));
-
-//Question 3
-let arr = [1];
-
-if (arr.length == 0) {
-    console.log("String is Empty.");
-} else {
-    console.log("String is NOT Empty.");
-}
-
-//Question 4
-let charArr = ['a', 'B', 'C'];
-
-if (charArr[0] == charArr[0].toLocaleLowerCase()) {
-    console.log("Character of the string is Lowercase.");
-} else {
-    console.log("Character of the string is NOT Lowercase.");
-}
-
-//Question 5
-let str = "    as; ldjfd asdf    ";
-console.log(str);
-console.log(str.trim());
-
-//Question 6
-console.log(charArr.includes("A"));
-console.log(charArr.includes("B"));
-
-if (charArr.indexOf('C') != -1) {
-    console.log("Element Exist!");
-} else {
-    console.log("Element Doesn't Exist!");
+while (true) {
+    if (req == "quit") {
+        console.log("Quitting To Do App...");
+        break;
+    } else if (req == 'list') {
+        console.log("----------All Tasks----------");
+        console.log("----------[start]----------");
+        for (let i = 0; i < todo.length; i++) {
+            console.log(i + 1, todo[i]);
+        }
+        console.log("----------[end]----------");
+    } else if (req == 'add') {
+        let task = prompt("Enter Your Task...");
+        todo.push(task);
+        console.log("Task Added!");
+    } else if (req == "delete") {
+        let taskListString = "";
+        for (let i = 0; i < todo.length; i++) {
+            taskListString += `${i + 1}: ${todo[i]}\n`; // Constructing the string
+        }
+        let taskToDelete = prompt("Enter the number of the task you want to delete:\n" + taskListString);
+        taskToDelete = Number(taskToDelete);
+        todo.splice(taskToDelete - 1, 1);
+        alert("Task Deleted!");
+    } else {
+        console.log("Invalid Command!");
+    }
+    req = prompt("Enter Your Request");
 }
