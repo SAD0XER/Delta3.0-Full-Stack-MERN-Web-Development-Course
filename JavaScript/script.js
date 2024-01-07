@@ -1,23 +1,24 @@
-let max = prompt("Enter the MAX Number:");
+// JS Assignment Question Set (Part 5)
 
-const random = Math.floor(Math.random() * max) + 1;
+//Question 1
+let dice = Math.floor(Math.random() * 6) + 1;
+console.log(dice);
 
-let guess = prompt("Guess the Number");
+//Question 2
+let car = {
+    name: "Bugatti",
+    color: "Atlantic Blue",
+    model: "Chiron"
+};
 
-while (true) {
-    if (guess == "quit") {
-        console.log("User Quit!");
-        alert("You Quit!");
-        break;
-    }
+console.log(car.name);
 
-    if (guess == random) {
-        console.log(`User Guessed right! The random number is ${random}.`);
-        alert(`Congratulations!\n\nYou Guessed Right. The Random Number was ${random}.`);
-        break;
-    } else if (guess < random) {
-        guess = prompt(`Hint: Your guessed is too Small.\n\nPlease try again!`);
-    } else {
-        guess = prompt(`Hint: Your guessed is too Big.\n\nPlease try again!`);
-    }
-}
+//Question 3
+let person = {
+    name: "SAD0XER",
+    age: 20,
+    city: "Mumbai"
+};
+
+console.log(person.city = "New York");
+console.log(person.country = "United States");
