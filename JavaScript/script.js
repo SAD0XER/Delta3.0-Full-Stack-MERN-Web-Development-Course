@@ -1,50 +1,31 @@
-// JS Assignment Question Set (Part 8)
+// JS Assignment Question Set (Part 9)
 
-//Question 1
-let nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// Question 1
+// let body = document.querySelector('body');
+let input = document.createElement("input");
+let btn = document.createElement("button");
+btn.innerText = "Submit!";
+document.querySelector("body").append(input);
+document.querySelector("body").append(btn);
+input.setAttribute("type", "text");
+input.setAttribute("id", "io");
+input.setAttribute("name", "IO");
 
-const square = nums.map((num) => num * num);
-console.log("The square of elements of array is ", square);
+// Question 2
+input.setAttribute("placeholder", "username");
+btn.setAttribute("id", "btn");
 
-let sum = square.reduce((acc, cur) => acc + cur, 0);
-console.log(`Sum of squares: ${sum}`);
+// Question 3
+btn = document.querySelector("#btn");
+btn.classList.add("btnStyle");
 
-let avg = sum / nums.length;
-console.log("The average of array is", avg);
+// Question 4
+let h1 = document.createElement("h1");
+h1.innerHTML = "<u>DOM Practice</u>";
+document.querySelector("body").append(h1);
+h1.style.color = "purple";
 
-//Question 2
-let arr = nums.map((num) => num + 5);
-console.log(arr);
-
-//Question 3
-let string = ["abhimanyu", "balaram", "chanakya", "drutrashtra", "ekalavya"];
-
-let toUpperCaseWords = string.map((word) => word.toUpperCase());
-console.log(toUpperCaseWords);
-
-//Question 4
-const doubleAndReturnArgs = (arr, ...args) => [
-    ...arr,
-    ...args.map((v) => v * 2),
-];
-
-doubleAndReturnArgs([1, 2, 3], 4, 4);
-console.log(doubleAndReturnArgs(nums, 123));
-
-doubleAndReturnArgs([2], 10, 4);
-console.log(doubleAndReturnArgs(nums, 1234));
-
-//Question 5
-const obj1 = {
-    name: "asdf",
-    age: 23
-};
-
-const car = {
-    model: "chiron",
-    price: 12345678910
-};
-
-const mergeObjects = (obj1, obj2) => ({ ...obj1, ...obj2 });
-
-console.log(mergeObjects(obj1, car));
+// Question 5
+let p = document.createElement("p");
+p.innerHTML = "Apna College <b>Delta</b> Practice";
+document.querySelector("body").append(p);
