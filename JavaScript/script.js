@@ -1,27 +1,18 @@
-// let btn = document.querySelector('button');
-let btn = document.querySelectorAll('button');
-// console.dir(btn);
+// Activity: Random Color Generator.
 
-// btn.onclick = function() {
-//     console.log("Button Clicked!");
-//     alert("Alert: Button Clicked!");
-// }
+let btn = document.querySelector("button");
+btn.addEventListener("click", () => {
+    let h3 = document.querySelector("h3");
+    let randomColor = getRandomColor();
+    h3.innerText = randomColor;
 
-function sayHello() {
-    alert("Hello!");
-    console.log("Button Clicked!");
-}
+    let div = document.querySelector("div");
+    div.style.backgroundColor = randomColor;
+});
 
-// btn.onclick = sayHello;
-
-for (btns of btn) {
-    // btns.onclick = () => { alert("Button Clicked!"); }
-    // btns.onclick = () => { alert("Button Clicked!1"); }
-    // btns.onmouseenter = () => { console.log("Mouse Entered!"); }
-    // btns.onmouseleave = () => { console.log("Mouse Leaved!"); }
-
-    btns.addEventListener("click", sayHello);
-    // btns.addEventListener("dblclick", () => { console.log("Double Cliked!"); });
-    btns.addEventListener("mouseenter", () => { console.log("Mouse Entered!"); });
-    btns.addEventListener("mouseleave", () => { console.log("Mouse Leaved!"); });
+function getRandomColor() {
+    let red = Math.floor(Math.random() * 256);
+    let green = Math.floor(Math.random() * 256);
+    let blue = Math.floor(Math.random() * 256);
+    return `rgb(${red}, ${green}, ${blue})`;
 }
