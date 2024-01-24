@@ -1,18 +1,49 @@
-// Activity: Random Color Generator.
+// JS Assignment Question Set (Part 9)
 
-let btn = document.querySelector("button");
-btn.addEventListener("click", () => {
-    let h3 = document.querySelector("h3");
-    let randomColor = getRandomColor();
-    h3.innerText = randomColor;
-
-    let div = document.querySelector("div");
-    div.style.backgroundColor = randomColor;
+//Question 1
+let textarea = document.querySelector("#textarea");
+textarea.addEventListener("mouseout", function (e) {
+  console.log("mouse out event triggered.");
+});
+textarea.addEventListener("keypress", function (e) {
+  console.log("key pressed.");
+});
+textarea.addEventListener("keydown", function (e) {
+  console.log("keydown.");
+});
+textarea.addEventListener("beforeinput", function (e) {
+  console.log("before input.");
 });
 
-function getRandomColor() {
-    let red = Math.floor(Math.random() * 256);
-    let green = Math.floor(Math.random() * 256);
-    let blue = Math.floor(Math.random() * 256);
-    return `rgb(${red}, ${green}, ${blue})`;
-}
+let div = document.querySelector("div");
+div.addEventListener("scroll", (event) => {
+  console.log("Waiting on scroll events...");
+});
+
+window.addEventListener("load", (event) => {
+  console.log("Load event is triggered.");
+});
+
+//Question 2
+let btn = document.createElement("button");
+btn.innerHTML = "Button";
+document.body.appendChild(btn);
+btn.addEventListener("click", () => {
+  btn.style.backgroundColor = "green";
+});
+
+//Question 3
+const input = document.getElementById("input");
+const h2 = document.querySelector("h2");
+
+input.addEventListener("input", (event) => {
+  const validCharacters = /^[A-Za-z ]*$/;
+  let inputValue = input.value;
+  
+  if (validCharacters.test(inputValue)) {
+    h2.innerText = inputValue;
+  } else {
+    // Remove last character if it's invalid
+    input.value = inputValue.slice(0, -1);
+  }
+});
