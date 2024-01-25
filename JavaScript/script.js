@@ -1,49 +1,26 @@
-// JS Assignment Question Set (Part 9)
+// Activity: To Do App using DOM.
 
-//Question 1
-let textarea = document.querySelector("#textarea");
-textarea.addEventListener("mouseout", function (e) {
-  console.log("mouse out event triggered.");
-});
-textarea.addEventListener("keypress", function (e) {
-  console.log("key pressed.");
-});
-textarea.addEventListener("keydown", function (e) {
-  console.log("keydown.");
-});
-textarea.addEventListener("beforeinput", function (e) {
-  console.log("before input.");
-});
+let input = document.querySelector("#input");
+let btn = document.querySelector("button");
+let ul = document.querySelector("ul");
 
-let div = document.querySelector("div");
-div.addEventListener("scroll", (event) => {
-  console.log("Waiting on scroll events...");
+btn.addEventListener("click", (event) => {
+  const item = document.createElement("li");
+  item.innerText = input.value;
+  item.insertAdjacentHTML("beforeend", "&nbsp;");
+
+  const delItem = document.createElement("button");
+  delItem.innerText = "Delete";
+  delItem.classList.add("delete");
+
+  ul.appendChild(item);
+  item.appendChild(delItem);
+  input.value = null;
 });
 
-window.addEventListener("load", (event) => {
-  console.log("Load event is triggered.");
-});
-
-//Question 2
-let btn = document.createElement("button");
-btn.innerHTML = "Button";
-document.body.appendChild(btn);
-btn.addEventListener("click", () => {
-  btn.style.backgroundColor = "green";
-});
-
-//Question 3
-const input = document.getElementById("input");
-const h2 = document.querySelector("h2");
-
-input.addEventListener("input", (event) => {
-  const validCharacters = /^[A-Za-z ]*$/;
-  let inputValue = input.value;
-  
-  if (validCharacters.test(inputValue)) {
-    h2.innerText = inputValue;
-  } else {
-    // Remove last character if it's invalid
-    input.value = inputValue.slice(0, -1);
+ul.addEventListener("click", (event) => {
+  if (event.target.nodeName == "BUTTON") {
+    let listItem = event.target.parentElement;
+    listItem.remove();
   }
 });
