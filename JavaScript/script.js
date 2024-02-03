@@ -1,185 +1,100 @@
-// #1 Callback in JS
-/* function one() {
-    return 1;
-}
+// Sending Our First API Request.
+let url = "https://catfact.ninja/fact";
 
-function two() {
-    return one() + one();
-}
+/*console.log(fetch(url)); //This line will print Promise.
+fetch(url) //This function returns Promise in the form of Response.
+  .then((res) => {
+    console.log(res); //This line will print Response in Promise.
+    return res.json();
+  })
+  .then((data) => {
+    console.log(data); //This line will print Data in Response.
+    console.log(data.fact);
+    return fetch(url);
+  })
+  .then((res) => {
+    return res.json();
+  })
+  .then((data2) => {
+    console.log(data2);
+  })
 
-function three() {
-    let ans = two() + one();
-    console.log(ans);
-}
-
-three(); */
-
-//Callback Hell => also called Callback Hell
-let h1 = document.querySelector("h1");
-
-function changeColor(color, delay) {
-  return new Promise((resolove, reject) => {
-    setTimeout(() => {
-      let num = Math.floor(Math.random() * 10) + 1;
-      if (num > 3) {
-        reject("Promise Rejected.");
-      }
-
-      h1.style.color = color;
-      resolove("Color Changed!");
-      reject("Color NOT Changed!");
-    }, delay);
+  .catch((err) => {
+    console.log("ERROR:", err);
   });
-}
 
-/* 1st approach: changeColor("red", 1000, () => {
-  changeColor("blue", 1000, () => {
-    changeColor("grey", 1000, () => {
-      changeColor("yellow", 1000, () => {
-        changeColor("orange", 1000);
-      });
-    });
-  });
-}); */
+console.log(
+  "All this is Asynchronous Code&Methods that's why this line is execute First."
+); */
 
-//2nd approach: using Promise methods.
-/* changeColor("red", 1000)
-  .then(() => {
-    console.log("Color changed to RED.");
-    return changeColor("red", 1000);
-  })
-  .then(() => {
-    console.log("Color changed to BLUE.");
-    return changeColor("blue", 1000);
-  })
-  .then(() => {
-    console.log("Color changed to GREY.");
-    return changeColor("grey", 1000);
-  })
-  .then(() => {
-    console.log("Color changed to YELLOW.");
-    return changeColor("yellow", 1000);
-  })
-  .then(() => {
-    console.log("Color changed to ORANGE.");
-    return changeColor("orange", 1000);
-  })
-  .catch((error) => {
-    console.log("Error:", error);
-  }); */
-
-//3rd approach: Handling Rejection with Await keyword by adding 'try' & 'catch(e)' block. (BEST)
-//Resolving issue with await keyword.
-/* async function runner() {
-  await changeColor("red", 1000);
-  await changeColor("blue", 1000);
-  await changeColor("grey", 1000);
-  await changeColor("yellow", 1000);
-  changeColor("orange", 1000);
-} */
-
-/* async function runner() {
+// Our First API Request using 'fetch()' with 'async' and 'await'
+/* async function getCatFact() {
   try {
-    await changeColor("red", 1000);
-    await changeColor("blue", 1000);
-    await changeColor("grey", 1000);
-    await changeColor("yellow", 1000);
-    await changeColor("orange", 1000);
+    let res = await fetch(url);
+    let data = await res.json();
+    console.log(data.fact);
+
+    let res2 = await fetch(url);
+    let data2 = await res2.json();
+    console.log(data2.fact);
   } catch (error) {
-    console.log("Error Caught:", error);
+    console.log("ERROR:", error);
   }
-  console.log("Your Remaining Tasks.");
-} */
 
-/* -------------------------------------- */
-
-//Promises
-/* function saveToDb(data) {
-  return new Promise((resolove, reject) => {
-    let internetSpeed = Math.floor(Math.random() * 10) + 1;
-    if (internetSpeed > 4) {
-      resolove("Success: Data is saved!");
-    } else {
-      reject("Failure: Data is NOT saved because of weak connection.");
-    }
-  });
-} */
-
-// then() and catch() methods: It used to do work after promise is RESOLVED or FAILED.
-// old approach
-/* let request = saveToDb("ApnaCollege");
-request
-  .then(() => {
-    console.log("Promise is resolved.");
-  })
-  .catch(() => {
-    console.log("Promise is rejected.");
-  }); */
-
-// new Improved approach
-/* saveToDb("ApnaCollege")
-  .then(() => {
-    console.log("Promise is resolved.");
-  })
-  .catch(() => {
-    console.log("Promise is rejected.");
-  }); */
-
-//Promise Chaining: For depended works. It is completely alternative of Callback Hell code.
-/* saveToDb("ApnaCollege")
-  .then((result) => {
-    console.log("Data 1 is Saved.");
-    console.log("Result of Promise-", result);
-    return saveToDb("SARVESH");
-  })
-  .then((result) => {
-    console.log("Data 2 is Saved.");
-    console.log("Result of Promise-", result);
-    return saveToDb("DEVRUKHAKAR");
-  })
-  .then((result) => {
-    console.log("Data 3 is Saved.");
-    console.log("Result of Promise-", result);
-  })
-  .catch((error) => {
-    console.log("Promise is rejected.");
-    console.log("Error of Promise-", error);
-  }); */
-
-//Async Function: Async Keyword
-/* async function hi() {
-  throw "This is Error!"; //Throw Keyword: Used to throw error.
-  return "hi";
-} */
-
-/* hi().then((result) => {
-  console.log("Promise resolved man!");
-console.log("the resulg is", result);
-})
-.catch((error) => {
-console.log("Promise failed with error", error);
-}); */
-
-//Async arrow function
-/* let hello = async (result) => {
-  console.log("Result:", result);
-  return "hello";
-}; */
-
-function num() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      let n = Math.floor(Math.random() * 10) + 1;
-      console.log(n);
-      resolve();
-    }, 1000);
-  });
+  console.log("Code after try-catch.");
 }
 
-async function demo() {
-  await num();
-  await num();
-  await num();
-  await num();
-  num();
+getCatFact(); //Function calling. */
+
+//AXIOS: Library to make HTTP requests.
+/* async function getCatFact() {
+  try {
+    let res = await axios.get(url);
+    console.log(res.data.fact);
+  } catch (error) {
+    console.log("ERROR:", error);
+  }
+} */
+
+//Activity: Generate Random Cat Facts on Web Page.
+async function getCatFact() {
+  try {
+    let res = await axios.get(url);
+    // return (await axios.get(url)).data.fact; //Directly returning 'fact' data without using extra variables/space.
+    console.log(res.data.fact);
+    return res.data.fact;
+  } catch (error) {
+    console.log("ERROR:", error);
+  }
 }
+
+let catFact = document.querySelector("#catFact");
+let p = document.querySelector("#result");
+
+catFact.addEventListener("click", async () => {
+  let result = await getCatFact();
+  //   p.innerText = result.data.fact;
+  p.innerText = result;
+});
+
+//Activity: Generate Random Dog Images on Web Page.
+let dogAPI = "https://dog.ceo/api/breeds/image/random";
+
+async function getDogImg() {
+  try {
+    // let res = await axios.get(url);
+    return (await axios.get(dogAPI)).data.message; //Returns the URL of Image.
+    // return res.data.fact;
+  } catch (error) {
+    console.log("ERROR:", error);
+  }
+}
+
+let dogImgBtn = document.querySelector("#dogImgBtn");
+let img = document.querySelector("img");
+
+dogImgBtn.addEventListener("click", async () => {
+  //   let result = await getDogImg();
+  img.setAttribute("src", await getDogImg());
+  //   img.setAttribute("src", result);
+});
