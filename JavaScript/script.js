@@ -98,3 +98,50 @@ dogImgBtn.addEventListener("click", async () => {
   img.setAttribute("src", await getDogImg());
   //   img.setAttribute("src", result);
 });
+
+//Sending Headers with API requests.
+/* const jokeAPI = "https://icanhazdadjoke.com";
+
+async function getJokes() {
+  try {
+    const headers = { headers: { Accept: "Application/json" } };
+    let res = await axios.get(jokeAPI, headers);
+    console.log(res);
+  } catch (error) {
+    console.log(error);
+  }
+} */
+
+//Updating Query Strings in URL.
+let universityAPI = "http://universities.hipolabs.com/search?name=";
+let btn = document.querySelector("#countruSearch");
+
+btn.addEventListener("click", async () => {
+  let contry = document.querySelector("#countryIO").value;
+  console.log(contry);
+
+  let clgArr = await getColleges(contry);
+  show(clgArr);
+});
+
+function show(clgArr) {
+  let nameList = document.querySelector("#uniNameList");
+  nameList.innerText = null;
+  for (college of clgArr) {
+    console.log(college.name); //Printing clf names on console.
+
+    /* Appending college names in list. */
+    let listItem = document.createElement("li");
+    listItem.innerText = college.name;
+    nameList.appendChild(listItem);
+  }
+}
+
+async function getColleges(country) {
+  try {
+    let res = await axios.get(universityAPI + country);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
