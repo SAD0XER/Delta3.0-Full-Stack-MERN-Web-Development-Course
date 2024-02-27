@@ -24,7 +24,12 @@ app.get("/rolldice", (req, res) => {
 });
 
 app.get("/ig/:username", (req, res) => {
-  let followers = ["sdf", "asdf", "blah", "xyz", "12ka4"]; //Created array for testing purposes only.
   let { username } = req.params; //It is a destructuring assignment syntax. It's a concise way of extracting a property from an object and assigning it to a variable with the same name.
-  res.render("instagram.ejs", { username, followers });
+  const instaData = require("./data.json"); //Requiring JSON data file.
+  const data = instaData[username];
+if (data) {
+  res.render("instagram.ejs", { data });
+} else {
+  res.render("datanotfound.ejs");
+}
 });

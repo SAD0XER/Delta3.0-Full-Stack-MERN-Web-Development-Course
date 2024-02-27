@@ -5,18 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instagram</title>
+    <style>
+        img {
+            width: 10rem;
+            height: 10rem;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Hi @<%= username %> <button>Follow</button> <button>Message</button></h1>
-    <h3>Your Followers:</h3>
-    <ul>
-        <% for (let name of followers) {%>
-            <li>
-                <%= name %>
-            </li>
-            <% } %>
-    </ul>
+    <h1>Hi @<%= data.name %> <button>Follow</button> <button>Message</button></h1>
+    <h5>
+        <p>Followers: <%= data.followers %> &nbsp;&nbsp;&nbsp;&nbsp; Following: <%= data.following %>
+        </p>
+    </h5>
+    <hr>
+
+    <% for (post of data.posts) { %>
+        <section>
+            <img src="<%= post.image %>" alt="post image">
+            <p>Likes <%= post.likes %> &nbsp;&nbsp;&nbsp;&nbsp; Comments <%= post.comments %>
+            </p>
+        </section>
+        <% } %>
+
 </body>
 
 </html>
