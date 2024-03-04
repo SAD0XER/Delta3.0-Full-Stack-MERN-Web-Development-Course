@@ -1,0 +1,20 @@
+const express = require("express");
+const path = require("path");
+const app = express();
+
+const port = 8080;
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json()); // to support JSON-encoded bodies.
+
+app.set("view engine", "ejs");
+app.set("view engine", path.join(__dirname, "views"));
+app.set(express.static(path.join(__dirname, "/public")));
+
+app.listen(port, () => {
+    console.log(`Listening on port ${port}...`);
+})
+
+app.get("/", (req, res) => {
+    res.send("Server is live.");
+});

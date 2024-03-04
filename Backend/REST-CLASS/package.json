@@ -1,0 +1,15 @@
+{
+  "name": "rest-class",
+  "version": "1.0.0",
+  "description": "This package is created for learning REST.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sarvesh Devrukhakar",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.3"
+  }
+}
