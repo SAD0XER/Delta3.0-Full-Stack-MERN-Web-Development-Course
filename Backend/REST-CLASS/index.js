@@ -21,14 +21,17 @@ app.get("/", (req, res) => {
 
 let posts = [
     {
+        id: "1a",
         username: "apnacollege",
         content: "Do Not Stop unil the goal is reached."
     },
     {
+        id: "2b",
         username: "Aman Dhattarwal",
         content: "Tu Phodega!"
     },
     {
+        id: "3c",
         username: "Shrasha Khapra",
         content: "Success requires hardwork."
     },
@@ -40,6 +43,12 @@ app.get("/posts", (req, res) => {
 
 app.get("/posts/new", (req, res) => {
     res.render("new.ejs");
+});
+
+app.get("/posts/:id", (req, res) => {
+    let { id } = req.params;
+    let post = posts.find((p) => id === p.id);
+    res.render("show.ejs", { post });
 });
 
 app.post("/posts", (req, res) => {
