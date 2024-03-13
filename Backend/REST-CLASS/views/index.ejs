@@ -20,8 +20,11 @@
             <h4 class="content">
                 <%= post.content %>
             </h4>
-            <a href="http://localhost:8080/posts/<%= post.id %>"><button>See your post</button></a>
-            <a href="http://localhost:8080/posts/<%= post.id %>/edit"><button>Edit your post</button></a>
+            <a href="http://localhost:8080/posts/<%= post.id %>"><button>See more...</button></a>
+            <a href="http://localhost:8080/posts/<%= post.id %>/edit"><button>Edit</button></a>
+            <form action="/posts/<%= post.id%>?_method=DELETE" method="post">
+                <a href="http://localhost:8080/posts/<%= post.id %>"><button>Delete</button></a>
+            </form>
         </div>
         <% } %>
 </body>
