@@ -4,29 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Posts</title>
+    <title>REST CLASS Activities</title>
     <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
-    <h1>Quora Posts &nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="http://localhost:8080/posts/new"><button>Create New Post</button></a>
-    </h1>
-
-    <% for (post of posts){ %>
-        <div class="post">
-            <h3 class="user">@<%= post.username %>
-            </h3>
-            <h4 class="content">
-                <%= post.content %>
-            </h4>
-            <a href="http://localhost:8080/posts/<%= post.id %>"><button>See more...</button></a>
-            <a href="http://localhost:8080/posts/<%= post.id %>/edit"><button>Edit</button></a>
-            <form action="/posts/<%= post.id%>?_method=DELETE" method="post">
-                <a href="http://localhost:8080/posts/<%= post.id %>"><button>Delete</button></a>
-            </form>
-        </div>
-        <% } %>
+    <h1>Welcome to REST Project.</h1>
+    <a href="http://localhost:8080/posts/new"><button>Create New Post</button></a>
+    <a href="http://localhost:8080/posts"><button>See All Posts</button></a>
 </body>
 
 </html>

@@ -8,11 +8,23 @@
 </head>
 
 <body>
+    <!-- This page is a template form to edit post. -->
+    <a href="http://localhost:8080/posts"><button>Back</button></a>
     <p>Post Username: @<%= post.username %></p>
     <p>Post Id: <%= post.id %></p>
 
     <form action="/posts/<%= post.id %>?_method=PATCH" method="post">
-        <textarea name="content" id="content" cols="30" rows="5"><%= post.content %></textarea><br />
+        <img src="<%= post.imgUrl %>" alt="Image URL"><br><br>
+
+        <label for="imgUrl"><b>Upload new image link</b></label><br>
+        <input type="url" name="imgUrl" id="imgUrl" value="<%= post.imgUrl %>"><br><br>
+
+        <label for="caption"><b>Edit caption</b></label><br>
+        <textarea name="caption" id="caption" cols="30" rows="5"><%= post.caption %></textarea><br>
+
+        <label for="content"><b>Edit your content</b></label><br>
+        <textarea name="content" id="content" cols="30" rows="10"><%= post.content %></textarea><br />
+
         <button type="submit">Submit Your Edit</button>
     </form>
 </body>

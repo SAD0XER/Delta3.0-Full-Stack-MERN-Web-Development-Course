@@ -9,17 +9,15 @@
 </head>
 
 <body>
-    <h1>Here are your posts &nbsp;&nbsp;&nbsp;&nbsp; <a href="http://localhost:8080/posts"><button>Back</button></a>
-    </h1>
-    <p>Post ID: <%= post.id %>
-    </p>
-    <div class="post">
+    <!-- This page is a template for seeing post in detail  . -->
+    <a href="http://localhost:8080/posts"><button>Back</button></a>
+    <p>Post ID: <%= post.id %></p>
 
-        <h3 class="user">@<%= post.username %>
-        </h3>
-        <h4>
-            <%= post.content %>
-        </h4>
+    <div class="post">
+        <h3 class="user">@<%= post.username %></h3>
+        <img src="<%= post.imgUrl %>" alt="Image URL">
+        <h4 class="caption"><%= post.caption %></h4>
+        <p class="content"><%= post.content %></p>
     </div>
 </body>
 

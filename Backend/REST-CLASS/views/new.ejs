@@ -8,10 +8,28 @@
 </head>
 
 <body>
+    <!-- This page is a template for creating new posts. -->
+    <a href="http://localhost:8080/"><button>Home</button></a>
+
     <form method="post" action="/posts">
-        <input type="text" name="username" placeholder="Username"><br><br>
-        <textarea name="content" cols="30" rows="3.5"></textarea><br><br>
-        <button>Submit Post</button>
+        <fieldset>
+            <legend>
+                <h1>Create New Post</h1>
+            </legend>
+            <label for="username"><b>Enter Username</b></label><br>
+            <input type="text" id="username" name="username" placeholder="Username"><br><br>
+
+            <label for="url"><b>Enter image URL</b></label><br>
+            <input type="url" name="url" id="url" placeholder="https://example.io/image.img" required><br><br>
+
+            <label for="caption"><b>Write a post caption</b></label><br>
+            <textarea name="caption" id="caption" cols="20" rows="1" placeholder="SET YOUR HEART ABLAZE!" required></textarea><br><br>
+
+            <label for="content"><b>Write post</b></label><br>
+            <textarea name="content" cols="25" rows="2" placeholder="Nothing to say!" required></textarea><br><br>
+
+            <button><b>Submit Post</b></button>
+        </fieldset>
     </form>
 </body>
 

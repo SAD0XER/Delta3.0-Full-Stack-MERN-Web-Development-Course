@@ -3,7 +3,11 @@ h1 {
 }
 
 .post {
-    background-color: blanchedalmond;
+    background-color: aqua;
+}
+
+.post img {
+    width: 25%;
 }
 
 .user {
