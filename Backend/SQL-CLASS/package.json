@@ -1,0 +1,15 @@
+{
+  "name": "sql-class",
+  "version": "1.0.0",
+  "description": "This package is created for learning SQL in Backend.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sarvesh Devrukhakar",
+  "license": "ISC",
+  "dependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "mysql2": "^3.9.7"
+  }
+}
