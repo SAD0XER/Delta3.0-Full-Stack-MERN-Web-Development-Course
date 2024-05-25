@@ -8,8 +8,15 @@ const connection = mysql.createConnection({
   password: "#YYql8uccr@24",
 });
 
+// Inserting new data.
+let query = "INSERT INTO user (id, username, email, password) VALUES ?";
+let users = [
+  ["1", "user1", "user1@mail.com", "user@001"],
+  ["2", "user2", "user2@mail.com", "user@002"],
+];
+
 try {
-  connection.query("SHOW TABLES", (error, result) => {
+  connection.query(query, [users], (error, result) => {
     if (error) throw error;
     console.log(result);
   });
