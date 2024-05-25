@@ -1,6 +1,8 @@
+/* Requiring and Importing Packages here. */
 const { faker } = require("@faker-js/faker");
 const mysql = require("mysql2");
 
+/* Setting up connection with DB */
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -8,15 +10,27 @@ const connection = mysql.createConnection({
   password: "#YYql8uccr@24",
 });
 
-// Inserting new data.
+/* Function to get random user data */
+let getRandomUser = () => {
+  return [
+    faker.string.uuid(),
+    faker.internet.userName(),
+    faker.internet.email(),
+    faker.internet.password(),
+  ];
+};
+
+// Inserting data in bulk into DB using Faker Package.
 let query = "INSERT INTO user (id, username, email, password) VALUES ?";
-let users = [
-  ["1", "user1", "user1@mail.com", "user@001"],
-  ["2", "user2", "user2@mail.com", "user@002"],
-];
+
+let data = []; //To store user data from Faker Package.
+
+for (let i = 1; i <= 100; i++) { //Loop to call 'getRandomUser()' many times.
+  data.push(getRandomUser()); //Pushing fake users data into 'data' named Array.
+}
 
 try {
-  connection.query(query, [users], (error, result) => {
+  connection.query(query, [data], (error, result) => {
     if (error) throw error;
     console.log(result);
   });
@@ -25,12 +39,3 @@ try {
 }
 
 connection.end();
-
-let getRandomUser = () => {
-  return {
-    id: faker.string.uuid(),
-    username: faker.internet.userName(),
-    email: faker.internet.email(),
-    password: faker.internet.password(),
-  };
-};
