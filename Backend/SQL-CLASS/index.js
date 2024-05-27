@@ -36,6 +36,20 @@ express.get("/", (req, res) => {
   }
 });
 
+// /User Route: Showing all the users.
+express.get("/user", (req, res) => {
+  let query = "SELECT * FROM user";
+  try {
+    connection.query(query, (error, users) => {
+      if (error) throw error;
+      res.render("user.ejs", { users });
+    });
+  } catch (error) {
+    console.log(error);
+    res.send("Oops..! Something gone wrong while connecting to datbase.");
+  }
+});
+
 /* Function to get random user data */
 let getRandomUser = () => {
   return [
