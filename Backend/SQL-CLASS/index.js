@@ -1,16 +1,21 @@
 /* Requiring and Importing Packages here. */
 const { faker } = require("@faker-js/faker");
+const { log } = require("console");
 const mysql = require("mysql2");
-const express = require("express")();
+const express = require("express");
+const app = express();
 const path = require("path");
+const methodOverride = require("method-override");
+
+app.set("view engine", "ejs"); //Setting view engine as 'ejs' for express.
+app.set("view engine", path.join(__dirname, "/views")); //Setting directory path of '/views' for express.
+app.use(methodOverride("_method")); // Enable methodOverride middleware to override HTTP method using _method parameter
+app.use(express.urlencoded({ extended: true })); // Enable urlencoded middleware to parse URL-encoded request bodies and make data available as req.body object
 
 // Base Setup: Starting server on port 8080.
-express.listen(8080, () => {
+app.listen(8080, () => {
   console.log("Listening on port 8080...");
 });
-
-express.set("view engine", "ejs"); //Setting view engine as 'ejs' for express.
-express.set("view engine", path.join(__dirname, "/views")); //Setting directory path of '/views' for express.
 
 /* Setting up connection with DB */
 const connection = mysql.createConnection({
@@ -22,7 +27,7 @@ const connection = mysql.createConnection({
 
 /* Creating Routes */
 // /Home Route: Showing count of all the users.
-express.get("/", (req, res) => {
+app.get("/", (req, res) => {
   let query = "SELECT count(*) FROM user";
   try {
     connection.query(query, (error, result) => {
@@ -37,12 +42,53 @@ express.get("/", (req, res) => {
 });
 
 // /User Route: Showing all the users.
-express.get("/user", (req, res) => {
+app.get("/user", (req, res) => {
   let query = "SELECT * FROM user";
   try {
     connection.query(query, (error, users) => {
       if (error) throw error;
       res.render("user.ejs", { users });
+    });
+  } catch (error) {
+    console.log(error);
+    res.send("Oops..! Something gone wrong while connecting to datbase.");
+  }
+});
+
+// /Edit Route: To edit username.
+app.get("/user/:id/edit", (req, res) => {
+  let { id } = req.params;
+  let query = `SELECT * FROM user WHERE id="${id}"`;
+  try {
+    connection.query(query, (error, result) => {
+      if (error) throw error;
+      let user = result[0];
+      res.render("edit.ejs", { user });
+    });
+  } catch (error) {
+    console.log(error);
+    res.send("Oops..! Something gone wrong while connecting to datbase.");
+  }
+});
+
+// /Update Route: To update data in DB.
+app.patch("/user/:id", (req, res) => {
+  let { id } = req.params;
+  let { password: formPassword, username: newUsername } = req.body;
+  let query = `SELECT * FROM user WHERE id="${id}"`;
+  try {
+    connection.query(query, (error, result) => {
+      if (error) throw error;
+      let user = result[0];
+      if (formPassword != user.password) {
+        res.send("WRONG Password!");
+      } else {
+        let query2 = `UPDATE user SET username="${newUsername}" WHERE id="${id}"`;
+        connection.query(query2, (error, result) => {
+          if (error) throw error;
+          res.redirect("/user");
+        });
+      }
     });
   } catch (error) {
     console.log(error);

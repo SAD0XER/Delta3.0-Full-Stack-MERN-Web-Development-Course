@@ -9,11 +9,14 @@
   "author": "Sarvesh Devrukhakar",
   "license": "ISC",
   "dependencies": {
-    "@faker-js/faker": "^8.4.1",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
+    "method-override": "^3.0.0",
     "mysql2": "^3.9.7",
-    "nodemon": "^3.1.1",
     "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "nodemon": "^3.1.1"
   }
 }

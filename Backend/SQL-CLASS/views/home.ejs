@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <h2>The total count of our user is <%= count %></h2>
-    <button>Join us today!</button>
-</body>
-
+    <form action="/user/new" method="get">
+      <button>Join us today!</button> 
+    </form>
+    <form action="/user" method="get">
+      <button>See All Users!</button> 
+    </form>
+  </body>
 </html>
