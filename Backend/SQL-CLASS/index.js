@@ -56,7 +56,7 @@ app.get("/user", (req, res) => {
 });
 
 // /Edit Route: To edit username.
-app.get("/user/:id/edit", (req, res) => {
+app.get("/user/edit/:id", (req, res) => {
   let { id } = req.params;
   let query = `SELECT * FROM user WHERE id="${id}"`;
   try {
@@ -72,7 +72,7 @@ app.get("/user/:id/edit", (req, res) => {
 });
 
 // /Update Route: To update data in DB.
-app.patch("/user/:id", (req, res) => {
+app.patch("/user/edit/:id", (req, res) => {
   let { id } = req.params;
   let { password: formPassword, username: newUsername } = req.body;
   let query = `SELECT * FROM user WHERE id="${id}"`;
@@ -121,5 +121,46 @@ app.post("/user/new", (req, res) => {
       console.log(error);
       res.send("Oops..! Something gone wrong while connecting to datbase.");
     }
+  }
+});
+
+// /Delete Route: To request delete user from DB.
+app.get("/user/delete/:id", (req, res) => {
+  let { id } = req.params;
+  let query = `SELECT * FROM user WHERE id="${id}"`;
+  try {
+    connection.query(query, (error, result) => {
+      if (error) throw error;
+      let user = result[0];
+      res.render("delete.ejs", { user });
+    });
+  } catch (error) {
+    console.log(error);
+    res.send("Oops..! Something gone wrong while connecting to datbase.");
+  }
+});
+
+// /Delete Route: To delete user from DB.
+app.delete("/user/delete/:id", (req, res) => {
+  let { id } = req.params;
+  let { password } = req.body;
+  let query = `SELECT * FROM user WHERE id="${id}"`;
+  try {
+    connection.query(query, (error, result) => {
+      if (error) throw error;
+      let user = result[0];
+      if (password != user.password) {
+        res.send("WRONG Password!");
+      } else {
+        let query2 = `DELETE FROM user WHERE id="${id}"`;
+        connection.query(query2, (error, result) => {
+          if (error) throw error;
+          res.redirect("/user");
+        });
+      }
+    });
+  } catch (error) {
+    console.log(error);
+    res.send("Oops..! Something gone wrong while connecting to datbase.");
   }
 });

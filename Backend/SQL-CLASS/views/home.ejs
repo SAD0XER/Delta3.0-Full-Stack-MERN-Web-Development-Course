@@ -4,15 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
+    <style>
+      div {
+        display: flex;
+      }
+      button {
+        margin: 0 1rem;
+      }
+    </style>
   </head>
 
   <body>
     <h2>The total count of our user is <%= count %></h2>
-    <form action="/user/new" method="get">
-      <button>Join us today!</button> 
-    </form>
-    <form action="/user" method="get">
-      <button>See All Users!</button> 
-    </form>
+    <div>
+      <form action="/user/new" method="get">
+        <button>Join us today!</button>
+      </form>
+      <form action="/user" method="get">
+        <button>All Users</button>
+      </form>
+    </div>
   </body>
 </html>

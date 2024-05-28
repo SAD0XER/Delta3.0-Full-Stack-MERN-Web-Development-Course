@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Our Users</title>
     <style>
+      div {
+        display: flex;
+      }
+      button {
+        margin: 0 1rem;
+      }
       table,
       th,
       td {
@@ -15,6 +21,14 @@
   </head>
 
   <body>
+    <div>
+      <form action="/" method="get">
+        <button>Home</button>
+      </form>
+      <form action="/user/new" method="get">
+        <button>Add new user</button>
+      </form>
+    </div>
     <table>
       <tr>
         <th>Id</th>
@@ -27,8 +41,13 @@
         <td><%=user.username%></td>
         <td><%=user.email%></td>
         <td>
-          <form action="/user/<%=user.id%>/edit" method="GET">
+          <form action="/user/edit/<%=user.id%>" method="GET">
             <button>Edit Username</button>
+          </form>
+        </td>
+        <td>
+          <form action="/user/<%=user.id%>/delete" method="get">
+            <button>Delete user</button>
           </form>
         </td>
       </tr>
