@@ -96,12 +96,30 @@ app.patch("/user/:id", (req, res) => {
   }
 });
 
-/* Function to get random user data */
-let getRandomUser = () => {
-  return [
-    faker.string.uuid(),
-    faker.internet.userName(),
-    faker.internet.email(),
-    faker.internet.password(),
-  ];
-};
+// /new Route: To add new user in DB.
+app.get("/user/new", (req, res) => {
+  res.render("new.ejs");
+});
+
+// /add new user Route: To add new user in DB.
+app.post("/user/new", (req, res) => {
+  let { username, email, password, confirmPassword } = req.body;
+  let query = `INSERT INTO user (id, username, email, password) VALUES (?, ?, ?, ?)`;
+  let user = [`${faker.string.uuid()}`, username, email, password];
+
+  if (password !== confirmPassword) {
+    res.send("Password doesn't match!");
+  } else if (password.length < 8) {
+    res.send("Password must have atleast 8 characters long!");
+  } else {
+    try {
+      connection.query(query, user, (error, result) => {
+        if (error) throw error;
+        res.redirect("/user");
+      });
+    } catch (error) {
+      console.log(error);
+      res.send("Oops..! Something gone wrong while connecting to datbase.");
+    }
+  }
+});

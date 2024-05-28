@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add New User</title>
+    <style>
+      div {
+        display: flex;
+      }
+      button {
+        margin: 0 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <form action="/" method="get">
+        <button>Home</button>
+      </form>
+      <form action="/user" method="get">
+        <button>Back to Users</button>
+      </form>
+    </div>
+    <h2>Add new user!</h2>
+    <form method="post" action="/user/new">
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username" required /><br />
+
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" required /><br />
+
+      <label for="pass1">Enter Password</label>
+      <input type="password" name="password" id="pass1" required /><br />
+
+      <label for="pass2">Re-Enter Password</label>
+      <input type="password" name="confirmPassword" id="pass2" required /><br />
+
+      <button id="submitBtn">Submit</button>
+    </form>
+  </body>
+</html>
