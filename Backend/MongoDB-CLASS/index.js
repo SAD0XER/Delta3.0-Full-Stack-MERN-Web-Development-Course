@@ -19,3 +19,20 @@ const userSchema = new mongoose.Schema({
 
 /* Creating collection using Schema. */
 const User = mongoose.model("User", userSchema);
+
+/* Inserting Single user data in DB. */
+const user1 = new User({
+  name: "Ashok",
+  email: "ashok@yahoo.com",
+  age: 60,
+});
+
+/* Saving it into DB. */
+user1
+  .save()
+  .then((resolve) => {
+    console.log(resolve);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
