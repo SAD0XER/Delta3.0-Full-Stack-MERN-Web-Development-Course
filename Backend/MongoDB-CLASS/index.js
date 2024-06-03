@@ -21,15 +21,28 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model("User", userSchema);
 
 /* Inserting Single user data in DB. */
-const user1 = new User({
+/* const user1 = new User({
   name: "Ashok",
   email: "ashok@yahoo.com",
   age: 60,
-});
+}); */
 
 /* Saving it into DB. */
-user1
+/* user1
   .save()
+  .then((resolve) => {
+    console.log(resolve);
+  })
+  .catch((error) => {
+    console.log(error);
+  }); */
+
+/* Inserting Multiple user data in DB. */
+User.insertMany([
+  { name: "Priyanka", email: "priyanka@yahoo.com", age: 30 },
+  { name: "Pallavi", email: "pallavi@yahoo.com", age: 26 },
+  { name: "Sarvesh", email: "sarvesh@yahoo.com", age: 18 },
+])
   .then((resolve) => {
     console.log(resolve);
   })
