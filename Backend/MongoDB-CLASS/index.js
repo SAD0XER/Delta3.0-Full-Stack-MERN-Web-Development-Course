@@ -38,11 +38,36 @@ const User = mongoose.model("User", userSchema);
   }); */
 
 /* Inserting Multiple user data in DB. */
-User.insertMany([
+/* User.insertMany([
   { name: "Priyanka", email: "priyanka@yahoo.com", age: 30 },
   { name: "Pallavi", email: "pallavi@yahoo.com", age: 26 },
   { name: "Sarvesh", email: "sarvesh@yahoo.com", age: 18 },
 ])
+  .then((resolve) => {
+    console.log(resolve);
+  })
+  .catch((error) => {
+    console.log(error);
+  }); */
+
+/* Find data in DB. */
+User.find({age: {$gt: 40}})
+  .then((resolve) => {
+    console.log(resolve);
+  })
+  .catch((error) => { 
+    console.log(error);
+  });
+
+ User.findOne({ age: { $lt: 40 } })
+  .then((resolve) => {
+    console.log(resolve);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
+User.findById("665d7cd5e97f656629126fcd")
   .then((resolve) => {
     console.log(resolve);
   })
