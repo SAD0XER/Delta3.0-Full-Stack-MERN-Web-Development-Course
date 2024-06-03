@@ -1,0 +1,14 @@
+{
+  "name": "mongodb-class",
+  "version": "1.0.0",
+  "description": "This package is created for learning MongoDB.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sarvesh Devrukhakar",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^8.4.0"
+  }
+}
