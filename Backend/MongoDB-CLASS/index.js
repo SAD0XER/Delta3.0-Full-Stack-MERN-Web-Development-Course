@@ -76,7 +76,7 @@ User.findById("665d7cd5e97f656629126fcd")
   }); */
 
 /* Update in DB. */
-User.updateOne({ name: "Anjali" }, { age: 50 })
+/* User.updateOne({ name: "Anjali" }, { age: 50 })
   .then((resolve) => {
     console.log(resolve);
   })
@@ -101,6 +101,39 @@ User.findOneAndUpdate({ name: "Ashok" }, { age: 40 }, { new: true })
   });
 
 User.findByIdAndUpdate("665d7cd5e97f656629126fcd", { age: 16 }, { new: true })
+  .then((resolve) => {
+    console.log(resolve);
+  })
+  .catch((error) => {
+    console.log(error);
+  }); */
+
+/* Delete in DB. */
+ User.deleteOne({ name: "Anjali" })
+  .then((resolve) => {
+    console.log(resolve);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
+User.deleteMany({ age: 100 })
+  .then((resolve) => {
+    console.log(resolve);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
+User.findByIdAndDelete("665d7772b966b451751844a0")
+  .then((resolve) => {
+    console.log(resolve);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
+User.findOneAndDelete({ name: "Sarvesh" })
   .then((resolve) => {
     console.log(resolve);
   })
