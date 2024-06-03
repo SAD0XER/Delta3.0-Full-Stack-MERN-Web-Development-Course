@@ -51,7 +51,7 @@ const User = mongoose.model("User", userSchema);
   }); */
 
 /* Find data in DB. */
-User.find({age: {$gt: 40}})
+/* User.find({age: {$gt: 40}})
   .then((resolve) => {
     console.log(resolve);
   })
@@ -68,6 +68,39 @@ User.find({age: {$gt: 40}})
   });
 
 User.findById("665d7cd5e97f656629126fcd")
+  .then((resolve) => {
+    console.log(resolve);
+  })
+  .catch((error) => {
+    console.log(error);
+  }); */
+
+/* Update in DB. */
+User.updateOne({ name: "Anjali" }, { age: 50 })
+  .then((resolve) => {
+    console.log(resolve);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
+User.updateMany({ age: { $lte: 30 } }, { age: 100 })
+  .then((resolve) => {
+    console.log(resolve);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
+User.findOneAndUpdate({ name: "Ashok" }, { age: 40 }, { new: true })
+  .then((resolve) => {
+    console.log(resolve);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
+User.findByIdAndUpdate("665d7cd5e97f656629126fcd", { age: 16 }, { new: true })
   .then((resolve) => {
     console.log(resolve);
   })
