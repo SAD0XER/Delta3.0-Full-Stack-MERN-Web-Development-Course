@@ -16,3 +16,6 @@ const userSchema = new mongoose.Schema({
   email: String,
   age: Number,
 });
+
+/* Creating collection using Schema. */
+const User = mongoose.model("User", userSchema);
