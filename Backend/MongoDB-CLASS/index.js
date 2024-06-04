@@ -1,44 +1,48 @@
+/* Steps to use MongoDB in Mongoose with CRUD operations. */
+
+// Step 1: Requiring Mongoose in this file.
 const mongoose = require("mongoose");
 
 main()
-  .then(() => { /* If promise is fulfiled then this() method will called. */
+  .then(() => {
     console.log("Connection Successful!");
   })
-  .catch((err) => console.log(err)); // If promise is rejected then catch() method will called.
+  .catch((err) => console.log(err));
 
-async function main() { /* It is a async function that returns promise. */
+async function main() {
+  /* It is a async function that returns promise. */
   mongoose.connect("mongodb://127.0.0.1:27017/test"); // It connects to a database named "test" on the local machine (127.0.0.1) on port 27017.
 }
 
-/* Creating Schema for collection. */
+/* Step 2: Creating Schema for collection. */
 const userSchema = new mongoose.Schema({
   name: String,
   email: String,
   age: Number,
 });
 
-/* Creating collection using Schema. */
+/* Step 3: Creating collection using Schema. */
 const User = mongoose.model("User", userSchema);
 
-/* Inserting Single user data in DB. */
-/* const user1 = new User({
+/* Step 4: Inserting Single user data in DB. */
+const user1 = new User({
   name: "Ashok",
   email: "ashok@yahoo.com",
   age: 60,
-}); */
+});
 
-/* Saving it into DB. */
-/* user1
+/* Step 5: Saving it into DB. */
+user1
   .save()
   .then((resolve) => {
     console.log(resolve);
   })
   .catch((error) => {
     console.log(error);
-  }); */
+  });
 
-/* Inserting Multiple user data in DB. */
-/* User.insertMany([
+/* Step 6: Inserting Multiple user data in DB. */
+User.insertMany([
   { name: "Priyanka", email: "priyanka@yahoo.com", age: 30 },
   { name: "Pallavi", email: "pallavi@yahoo.com", age: 26 },
   { name: "Sarvesh", email: "sarvesh@yahoo.com", age: 18 },
@@ -48,18 +52,18 @@ const User = mongoose.model("User", userSchema);
   })
   .catch((error) => {
     console.log(error);
-  }); */
+  });
 
-/* Find data in DB. */
-/* User.find({age: {$gt: 40}})
+/* Step 7: Find data in DB. */
+User.find({ age: { $gt: 40 } })
   .then((resolve) => {
     console.log(resolve);
   })
-  .catch((error) => { 
+  .catch((error) => {
     console.log(error);
   });
 
- User.findOne({ age: { $lt: 40 } })
+User.findOne({ age: { $lt: 40 } })
   .then((resolve) => {
     console.log(resolve);
   })
@@ -73,10 +77,10 @@ User.findById("665d7cd5e97f656629126fcd")
   })
   .catch((error) => {
     console.log(error);
-  }); */
+  });
 
-/* Update in DB. */
-/* User.updateOne({ name: "Anjali" }, { age: 50 })
+/* Step 8: Update in DB. */
+User.updateOne({ name: "Anjali" }, { age: 50 })
   .then((resolve) => {
     console.log(resolve);
   })
@@ -106,10 +110,10 @@ User.findByIdAndUpdate("665d7cd5e97f656629126fcd", { age: 16 }, { new: true })
   })
   .catch((error) => {
     console.log(error);
-  }); */
+  });
 
-/* Delete in DB. */
- User.deleteOne({ name: "Anjali" })
+/* Step 9: Delete in DB. */
+User.deleteOne({ name: "Anjali" })
   .then((resolve) => {
     console.log(resolve);
   })
