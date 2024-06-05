@@ -1,0 +1,14 @@
+.chats {
+  background-color: rgb(200, 230, 250);
+  display: inline-block;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 1rem;
+}
+
+.msg {
+  background-color: dodgerblue;
+  color: white;
+  padding: 0 1rem;
+  border-radius: 0.25rem;
+}
