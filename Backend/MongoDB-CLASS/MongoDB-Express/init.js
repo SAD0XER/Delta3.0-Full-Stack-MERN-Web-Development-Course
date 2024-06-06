@@ -18,30 +18,35 @@ let allChats = [
     to: "Mahadev",
     message: "How can I become like you?",
     created_at: new Date(),
+    updated_at: new Date(),
   },
   {
     from: "captain",
     to: "tony",
     message: "Hi, Tony",
     created_at: new Date(),
+    updated_at: new Date(),
   },
   {
     from: "tony",
     to: "bruce",
     message: "Hi, Hulk",
     created_at: new Date(),
+    updated_at: new Date(),
   },
   {
     from: "soap",
     to: "ghost",
     message: "lt, are you ugly?",
     created_at: new Date(),
+    updated_at: new Date(),
   },
   {
     from: "makarov",
     to: "price",
     message: "It's not good captain, you will pay for this.",
     created_at: new Date(),
+    updated_at: new Date(),
   },
 ];
 

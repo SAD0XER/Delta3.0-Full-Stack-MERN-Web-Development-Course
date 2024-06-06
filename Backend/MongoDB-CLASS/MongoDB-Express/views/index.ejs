@@ -14,12 +14,18 @@
     <% for (let chat of chats) { %>
     <div class="chats">
       <p>From: <b><%= chat.from %></b></p>
-      <div class="msg"><%= chat.message %></div>
+      <div class="msg">
+        <%= chat.message %>
+        <hr />
+        <form action="/chats/<%= chat._id %>/edit" method="get">
+          <button>Edit</button>
+        </form>
+      </div>
       <p>Recieved by <b><%= chat.to %></b></p>
       <hr />
       <p>
-        <b>Time: </b><%= chat.created_at.toString().split(" ")[4] %>
-        <b>Date: </b><%= chat.created_at.toString().split(" ").slice(1, 4).join(" ") %>
+        <b>Time: </b><%= chat.updated_at.toString().split(" ")[4] %>
+        <b>Date: </b><%=chat.updated_at.toString().split(" ").slice(1, 4).join(" ") %>
       </p>
     </div>
     <br />
