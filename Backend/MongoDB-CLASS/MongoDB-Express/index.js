@@ -10,6 +10,7 @@ const app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
+app.use(express.urlencoded({ extended: true })); // Enables URL-encoded body parsing.
 
 /* Server setup */
 app.listen(8080, () => {
@@ -37,4 +38,30 @@ app.get("/", (req, res) => {
 app.get("/chats", async (req, res) => {
   let chats = await Chat.find(); //To extract all chat data from database.
   res.render("index.ejs", { chats });
+});
+
+// GET /chats/new: To render new chat form.
+app.get("/chats/new", (req, res) => {
+  res.render("new.ejs");
+});
+
+// POST /chats/new: To insert new chat data in DB.
+app.post("/chats/new", (req, res) => {
+  let { from, to, msg } = req.body;
+  let newChat = new Chat({
+    from: from,
+    to: to,
+    message: msg,
+    created_at: new Date(),
+  });
+
+  newChat
+    .save()
+    .then((resolve) => {
+      console.log(resolve, "Chat saved!");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  res.redirect("/chats");
 });

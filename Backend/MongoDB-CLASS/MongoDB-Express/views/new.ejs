@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LetChat</title>
+  </head>
+
+  <body>
+    <h2>Add new chat</h2>
+    <form action="/chats/new" method="post">
+      <label for="from">From: </label>
+      <input type="text" name="from" id="from" placeholder="Who are you?" /><br /><br />
+
+      <label for="msg">Write your message here: </label><br />
+      <textarea
+        name="msg"
+        id="msg"
+        cols="30"
+        rows="5"
+        placeholder="Enter your message here..."></textarea>
+      <br /><br />
+
+      <label for="to">To: </label>
+      <input type="text" name="to" id="to" placeholder="Who is the reciever?" /><br /><br />
+      <button>Create Chat</button>
+    </form>
+  </body>
+</html>
