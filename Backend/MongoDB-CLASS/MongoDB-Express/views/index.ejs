@@ -17,9 +17,15 @@
       <div class="msg">
         <%= chat.message %>
         <hr />
-        <form action="/chats/<%= chat._id %>/edit" method="get">
-          <button>Edit</button>
-        </form>
+        <div class="btn">
+          <form action="/chats/<%= chat._id %>/edit" method="get">
+            <button>Edit</button>
+          </form>
+
+          <form action="/chats/<%= chat._id %>?_method=DELETE" method="post">
+            <button>Delete</button>
+          </form>
+        </div>
       </div>
       <p>Recieved by <b><%= chat.to %></b></p>
       <hr />

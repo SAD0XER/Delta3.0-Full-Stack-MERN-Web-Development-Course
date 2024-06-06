@@ -12,3 +12,12 @@
   padding: 0 1rem;
   border-radius: 0.25rem;
 }
+
+.btn {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn button {
+  margin: 0.5rem 0;
+}
