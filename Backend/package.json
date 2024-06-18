@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "figlet": "^1.7.0"
+    "figlet": "^1.7.0",
+    "nodemon": "^3.1.3"
   }
 }
