@@ -1,15 +1,8 @@
 import "./App.css";
+import Title from "./Title.jsx";
 
 function App() {
-  return (
-    <>
-      <h1>
-      Hello Sarvesh!
-      <br />
-      Welcome to the REACT world...!
-    </h1>
-    </>
-  );
+  return <Title />;
 }
 
 export default App;
