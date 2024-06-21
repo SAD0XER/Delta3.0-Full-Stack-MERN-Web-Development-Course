@@ -4,9 +4,12 @@ import Product from "./Product.jsx";
 function App() {
   return (
     <>
-      <Product title="Phone" price={150000} />
-      <Product title="Laptop" price={200000} />
-      <Product title="Headphone" />
+      <Product
+        title="Laptop"
+        price={3000}
+        featureArr={["water proof", "dust proof"]}
+        featureObj={{ a: "High tech", b: "durable" }}
+      />
     </>
   );
 }
