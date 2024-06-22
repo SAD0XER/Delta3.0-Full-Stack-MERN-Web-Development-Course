@@ -4,13 +4,9 @@ import Product from "./Product.jsx";
 function App() {
   return (
     <>
-      <Product
-        title="Laptop"
-        price={3000}
-        // featureArr={[<li>water proof</li>, <li>dust proof</li>, <li>durable</li>]} //Method 1: Pre-Wrapping for separating array elements for rendering.
-        featureArr={["water proof", "dust proof","durable"]} //Method 2: Using Map()
-        featureObj={{ a: "High tech", b: "durable" }}
-      />
+      <Product title="Phone" price={30000} />
+      <Product title="Laptop" price={50000} />
+      <Product title="Head Phone" price={10000} />
     </>
   );
 }
