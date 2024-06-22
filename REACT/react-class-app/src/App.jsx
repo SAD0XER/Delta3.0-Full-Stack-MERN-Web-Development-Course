@@ -7,7 +7,8 @@ function App() {
       <Product
         title="Laptop"
         price={3000}
-        featureArr={["water proof", "dust proof"]}
+        // featureArr={[<li>water proof</li>, <li>dust proof</li>, <li>durable</li>]} //Method 1: Pre-Wrapping for separating array elements for rendering.
+        featureArr={["water proof", "dust proof","durable"]} //Method 2: Using Map()
         featureObj={{ a: "High tech", b: "durable" }}
       />
     </>
