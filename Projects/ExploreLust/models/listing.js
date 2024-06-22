@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const Schema = mongoose.Schema; // Importing mongoose module and Schema.
 
-/* Schema */
+/* Schema defining */
 const listingSchema = new Schema({
   title: {
     type: String,
@@ -21,6 +21,6 @@ const listingSchema = new Schema({
   country: String,
 });
 
-/* Model */
-const Listing = mongoose.model("Listing", listingSchema);
-module.exports = Listing;
+/* Model creating and exporting */
+const Listing = mongoose.model("Listing", listingSchema); // Creating a model from the schema.
+module.exports = Listing; // Exporting the model for use in other parts of the application.
