@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const Listing = require("./models/listing.js");
 
 const app = express();
 
@@ -25,4 +26,18 @@ async function main() {
 // home route
 app.get("/", (req, res) => {
   res.send("Home route of project ExploreLust is working.");
+});
+
+app.get("/testinglisting", async (req, res) => {
+  let sampleListing = new Listing({
+    title: "My Villege",
+    description: "Heart of me.",
+    price: 100,
+    location: "Kokisare, Konkan",
+    country: "Bharat",
+  });
+
+  await sampleListing.save();
+  console.log("Sample is saved.");
+  res.send("Testing Successful.")
 });
