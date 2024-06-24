@@ -1,13 +1,21 @@
 import "./Product.css";
+import Price from "./Price.jsx";
 
-function Product({ title, price = 1 }) {
-  let isDiscount = price > 30000;
-  let style = { backgroundColor: isDiscount ? "darkblue" : "initial" };
+function Product({ title, idx }) {
+  let oldPrices = ["12,495", "11,900", "1,599", "599"];
+  let newPrices = ["8,999", "9,199", "899", "278"];
+  let description = [
+    ["8,000 DPI", "5 Programmable Buttons"],
+    ["Intitive touch Surface", "Designed for iPad Pro"],
+    ["Intitive touch Surface", "Designed for iPad Pro"],
+    ["Wireless Mouse 2.4 GHz", "Optical Orientation"],
+  ];
   return (
-    <div className="Product" style={style}>
-      <h3>{title}</h3>
-      <p>{price}</p>
-      {isDiscount ? <p>30% Discount</p> : <a href="/">Get Discount</a>}
+    <div className="Product">
+      <h4>{title}</h4>
+      <p>{description[idx][0]}</p>
+      <p>{description[idx][1]}</p>
+      <Price oldPrice={oldPrices[idx]} newPrice={newPrices[idx]} />
     </div>
   );
 }

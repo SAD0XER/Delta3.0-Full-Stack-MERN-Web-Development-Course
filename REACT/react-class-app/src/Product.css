@@ -1,6 +1,7 @@
 .Product {
+  box-sizing: border-box;
   border: 0.1rem solid white;
-  border-radius: 10%;
-  margin: 1rem 0;
-  padding: 0 1rem;
+  border-radius: 1rem;
+  height: auto 0;
+  width: 20%;
 }
