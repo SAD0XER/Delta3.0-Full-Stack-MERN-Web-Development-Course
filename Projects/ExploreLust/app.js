@@ -1,8 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const Listing = require("./models/listing.js");
+const path = require("path");
 
 const app = express();
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/ExploreLust";
 
@@ -28,16 +31,8 @@ app.get("/", (req, res) => {
   res.send("Home route of project ExploreLust is working.");
 });
 
-app.get("/testinglisting", async (req, res) => {
-  let sampleListing = new Listing({
-    title: "My Villege",
-    description: "Heart of me.",
-    price: 100,
-    location: "Kokisare, Konkan",
-    country: "Bharat",
-  });
-
-  await sampleListing.save();
-  console.log("Sample is saved.");
-  res.send("Testing Successful.")
+// Index Route: /listings - To see all titles.
+app.get("/listings", async (req, res) => {
+  const allListings = await Listing.find({}); //To extract all listing data from database.
+  res.render("./listings/index.ejs", { listings: allListings }); //Passing all listings to index.ejs with key name as `listings`.
 });
