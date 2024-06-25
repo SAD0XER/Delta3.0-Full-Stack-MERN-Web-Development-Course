@@ -1,11 +1,10 @@
 import "./App.css";
-import ProductTab from "./ProductTab.jsx";
+import ButtonEvent from "./ButtonEvent.jsx";
 
 function App() {
   return (
     <>
-      <h1>Blockbuster Deals on Computer Accesories | Shop Now</h1>
-      <ProductTab />
+      <ButtonEvent />
     </>
   );
 }
