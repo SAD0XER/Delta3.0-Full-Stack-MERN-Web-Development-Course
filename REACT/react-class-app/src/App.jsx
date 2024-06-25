@@ -1,10 +1,10 @@
 import "./App.css";
-import ButtonEvent from "./ButtonEvent.jsx";
+import Form from "./Form.jsx";
 
 function App() {
   return (
     <>
-      <ButtonEvent />
+      <Form />
     </>
   );
 }
