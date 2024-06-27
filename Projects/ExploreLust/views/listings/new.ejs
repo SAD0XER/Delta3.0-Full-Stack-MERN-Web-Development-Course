@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Add New Listing | ExploreLust</title>
+    </head>
+    <body>
+        <h3>Create a New Listing</h3>
+        <form action="/listings/new" method="post">
+            <!-- Inside the `name` we have created the key of object to names, so we can access it as object in `req.body`. -->
+            <input type="text" name="listing[title]" id="title" placeholder="Enter Title" />
+            <br />
+            <textarea
+                type="text"
+                name="listing[description]"
+                placeholder="Enter Description"></textarea>
+            <br />
+            <input type="text" name="listing[image]" id="image" placeholder="Enter Image URL" />
+            <br />
+            <input type="number" name="listing[price]" id="price" placeholder="Enter Price" />
+            <br />
+            <input
+                type="text"
+                name="listing[location]"
+                id="location"
+                placeholder="Enter Location" />
+            <br />
+            <input type="text" name="listing[country]" id="country" placeholder="Enter Country" />
+            <br />
+            <button>Add</button>
+        </form>
+    </body>
+</html>

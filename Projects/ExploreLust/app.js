@@ -12,35 +12,49 @@ const MONGO_URL = "mongodb://127.0.0.1:27017/ExploreLust";
 
 /* Server setup */
 app.listen(8080, () => {
-  console.log("Server is running on localhost: 8080");
+    console.log("Server is running on localhost: 8080");
 });
 
 /* Database connectivity setup */
 main()
-  .then(() => {
-    console.log("Database connected.");
-  })
-  .catch((err) => console.log(err));
+    .then(() => {
+        console.log("Database connected.");
+    })
+    .catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect(MONGO_URL);
+    await mongoose.connect(MONGO_URL);
 }
 
 /* All Routes */
 // home route
 app.get("/", (req, res) => {
-  res.send("Home route of project ExploreLust is working.");
+    res.send("Home route of project ExploreLust is working.");
 });
 
 // Index Route: /listings - To see all titles.
 app.get("/listings", async (req, res) => {
-  const allListings = await Listing.find({}); //To extract all listing data from database.
-  res.render("./listings/index.ejs", { listings: allListings }); //Passing all listings to index.ejs with key name as `listings`.
+    const allListings = await Listing.find({}); //To extract all listing data from database.
+    res.render("./listings/index.ejs", { listings: allListings }); //Passing all listings to index.ejs with key name as `listings`.
+});
+
+// New Form Route: /listings/new - To create a new listing.
+app.get("/listings/new", (req, res) => {
+    res.render("./listings/new.ejs");
 });
 
 // Show Route: /listings/:id - To see a single list.
 app.get("/listings/:id", async (req, res) => {
-  const { id } = req.params;
-  const listing = await Listing.findById(id);
-  res.render("./listings/show.ejs", { listing });
+    const { id } = req.params;
+    const listing = await Listing.findById(id);
+    res.render("./listings/show.ejs", { listing });
+});
+
+// Create Route: /listings/new - To create a new listing in DB.
+app.post("/listings/new", async (req, res) => {
+    // let { title, description, price, location, country } = req.body; // This is the old way of getting form data.
+    /* This is the new way of getting form data.
+    Here we are taking data from `req.body.listing` object and passing it to Listing model and saving it to DB. */
+    await new Listing(req.body.listing).save();
+    res.redirect("/listings");
 });
