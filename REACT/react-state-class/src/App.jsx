@@ -1,13 +1,12 @@
 import "./App.css";
-import LikeButton from "./LikeButton";
+import ToDoList from "./ToDoList";
 
 function App() {
-  return (
-    <>
-      <h1>Welcome to State in React class!</h1>
-      <LikeButton />
-    </>
-  );
+    return (
+        <>
+            <ToDoList />
+        </>
+    );
 }
 
 export default App;
