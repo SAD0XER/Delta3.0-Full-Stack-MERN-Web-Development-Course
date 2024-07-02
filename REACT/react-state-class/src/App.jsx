@@ -1,10 +1,10 @@
 import "./App.css";
-import ToDoList from "./ToDoList";
+import DateActivity from "./DateActivity";
 
 function App() {
     return (
         <>
-            <ToDoList />
+            <DateActivity />
         </>
     );
 }
