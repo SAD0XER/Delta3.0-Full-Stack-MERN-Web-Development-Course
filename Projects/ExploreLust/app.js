@@ -2,11 +2,13 @@ const express = require("express");
 const mongoose = require("mongoose");
 const Listing = require("./models/listing.js");
 const path = require("path");
+const methodOverride = require("method-override");
 
 const app = express();
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/ExploreLust";
 
@@ -57,4 +59,18 @@ app.post("/listings/new", async (req, res) => {
     Here we are taking data from `req.body.listing` object and passing it to Listing model and saving it to DB. */
     await new Listing(req.body.listing).save();
     res.redirect("/listings");
+});
+
+// New form Route: /listings/:id/edit - To edit listing.
+app.get("/listings/:id/edit", async (req, res) => {
+    const { id } = req.params;
+    const listing = await Listing.findById(id);
+    res.render("./listings/edit.ejs", { listing });
+});
+
+// Update Route: /listings/:id/edit - To update data in DB.
+app.put("/listings/:id", async (req, res) => {
+    const { id } = req.params;
+    await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+    res.redirect(`/listings/${id}`);
 });
