@@ -14,6 +14,10 @@ export default function ToDoList() {
         setNewTodo(event.target.value);
     }
 
+    function handleDeleteTodo(id) {
+        setTodo((prevToto) => prevToto.filter((prevToto) => prevToto.id !== id));
+    }
+
     return (
         <div>
             <h2>My To Do List</h2>
@@ -31,6 +35,7 @@ export default function ToDoList() {
                     <li key={todo.id}>
                         <span>{todo.task}</span>
                         &nbsp;&nbsp;&nbsp;&nbsp;
+                        <button onClick={() => handleDeleteTodo(todo.id)}>Delete</button>
                     </li>
                 ))}
             </ol>
