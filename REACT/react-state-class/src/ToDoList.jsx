@@ -1,15 +1,16 @@
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 export default function ToDoList() {
     let [todo, setTodo] = useState([]);
     let [newTodo, setNewTodo] = useState("");
 
     let addTask = () => {
-        setTodo([...todo, newTodo]);
+        setTodo((prevTodo) => [...prevTodo, { task: newTodo, id: uuidv4() }]);
         setNewTodo("");
     };
 
-    function updateTodoValue(event) {
+    function handleUpdateTodo(event) {
         setNewTodo(event.target.value);
     }
 
@@ -20,13 +21,17 @@ export default function ToDoList() {
                 type="text"
                 value={newTodo}
                 placeholder="Enter you task here"
-                onChange={updateTodoValue}></input>
+                onChange={handleUpdateTodo}
+            />
             <button onClick={addTask}>Add</button>
             <hr />
             <h3>To Do List</h3>
             <ol>
                 {todo.map((todo) => (
-                    <li>{todo}</li>
+                    <li key={todo.id}>
+                        <span>{todo.task}</span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    </li>
                 ))}
             </ol>
         </div>
