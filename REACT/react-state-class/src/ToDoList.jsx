@@ -29,6 +29,21 @@ export default function ToDoList() {
         );
     }
 
+    function handleMakeOneTaskImp(id) {
+        setTodo((prevTodo) =>
+            prevTodo.map((todo) => {
+                if (todo.id === id) {
+                    return {
+                        ...todo,
+                        task: todo.task.toUpperCase(),
+                    };
+                } else {
+                    return todo;
+                }
+            }),
+        );
+    }
+
     return (
         <div>
             <h2>My To Do List</h2>
@@ -47,6 +62,7 @@ export default function ToDoList() {
                         <span>{todo.task}</span>
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         <button onClick={() => handleDeleteTodo(todo.id)}>Delete</button>
+                        <button onClick={() => handleMakeOneTaskImp(todo.id)}>Mark as Important</button>
                     </li>
                 ))}
             </ol>
