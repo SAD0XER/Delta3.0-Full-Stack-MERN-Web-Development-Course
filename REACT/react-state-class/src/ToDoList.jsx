@@ -18,6 +18,17 @@ export default function ToDoList() {
         setTodo((prevToto) => prevToto.filter((prevToto) => prevToto.id !== id));
     }
 
+    function handleMakeAllTaskImp() {
+        setTodo((prevTodo) =>
+            prevTodo.map((todo) => {
+                return {
+                    ...todo,
+                    task: todo.task.toUpperCase(),
+                };
+            }),
+        );
+    }
+
     return (
         <div>
             <h2>My To Do List</h2>
@@ -39,6 +50,7 @@ export default function ToDoList() {
                     </li>
                 ))}
             </ol>
+            <button onClick={handleMakeAllTaskImp}>Mark All as Important</button>
         </div>
     );
 }
