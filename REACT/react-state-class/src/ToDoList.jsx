@@ -5,9 +5,10 @@ export default function ToDoList() {
     let [todo, setTodo] = useState([]);
     let [newTodo, setNewTodo] = useState("");
 
+    // Adding a new task in the Todo List.
     let addTask = () => {
-        setTodo((prevTodo) => [...prevTodo, { task: newTodo, id: uuidv4() }]);
-        setNewTodo("");
+        setTodo((prevTodo) => [...prevTodo, { task: newTodo, id: uuidv4(), isDone: false }]);
+        setNewTodo(""); // It is setting empty new task.
     };
 
     function handleUpdateTodo(event) {
@@ -44,6 +45,21 @@ export default function ToDoList() {
         );
     }
 
+    function handleDoneTask(id) {
+        setTodo((prevTodo) =>
+            prevTodo.map((todo) => {
+                if (todo.id === id) {
+                    return {
+                        ...todo,
+                        isDone: true,
+                    };
+                } else {
+                    return todo;
+                }
+            }),
+        );
+    }
+
     return (
         <div>
             <h2>My To Do List</h2>
@@ -56,16 +72,27 @@ export default function ToDoList() {
             <button onClick={addTask}>Add</button>
             <hr />
             <h3>To Do List</h3>
-            <ol>
+            <ul>
                 {todo.map((todo) => (
                     <li key={todo.id}>
-                        <span>{todo.task}</span>
+                        <button onClick={() => handleDoneTask(todo.id)}>
+                            <i className="fa-solid fa-check"></i>
+                        </button>
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        <button onClick={() => handleDeleteTodo(todo.id)}>Delete</button>
-                        <button onClick={() => handleMakeOneTaskImp(todo.id)}>Mark as Important</button>
+                        <span style={{ textDecoration: todo.isDone ? "line-through" : "italic" }}>
+                            {todo.task}
+                        </span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <button onClick={() => handleMakeOneTaskImp(todo.id)}>
+                            <i className="fa-regular fa-star"></i>
+                        </button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <button onClick={() => handleDeleteTodo(todo.id)}>
+                            <i className="fa-solid fa-trash"></i>
+                        </button>
                     </li>
                 ))}
-            </ol>
+            </ul>
             <button onClick={handleMakeAllTaskImp}>Mark All as Important</button>
         </div>
     );
