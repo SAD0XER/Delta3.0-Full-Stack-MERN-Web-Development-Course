@@ -1,0 +1,30 @@
+.lottery-card {
+    background-color: #000000;
+    border: 0.1rem solid white;
+    border-radius: 1rem;
+}
+
+hr {
+    margin: 0;
+}
+
+.lottery-ticket {
+    margin: 0;
+    padding: 1rem 0;
+    border-radius: 1rem 1rem 0 0;
+}
+
+.win-lottery {
+    background-color: darkblue ;
+    margin: 0;
+    border-radius: 1rem 1rem 0 0;
+}
+
+.num-gen-btn {
+    border-radius: 0 0 1rem 1rem;
+    font-weight: bold;
+    line-height: 2.5rem;
+    cursor: pointer;
+    user-select: none;
+    background-color: darkblue;
+}

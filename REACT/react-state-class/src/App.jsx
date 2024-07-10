@@ -1,10 +1,10 @@
 import "./App.css";
-import ToDoList from "./ToDoList";
+import LotteryGame from "./LotteryGame";
 
 function App() {
     return (
         <>
-            <ToDoList />
+            <LotteryGame />
         </>
     );
 }
