@@ -1,43 +1,39 @@
 import { useState } from "react";
 import "./LotteryGame.css";
+import { generateRandomNumber, getSumOfRandomNumber } from "./utils/helperLotteryGame";
 
 /* Note: You will won lottery ticket when the sum of lottery number is equals to 15. */
 
 export default function () {
-    let randomNumberGenerator = () => {
-        let randomNumber = Math.floor(Math.random() * (999 - 100 + 1) + 100);
-        let randomNum = randomNumber;
-        let sum = 0;
-
-        // Get the first three digits of the number
-        for (let i = 0; i < 3; i++) {
-            sum += randomNum % 10;
-            randomNum = Math.floor(randomNum / 10);
-        }
-        return { randomNumber, sum };
-    };
-
-    let [lotteryTicket, setLotteryTicket] = useState(randomNumberGenerator);
-
-    let generateLotteryTicket = () => setLotteryTicket(randomNumberGenerator());
+    let [lotteryTicket, setLotteryTicket] = useState(generateRandomNumber(3));
+    let isWinning = getSumOfRandomNumber(lotteryTicket) === 15;
+    let buyTicket = () => setLotteryTicket(generateRandomNumber(3));
 
     return (
         <div>
             <h1>Lottery Game</h1>
             <div className="lottery-card">
-                {lotteryTicket.sum === 15 ? (
-                    <h2 className="win-lottery">
+                {isWinning ? (
+                    <h3 className="win-lottery">
                         Congratulations!
                         <br />
                         You Won this Lottery Ticket.
-                    </h2>
+                    </h3>
                 ) : (
                     <h2 className="lottery-ticket">Lottery Ticket</h2>
                 )}
                 <hr />
-                <h3>{lotteryTicket.randomNumber}</h3>
+                <h3>
+                    <span>
+                        {lotteryTicket[0]}
+                        {lotteryTicket[1]}
+                        {lotteryTicket[2]}
+                    </span>
+                </h3>
                 <hr />
-                <div onClick={generateLotteryTicket} className="num-gen-btn">Generate Ticket</div>
+                <div onClick={buyTicket} className="num-gen-btn">
+                    Generate Ticket
+                </div>
             </div>
         </div>
     );
