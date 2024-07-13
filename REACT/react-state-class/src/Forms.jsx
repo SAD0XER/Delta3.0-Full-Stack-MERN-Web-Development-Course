@@ -10,7 +10,15 @@ export default function Forms() {
   return (
     <>
       <form>
-        <input type="text" placeholder="Your Name" value={name} onChange={handleNameChange}/>
+        {/* 'htmlFor' is the alternative to 'for' in normal HTML. */}
+        <label htmlFor="name">Enter Name </label>
+        <input
+          type="text"
+          id="name"
+          placeholder="Your Name"
+          value={name}
+          onChange={handleNameChange}
+        />
         <button>Submit</button>
       </form>
     </>
