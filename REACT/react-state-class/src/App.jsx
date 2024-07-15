@@ -1,10 +1,10 @@
 import "./App.css";
-import Forms from "./Forms";
+import Comment from "./Comment";
 
 function App() {
   return (
     <>
-      <Forms />
+      <Comment />
     </>
   );
 }

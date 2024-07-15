@@ -1,0 +1,13 @@
+.comment-form {
+  border: 0.1rem solid grey;
+  border-radius: 0.5rem;
+  padding: 1rem
+}
+
+label {
+  font-weight: bold;
+}
+
+input, textarea {
+  margin-bottom: 1rem;
+}
