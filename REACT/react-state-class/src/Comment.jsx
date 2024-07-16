@@ -15,7 +15,10 @@ export default function Comment() {
       {comments.map((comment, index) => (
         <div className="comment-card" key={index}>
           <span className="comment-name">{comment.username}</span>
-          <span className="comment-rating">&nbsp;&nbsp;&nbsp;&nbsp;({comment.rating})</span>
+          <span className="comment-rating">
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            (Rating: {comment.rating})
+          </span>
           <p className="comment-text">{comment.comment}</p>
         </div>
       ))}

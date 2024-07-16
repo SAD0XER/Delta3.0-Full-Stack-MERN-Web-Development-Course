@@ -8,6 +8,12 @@ label {
   font-weight: bold;
 }
 
-input, textarea {
+input,
+textarea {
   margin-bottom: 1rem;
+}
+
+p {
+  color: red;
+  margin: 0;
 }

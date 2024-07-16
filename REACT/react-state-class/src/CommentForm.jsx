@@ -1,53 +1,76 @@
-import { useState } from "react";
+import { useFormik } from "formik";
 import "./CommentForm.css";
 
+// Validate method definition.
+const validate = (values) => {
+  const errors = {};
+
+  // Validation for input username.
+  if (!values.username) {
+    errors.username = "Required!";
+  } else if (values.username.length > 20) {
+    errors.username = "Must be 15 characters or less";
+  }
+
+  // Validation for input comment.
+  if (!values.comment) {
+    errors.comment = "Required";
+  }
+
+  // Validation for input rating.
+  if (!values.rating) {
+    errors.rating = "Required";
+  }
+
+  return errors;
+};
+
 export default function CommentForm({ addNewComment }) {
-  // Setting default values for state variables.
-  let [formData, setFormData] = useState({
-    username: "",
-    comment: "",
-    rating: 0,
+  // Defining state variables using pkg. formik.
+  const formik = useFormik({
+    initialValues: {
+      username: "",
+      comment: "",
+      rating: "",
+    },
+    validate,
+    onSubmit: (values) => {
+      addNewComment(values);
+      formik.resetForm();
+    },
   });
-
-  /* This method is called when any change trigger in input field. */
-  let handleInputChange = (event) => {
-    setFormData((currData) => {
-      return { ...currData, [event.target.name]: event.target.value }; // Setting field value to current value using "Computed Property Names".
-    });
-  };
-
-  let handleSubmit = (event) => {
-    addNewComment(formData); // Calling parent component's method to add new comment.
-    event.preventDefault(); // Preventing default action of form on submit.
-    setFormData({ username: "", comment: "", rating: 0 }); // Resetting values after form is submitted.
-  };
 
   return (
     <div className="comment-form">
       <h2>Leave a comment!</h2>
-      <form onSubmit={handleSubmit}>
+
+      <form onSubmit={formik.handleSubmit}>
         <label htmlFor="username">Username</label>
         <br />
         <input
           placeholder="username"
           type="text"
-          value={formData.username}
-          onChange={handleInputChange}
+          value={formik.values.username}
+          onChange={formik.handleChange}
           id="username"
           name="username"
         />
+        {formik.errors.username ? <p>{formik.errors.username}</p> : null}
         <br />
+
         <label htmlFor="comment">Comment</label>
         <br />
         <textarea
           cols={25}
           placeholder="Leave your comment here..."
-          value={formData.comment}
-          onChange={handleInputChange}
+          value={formik.values.comment}
+          onChange={formik.handleChange}
           id="comment"
           name="comment"
         />
+        {formik.errors.comment ? <p>{formik.errors.comment}</p> : null}
         <br />
+
         <label htmlFor="rating">Rating (1-5)</label>
         <br />
         <input
@@ -55,13 +78,15 @@ export default function CommentForm({ addNewComment }) {
           type="number"
           min={1}
           max={5}
-          value={formData.rating}
-          onChange={handleInputChange}
+          value={formik.values.rating}
+          onChange={formik.handleChange}
           id="rating"
           name="rating"
         />
+        {formik.errors.rating ? <p>{formik.errors.rating}</p> : null}
         <br />
-        <button className="add-comment">Add Comment</button>
+
+        <button type="submit" className="add-comment">Add Comment</button>
       </form>
     </div>
   );
