@@ -1,10 +1,10 @@
 import "./App.css";
-import Comment from "./Comment";
+import UseEffect from "./UseEffect.jsx";
 
 function App() {
   return (
     <>
-      <Comment />
+      <UseEffect />
     </>
   );
 }
