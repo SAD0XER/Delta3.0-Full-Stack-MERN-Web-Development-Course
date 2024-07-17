@@ -1,7 +1,12 @@
-import "./App.css";
+// import "./App.css";
+import SearchBox from "./SearchBox";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <SearchBox />
+    </>
+  );
 }
 
 export default App;
