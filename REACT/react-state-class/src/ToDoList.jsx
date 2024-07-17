@@ -19,18 +19,7 @@ export default function ToDoList() {
         setTodo((prevToto) => prevToto.filter((prevToto) => prevToto.id !== id));
     }
 
-    function handleMakeAllTaskImp() {
-        setTodo((prevTodo) =>
-            prevTodo.map((todo) => {
-                return {
-                    ...todo,
-                    task: todo.task.toUpperCase(),
-                };
-            }),
-        );
-    }
-
-    function handleMakeOneTaskImp(id) {
+    function handleMarkAsImp(id) {
         setTodo((prevTodo) =>
             prevTodo.map((todo) => {
                 if (todo.id === id) {
@@ -41,6 +30,17 @@ export default function ToDoList() {
                 } else {
                     return todo;
                 }
+            }),
+        );
+    }
+
+    function handleDoneAllTask() {
+        setTodo((prevTodo) =>
+            prevTodo.map((todo) => {
+                return {
+                    ...todo,
+                    isDone: true,
+                };
             }),
         );
     }
@@ -78,22 +78,23 @@ export default function ToDoList() {
                         <button onClick={() => handleDoneTask(todo.id)}>
                             <i className="fa-solid fa-check"></i>
                         </button>
-                        &nbsp;&nbsp;&nbsp;&nbsp;
+
                         <span style={{ textDecoration: todo.isDone ? "line-through" : "italic" }}>
                             {todo.task}
                         </span>
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        <button onClick={() => handleMakeOneTaskImp(todo.id)}>
+
+                        <button onClick={() => handleMarkAsImp(todo.id)}>
                             <i className="fa-regular fa-star"></i>
                         </button>
-                        &nbsp;&nbsp;&nbsp;&nbsp;
+
                         <button onClick={() => handleDeleteTodo(todo.id)}>
                             <i className="fa-solid fa-trash"></i>
                         </button>
                     </li>
                 ))}
             </ul>
-            <button onClick={handleMakeAllTaskImp}>Mark All as Important</button>
+            <button onClick={handleDoneAllTask}>
+                <i className="fa-solid fa-check-double"></i> Mark All as Done</button>
         </div>
     );
 }

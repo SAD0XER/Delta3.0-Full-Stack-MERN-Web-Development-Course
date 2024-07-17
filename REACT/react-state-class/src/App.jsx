@@ -1,10 +1,10 @@
 import "./App.css";
-import UseEffect from "./UseEffect.jsx";
+import ToDoList from "./ToDoList.jsx";
 
 function App() {
   return (
     <>
-      <UseEffect />
+      <ToDoList />
     </>
   );
 }
