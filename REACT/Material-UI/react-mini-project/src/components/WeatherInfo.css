@@ -1,0 +1,13 @@
+.WeatherInfo {
+  text-align: center;
+}
+
+.city-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+svg {
+  margin: 0 0 0 1rem;
+}

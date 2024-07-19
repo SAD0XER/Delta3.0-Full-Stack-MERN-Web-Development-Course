@@ -1,4 +1,4 @@
-# React Mini Project
+# WeatherApp - A React Mini Project
 
 This is the mini project after learning basics of React it is built using **Material UI**.
 Here, I learned basics of **Material UI**.
