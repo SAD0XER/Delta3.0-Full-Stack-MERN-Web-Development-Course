@@ -1,7 +1,7 @@
 .lottery-card {
-    background-color: #000000;
-    border: 0.1rem solid white;
+    background-color: #1d08dd;
     border-radius: 1rem;
+    transition: 0.25s ease-in-out;
 }
 
 hr {
@@ -15,9 +15,11 @@ hr {
 }
 
 .win-lottery {
-    background-color: darkblue ;
+    background-color: yellow;
     margin: 0;
     border-radius: 1rem 1rem 0 0;
+    color: black;
+    padding: 1rem;
 }
 
 .num-gen-btn {

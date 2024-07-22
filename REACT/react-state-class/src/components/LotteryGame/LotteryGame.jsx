@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./LotteryGame.css";
-import { generateRandomNumber } from "./utils/helperLotteryGame";
+import { generateRandomNumber } from "../../utils/helperLotteryGame";
 import Ticket from "./Ticket";
 
 export default function LotteryGame({ sizeOfTicket = 3, winCondition }) {
@@ -22,7 +22,9 @@ export default function LotteryGame({ sizeOfTicket = 3, winCondition }) {
           <h2 className="lottery-ticket">Lottery Ticket</h2>
         )}
         <Ticket ticket={lotteryTicket} />
-        <div onClick={buyTicket} className="num-gen-btn">Generate Ticket</div>
+        <div onClick={buyTicket} className="num-gen-btn">
+          Generate Ticket
+        </div>
       </div>
     </div>
   );
