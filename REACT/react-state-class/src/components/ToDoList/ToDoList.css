@@ -1,0 +1,46 @@
+.add-btn {
+  margin: 0 0 0 1rem;
+}
+
+button {
+  border-radius: 0.25rem;
+  border: 1px solid transparent;
+  padding: 0.25rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  margin: 1rem 0 0 1rem;
+}
+
+button:hover {
+  border-color: #646cff;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+input {
+  border-radius: 0.25em;
+  border: 0.1em solid transparent;
+  padding: 0.25rem 1rem;
+  font-size: 1em;
+  font-weight: 100;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+input:hover {
+  border-color: #646cff;
+}
+
+input:focus,
+input:focus-visible {
+  outline: 0.25em auto -webkit-focus-ring-color;
+}

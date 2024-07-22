@@ -1,0 +1,15 @@
+.task-container {
+  padding: 1rem 0;
+  background-color: #1a1a1a;
+  border-radius: 0.25rem;
+}
+
+.fa-solid,
+.fa-regular {
+  margin: 0 1rem;
+  cursor: pointer;
+}
+
+p {
+  margin: 0.5rem 0;
+}
