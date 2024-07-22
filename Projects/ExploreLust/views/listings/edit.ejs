@@ -6,6 +6,7 @@
         <title><%= listing.title %> | ExploreLust</title>
     </head>
     <body>
+        <a href="/listings/<%= listing._id %>"><button>Back</button></a>
         <h3>Edit your Listing</h3>
         <form action="/listings/<%= listing._id %>?_method=PUT" method="post">
             <!-- Inside the `name` we have created the key of object to names, so we can access it as object in `req.body`. -->
