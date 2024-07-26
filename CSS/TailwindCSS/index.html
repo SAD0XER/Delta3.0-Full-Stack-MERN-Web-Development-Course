@@ -6,7 +6,28 @@
     <link rel="stylesheet" href="style.css" />
     <title>Tailwind CSS Class</title>
   </head>
-  <body>
-    <h1 class="font-bold">Namaste Tailwind CSS</h1>
+  <body class="flex align-center justify-center mt-24">
+    <div class="card border-2 border-black h-fit w-[40rem] rounded-md">
+      <!-- Card Header -->
+      <div
+        class="card-header bg-gradient-to-r from-sky-500 to-indigo-500 h-20 text-white font-bold flex items-center justify-center w-full rounded-t">
+        News you can Trust.
+      </div>
+
+      <!-- Card Body -->
+      <div class="card-body text-center flex flex-col justify-center place-items-center w-full">
+        <h3 class="mt-4 text-lg font-semibold">Stay up to date with the Latest!</h3>
+        <p class="mt-1">Subscribe to our newsletter for latest news straight into your inbox.</p>
+        <form>
+          <input
+            type="email"
+            placeholder="you@example.com"
+            class="w-full h-8 my-1 bg-slate-200 rounded text-center placeholder:text-sm" />
+          <br />
+          <button class="w-full h-8 my-1 bg-blue-500 text-white text-sm font-medium rounded-full">Subscribe Now</button>
+        </form>
+        <small class="my-2">We value your privacy</small>
+      </div>
+    </div>
   </body>
 </html>
