@@ -36,7 +36,7 @@ export default function WeatherInfo({ info }) {
           </Typography>
           <Typography gutterBottom variant="subtitle1" component="div" className="city-name">
             <p>
-              Todays wheather is like <i>{info?.weather[0]?.description || ""}</i> and it feels like {info?.main?.feels_like}&deg;C.
+              Todays wheather is like <i>{info?.weather[0]?.description}</i> and it feels like {info?.main?.feels_like}&deg;C.
             </p>
           </Typography>
           <Typography variant="body2" color="text.secondary" component={"span"}>

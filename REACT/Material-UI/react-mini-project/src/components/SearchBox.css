@@ -1,12 +1,16 @@
-.SearchBox {
-  text-align: center;
+div {
+  background-color: white;
+}
+
+#btn {
+  margin: 1rem 0;
 }
 
 .loader {
   width: 48px;
   height: 48px;
   display: block;
-  margin: 20px auto;
+  margin: 2rem auto;
   box-sizing: border-box;
   position: relative;
 }
@@ -20,7 +24,7 @@
   position: absolute;
   box-sizing: border-box;
   border-radius: 50% 50% 0;
-  border: 15px solid #070750;
+  border: 15px solid rgb(50, 50, 50);
   transform: rotate(45deg) translate(0, 0);
   animation: animMarker 0.4s ease-in-out infinite alternate;
 }

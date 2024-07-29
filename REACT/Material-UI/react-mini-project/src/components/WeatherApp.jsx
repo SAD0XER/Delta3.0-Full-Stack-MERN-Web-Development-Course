@@ -3,17 +3,8 @@ import SearchBox from "./SearchBox";
 import WeatherInfo from "./WeatherInfo";
 
 export default function WeatherApp() {
-  const [weatherInfo, setWeatherInfo] = useState({
-    main: {
-      temp: 28.3,
-      feels_like: 25.9,
-      humidity: 75,
-      temp_min: 26.6,
-      temp_max: 30.3,
-    },
-    name: "Mumbai",
-    weather: [{ description: "Cloudy" }],
-  });
+  const [weatherInfo, setWeatherInfo] =
+    useState();
 
   const newWeatherInfo = (newWeatherInfo) => {
     setWeatherInfo(newWeatherInfo);
@@ -21,12 +12,13 @@ export default function WeatherApp() {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <h1>Weather App</h1>
-      <small>It is a mini React project using Material UI.</small>
+      <h1 style={{ margin: "initial" }}>Weather App</h1>
+      <small style={{ padding: "0 1rem", color: "grey", fontStyle: "italic" }}>
+        It is a mini React project using Material UI.
+      </small>
       <hr />
       <SearchBox newWeatherInfo={newWeatherInfo} />
-      <hr />
-      <WeatherInfo info={weatherInfo} />
+      {weatherInfo && <WeatherInfo info={weatherInfo} />}
     </div>
   );
 }

@@ -1,5 +1,6 @@
 .WeatherInfo {
   text-align: center;
+  margin: 1rem;
 }
 
 .city-name {
