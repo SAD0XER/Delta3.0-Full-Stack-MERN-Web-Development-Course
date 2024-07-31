@@ -1,18 +1,14 @@
 import "./App.css";
+import Todo from "./components/Todo";
+import { Provider } from "react-redux";
+import { store } from "./app/store";
 
 function App() {
   return (
     <>
-      <div>
-        <a href="https://redux-toolkit.js.org" target="_blank">
-          <img
-            src="https://redux-toolkit.js.org/img/redux_white.svg"
-            className="logo redux"
-            alt="Redux logo"
-            />
-        </a>
-            <h1>Redux Class</h1>
-      </div>
+      <Provider store={store}>
+        <Todo />
+      </Provider>
     </>
   );
 }
