@@ -1,7 +1,7 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const initialState = {
-  todo: [{ id: "abc", task: "Sample Task", isDone: false, isImportant: false }],
+  todos: [],
 };
 
 export const todoSlice = createSlice({
@@ -13,25 +13,23 @@ export const todoSlice = createSlice({
         id: nanoid(),
         task: action.payload,
         isDone: false,
-        isImportant: false,
       };
-      state.todo.push(newTodo); // It is direct mutation of state variables & it is posible in Redux.
+      state.todos.push(newTodo); // It is direct mutation of state variables & it is posible in Redux Toolkit.
     },
-    deleteTodo: (state, action) => {
-      state.todo = state.todo.filter((todo) => todo.id !== action.payload);
+    deleteTask: (state, action) => {
+      state.todos = state.todos.filter((todo) => todo.id !== action.payload);
     },
     markAsDone: (state, action) => {
-      state.todo = state.todo.map((todo) => {
-        todo.id === action.payload ? (todo.isDone = true) : null;
-      });
-    },
-    markAsImportant: (state, action) => {
-      state.todo = state.todo.map((todo) => {
-        todo.id === action.payload ? (todo.isImportant = true) : null;
+      state.todos = state.todos.map((todo) => {
+        if (todo.id === action.payload) {
+          todo.isDone = true;
+          return todo;
+        }
+        return todo;
       });
     },
   },
 });
 
-export const { addTodo, deleteTodo, markAsDone, markAsImportant } = todoSlice.actions;
-export default todoSlice.reducer; 
+export const { addTodo, deleteTask, markAsDone } = todoSlice.actions;
+export default todoSlice.reducer;
