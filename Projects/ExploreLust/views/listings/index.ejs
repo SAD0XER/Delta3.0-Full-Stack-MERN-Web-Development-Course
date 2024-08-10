@@ -1,21 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>ExploreLust</title>
-    </head>
-    <body>
-        <h1>All Listings</h1>
+<% layout("layouts/boilerplate") %>
 
-        <form action="/listings/new" method="get">
-            <button>Create New Listing</button>
-        </form>
+<body>
+    <h1>All Listings</h1>
 
-        <ul>
-            <% for (let listing of listings) { %>
-            <li><a href="/listings/<%= listing.id %>"><%= listing.title %></a></li>
-            <% } %>
-        </ul>
-    </body>
-</html>
+    <form action="/listings/new" method="get">
+        <button>Create New Listing</button>
+    </form>
+
+    <ul>
+        <% for (let listing of listings) { %>
+        <li><a href="/listings/<%= listing.id %>"><%= listing.title %></a></li>
+        <% } %>
+    </ul>
+</body>

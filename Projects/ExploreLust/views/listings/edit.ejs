@@ -1,36 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title><%= listing.title %> | ExploreLust</title>
-    </head>
-    <body>
-        <a href="/listings/<%= listing._id %>"><button>Back</button></a>
-        <h3>Edit your Listing</h3>
-        <form action="/listings/<%= listing._id %>?_method=PUT" method="post">
-            <!-- Inside the `name` we have created the key of object to names, so we can access it as object in `req.body`. -->
-            <input type="text" name="listing[title]" id="title" value="<%= listing.title %>" />
-            <br />
-            <textarea type="text" name="listing[description]"><%= listing.description %></textarea>
-            <br />
-            <input type="text" name="listing[image]" id="image" value="<%= listing.image %>" />
-            <br />
-            <input type="number" name="listing[price]" id="price" value="<%= listing.price %>" />
-            <br />
-            <input
-                type="text"
-                name="listing[location]"
-                id="location"
-                value="<%= listing.location %>" />
-            <br />
-            <input
-                type="text"
-                name="listing[country]"
-                id="country"
-                value="<%= listing.country %>" />
-            <br />
-            <button>Edit</button>
-        </form>
-    </body>
-</html>
+<% layout("layouts/boilerplate") %>
+
+<body>
+    <a href="/listings/<%= listing._id %>"><button>Back</button></a>
+    <h3>Edit your Listing</h3>
+    <form action="/listings/<%= listing._id %>?_method=PUT" method="post">
+        <!-- Inside the `name` we have created the key of object to names, so we can access it as object in `req.body`. -->
+        <input type="text" name="listing[title]" id="title" value="<%= listing.title %>" />
+        <br />
+        <textarea type="text" name="listing[description]"><%= listing.description %></textarea>
+        <br />
+        <input type="text" name="listing[image]" id="image" value="<%= listing.image %>" />
+        <br />
+        <input type="number" name="listing[price]" id="price" value="<%= listing.price %>" />
+        <br />
+        <input type="text" name="listing[location]" id="location" value="<%= listing.location %>" />
+        <br />
+        <input type="text" name="listing[country]" id="country" value="<%= listing.country %>" />
+        <br />
+        <button>Edit</button>
+    </form>
+</body>
