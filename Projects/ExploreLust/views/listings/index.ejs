@@ -3,10 +3,6 @@
 <body>
     <h1>All Listings</h1>
 
-    <form action="/listings/new" method="get">
-        <button>Create New Listing</button>
-    </form>
-
     <ul>
         <% for (let listing of listings) { %>
         <li><a href="/listings/<%= listing.id %>"><%= listing.title %></a></li>

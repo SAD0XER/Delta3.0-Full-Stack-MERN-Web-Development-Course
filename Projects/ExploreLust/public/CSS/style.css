@@ -1,4 +1,12 @@
-body {
-  color: white;
-  background-color: black;
+.navbar {
+  height: 5rem;
+}
+
+.fa-compass {
+  color: #ff385c;
+  font-size: 2rem;
+}
+
+.nav-link {
+  color: #222222;
 }
