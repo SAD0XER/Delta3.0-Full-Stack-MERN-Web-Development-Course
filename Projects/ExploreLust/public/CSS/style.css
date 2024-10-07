@@ -97,3 +97,8 @@ body {
 .add-new-listing-btn {
   background-color: #ff385c !important;
 }
+
+/* Edit Listing Form */
+.edit-listing-btn {
+  background-color: #ff385c !important;
+}
