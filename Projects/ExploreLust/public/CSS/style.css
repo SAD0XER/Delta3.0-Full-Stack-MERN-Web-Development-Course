@@ -102,3 +102,8 @@ body {
 .edit-listing-btn {
   background-color: #ff385c !important;
 }
+
+/* Show Listing Page */
+.show-img {
+  height: 30dvh;
+}
