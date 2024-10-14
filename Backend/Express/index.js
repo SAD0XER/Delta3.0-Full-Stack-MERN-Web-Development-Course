@@ -6,30 +6,14 @@ const app = express(); //It is basically a function.
 
 let port = 8080; //3000
 
-// use(): This Middleware listens all kind of every single requests even request is wrong and it executed.
-app.use(
-    (req, res, next) => {
-        console.log(1.1);
-        next(); // This line is important to prevent the request from being stuck in the middleware.
-        console.log("after1.1"); // Writing code after next() is not a good practice.
-    },
-    (req, res, next) => {
-        console.log(1.2);
-        return next(); // Developers returns the next(), so code after the next() should not run.
-        console.log("after1.2"); // Writing code after next() is not a good practice.
-    },
-    (req, res, next) => {
-        console.log(1.3);
-        next();
-        console.log("after1.3");
-    },
-);
+// Middleware
 
+// Logger: This utility middleware method used to log info. about the client. Example: npm package morgan.
 app.use((req, res, next) => {
-    console.log(2.1);
+    req.time = new Date(Date.now()).toString();
+    console.log(req.method, req.path, req.hostname, req.time);
     next();
-    console.log("after2.1");
-}); // Observe the output of this code.
+}); // If you write middleware after the routers the it will not work.
 
 //Routing
 app.get("/", (req, res) => {
