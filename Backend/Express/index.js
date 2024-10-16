@@ -6,16 +6,15 @@ const app = express(); //It is basically a function.
 
 let port = 8080; //3000
 
-// Middleware
+//Middlewares
 
-// Logger: This utility middleware method used to log info. about the client. Example: npm package morgan.
-app.use((req, res, next) => {
-    req.time = new Date(Date.now()).toString();
-    console.log(req.method, req.path, req.hostname, req.time);
+// Callback in the app.use() middleware function.
+app.use("/project", (req, res, next) => { // This middleware will only work when we request for /project page only.
+    console.log("I am from the Project Page.");
     next();
-}); // If you write middleware after the routers the it will not work.
+});
 
-//Routing
+//Routers
 app.get("/", (req, res) => {
     res.send("Hello there!");
 });
