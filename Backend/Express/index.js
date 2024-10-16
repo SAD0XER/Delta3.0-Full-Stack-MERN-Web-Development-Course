@@ -7,6 +7,17 @@ const app = express(); //It is basically a function.
 let port = 8080; //3000
 
 //Middlewares
+app.use("/api", (req,res, next) => {
+    let { token } = req.query;
+    if (token === "giveaccess") {
+        next();
+    }
+    res.send("ACCESS_DENIED");
+});
+
+app.get("/api", (req, res) => {
+    res.send("This is your Data.");
+});
 
 // Callback in the app.use() middleware function.
 app.use("/project", (req, res, next) => { // This middleware will only work when we request for /project page only.
