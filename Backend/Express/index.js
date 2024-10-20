@@ -7,20 +7,30 @@ const app = express(); //It is basically a function.
 let port = 8080; //3000
 
 //Middlewares
-app.use("/api", (req,res, next) => {
-    let { token } = req.query;
-    if (token === "giveaccess") {
+const checkToken1 = (req, res, next) => {
+    let { token1 } = req.query;
+    if (token1 === "giveaccess1") {
         next();
     }
-    res.send("ACCESS_DENIED");
-});
+    res.send("ACCESS_DENIED1");
+};
 
-app.get("/api", (req, res) => {
+const checkToken2 = (req, res, next) => {
+    let { token2 } = req.query;
+    if (token2 === "giveaccess2") {
+        next();
+    }
+    res.send("ACCESS_DENIED2");
+};
+
+// Passing multiple middlewares for specific path requests only.
+app.get("/api", checkToken1, checkToken2, (req, res) => {
     res.send("This is your Data.");
 });
 
 // Callback in the app.use() middleware function.
-app.use("/project", (req, res, next) => { // This middleware will only work when we request for /project page only.
+app.use("/project", (req, res, next) => {
+    // This middleware will only work when we request for /project page only.
     console.log("I am from the Project Page.");
     next();
 });
