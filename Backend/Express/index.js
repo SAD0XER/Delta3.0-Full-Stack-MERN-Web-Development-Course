@@ -7,42 +7,25 @@ const app = express(); //It is basically a function.
 let port = 8080; //3000
 
 //Middlewares
-const checkToken1 = (req, res, next) => {
-    let { token1 } = req.query;
-    if (token1 === "giveaccess1") {
-        next();
-    }
-    res.send("ACCESS_DENIED1");
-};
-
-const checkToken2 = (req, res, next) => {
-    let { token2 } = req.query;
-    if (token2 === "giveaccess2") {
-        next();
-    }
-    res.send("ACCESS_DENIED2");
-};
-
-// Passing multiple middlewares for specific path requests only.
-app.get("/api", checkToken1, checkToken2, (req, res) => {
-    res.send("This is your Data.");
-});
-
-// Callback in the app.use() middleware function.
-app.use("/project", (req, res, next) => {
-    // This middleware will only work when we request for /project page only.
-    console.log("I am from the Project Page.");
-    next();
-});
 
 //Routers
 app.get("/", (req, res) => {
     res.send("Hello there!");
 });
 
-app.get("/project", (req, res) => {
-    console.log("Project response send.");
-    res.send("You contacted Project path.");
+app.get("/err", (req, res) => {
+    asdf = asdf;
+});
+
+/* Error Handling Middlewares (Custom) */
+app.use((err, req, res, next) => {
+    console.log("------ERROR------");
+    next(err);
+});
+
+app.use((err, req, res, next) => { // Next error handler middleware.
+    console.log("ERROR------ERROR");
+    next(err);
 });
 
 //Handling Requests: Listen makes web server that listen incoming API requests.
