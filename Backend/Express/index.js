@@ -28,8 +28,8 @@ app.get("/api", checkToken, (req, res) => {
 
 /* Error Handling Middlewares (Custom) */
 app.use((err, req, res, next) => {
-    console.log("------ERROR------");
-    res.send(err);
+    let { status = 500, message = "some error occurred there." } = err;
+    res.status(status).send(message);
 });
 
 //Handling Requests: Listen makes web server that listen incoming API requests.
