@@ -26,6 +26,10 @@ app.get("/api", checkToken, (req, res) => {
     res.send("Your Data is here.");
 });
 
+app.get("/admin", (req, res) => {
+    throw new ExpressError(403, "Admin access is forbiddne.");
+});
+
 /* Error Handling Middlewares (Custom) */
 app.use((err, req, res, next) => {
     let { status = 500, message = "some error occurred there." } = err;
