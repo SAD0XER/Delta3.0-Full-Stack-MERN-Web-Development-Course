@@ -28,69 +28,98 @@ async function main() {
 /* All Routes */
 // home route
 app.get("/", (req, res) => {
-  res.send("Home route is working.");
+  try {
+    res.send("Home route is working.");
+  } catch (error) {
+    next(error);
+  }
 });
 
 // /chats: To see all chats.
 app.get("/chats", async (req, res) => {
-  let chats = await Chat.find(); //To extract all chat data from database.
-  res.render("index.ejs", { chats });
+  try {
+    let chats = await Chat.find(); //To extract all chat data from database.
+    res.render("index.ejs", { chats });
+  } catch (error) {
+    next(error);
+  }
 });
 
 // GET /chats/new: To render new chat form.
 app.get("/chats/new", (req, res) => {
-  res.render("new.ejs");
+  try {
+    res.render("new.ejs");
+  } catch (error) {
+    next(error);
+  }
 });
 
 // POST /chats/new: To insert new chat data in DB.
-app.post("/chats/new", (req, res) => {
-  let { from, to, msg } = req.body;
-  let newChat = new Chat({
-    from: from,
-    to: to,
-    message: msg,
-    created_at: new Date(),
-    updated_at: new Date(),
-  });
-
-  newChat
-    .save()
-    .then((resolve) => {
-      console.log(resolve, "Chat saved!");
-    })
-    .catch((error) => {
-      console.log(error);
+app.post("/chats/new", async (req, res, next) => {
+  try {
+    let { from, to, msg } = req.body;
+    let newChat = new Chat({
+      from: from,
+      to: to,
+      message: msg,
+      created_at: new Date(),
+      updated_at: new Date(),
     });
-  res.redirect("/chats");
+
+    // newChat
+    //   .save()
+    //   .then((resolve) => {
+    //     console.log(resolve, "Chat saved!");
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+    await newChat.save(); // Using async/await for better readability instead of promise chaining.
+    res.redirect("/chats");
+  } catch (error) {
+    next(error);
+  }
 });
 
 // GET /chats/:id/edit - To render edit form.
 app.get("/chats/:id/edit", async (req, res, next) => {
-  let { id } = req.params;
-  let chat = await Chat.findById(id);
-  if (!chat) next(new ExpressError(500, "Chat Not Found!"));
-  res.render("edit.ejs", { chat });
+  try {
+    let { id } = req.params;
+    let chat = await Chat.findById(id);
+    if (!chat) next(new ExpressError(500, "Chat Not Found!")); // Handling Error if id is incorrect.
+    res.render("edit.ejs", { chat });
+  } catch (error) {
+    next(error);
+  }
 });
 
 // PUT /chats/:id - To update new data in DB.
 app.put("/chats/:id", async (req, res) => {
-  let { id } = req.params;
-  let { msg: newMessage } = req.body;
-  let updatedChat = await Chat.findByIdAndUpdate(
-    id,
-    { message: newMessage, updated_at: new Date() },
-    { runValidators: true, new: true },
-  );
-  console.log(updatedChat);
-  res.redirect("/chats");
+  try {
+    let { id } = req.params;
+    let { msg: newMessage } = req.body;
+    let updatedChat = await Chat.findByIdAndUpdate(
+      id,
+      { message: newMessage, updated_at: new Date() },
+      { runValidators: true, new: true },
+    );
+    console.log(updatedChat);
+    res.redirect("/chats");
+  } catch (error) {
+    next(error);
+  }
 });
 
 // DELETE /chats/:id - To delete chat from DB.
 app.delete("/chats/:id", async (req, res) => {
-  let { id } = req.params;
-  let deletedChat = await Chat.findByIdAndDelete(id);
-  console.log(deletedChat);
-  res.redirect("/chats");
+  try {
+    let { id } = req.params;
+    let deletedChat = await Chat.findByIdAndDelete(id);
+    console.log(deletedChat);
+    res.redirect("/chats");
+  } catch (error) {
+    next(error);
+  }
 });
 
 // Error handling middleware.
