@@ -4,8 +4,8 @@ const mongoose = require("mongoose");
 const path = require("path");
 const Chat = require("./models/chat.js");
 const methodOverride = require("method-override");
-
 const app = express();
+const ExpressError = require("./ExpressError.js");
 
 /* Path setup */
 app.set("views", path.join(__dirname, "views"));
@@ -13,11 +13,6 @@ app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true })); // Enables URL-encoded body parsing.
 app.use(methodOverride("_method"));
-
-/* Server setup */
-app.listen(8080, () => {
-  console.log("Server is running on localhost:8080");
-});
 
 /* Database connectivity setup */
 main()
@@ -70,13 +65,14 @@ app.post("/chats/new", (req, res) => {
 });
 
 // GET /chats/:id/edit - To render edit form.
-app.get("/chats/:id/edit", async (req, res) => {
+app.get("/chats/:id/edit", async (req, res, next) => {
   let { id } = req.params;
   let chat = await Chat.findById(id);
+  if (!chat) next(new ExpressError(500, "Chat Not Found!"));
   res.render("edit.ejs", { chat });
 });
 
-// PUT /chats/:d - To update new data in DB.
+// PUT /chats/:id - To update new data in DB.
 app.put("/chats/:id", async (req, res) => {
   let { id } = req.params;
   let { msg: newMessage } = req.body;
@@ -95,4 +91,15 @@ app.delete("/chats/:id", async (req, res) => {
   let deletedChat = await Chat.findByIdAndDelete(id);
   console.log(deletedChat);
   res.redirect("/chats");
+});
+
+// Error handling middleware.
+app.use((err, req, res, next) => {
+  let { status = 500, message = "Some Error Occurred" } = err;
+  res.status(status).send(message);
+});
+
+/* Server setup */
+app.listen(8080, () => {
+  console.log("Server is running on localhost:8080");
 });
