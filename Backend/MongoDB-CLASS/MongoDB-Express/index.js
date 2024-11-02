@@ -103,7 +103,20 @@ function asyncWrap(asyncFunction) {
   }
 }
 
+// Utility function: Use when error occurs to do some importnat tasks.
+const handleValidationError = (err) => {
+  console.log("This is validation error. Please follow rules.");
+  console.dir(err.message);
+  return err;
+}
+
 // Error handling middleware.
+app.use((err, req, res, next) => { // Error handler for specific error.
+  console.log(err.name);
+  if (err.name === "ValidationError") err = handleValidationError(err);
+  next(err);
+});
+
 app.use((err, req, res, next) => {
   let { status = 500, message = "Some Error Occurred" } = err;
   res.status(status).send(message);
