@@ -6,8 +6,8 @@
     <div class="row">
         <div class="col-10 offset-1">
             <div class="border border-secondary border-2 rounded-3 mx-5 my-4 p-5 bg-light">
-                <h3 class="mb-4 fw-bold">Create a New Listing</h3>
-                <form action="/listings/new" method="post">
+                <h3 class="mb-4 fw-bold">Create New Listing</h3>
+                <form action="/listings/new" method="post" class="needs-validation" novalidate>
                     <!-- Inside the `name` we have created the key of object to names, so we can access it as object in `req.body`. -->
                     <div class="mb-4">
                         <label for="title" class="form-label fw-bold">Title</label>
@@ -16,7 +16,8 @@
                             name="listing[title]"
                             id="title"
                             placeholder="Give title to your place"
-                            class="form-control border border-2 border-secondary-subtle" />
+                            class="form-control border border-2 border-secondary-subtle"
+                            required />
                     </div>
 
                     <div class="mb-4">
@@ -25,7 +26,8 @@
                             type="text"
                             name="listing[description]"
                             placeholder="Short description of your place"
-                            class="form-control border border-2 border-secondary-subtle"></textarea>
+                            class="form-control border border-2 border-secondary-subtle"
+                            required></textarea>
                     </div>
 
                     <div class="mb-4">
@@ -45,7 +47,8 @@
                                 name="listing[price]"
                                 id="price"
                                 placeholder="1500"
-                                class="form-control border border-2 border-secondary-subtle" />
+                                class="form-control border border-2 border-secondary-subtle"
+                                required />
                         </div>
 
                         <div class="mb-4 col-md-8">
@@ -55,7 +58,8 @@
                                 name="listing[country]"
                                 id="country"
                                 placeholder="India"
-                                class="form-control border border-2 border-secondary-subtle" />
+                                class="form-control border border-2 border-secondary-subtle"
+                                required />
                         </div>
                     </div>
 
@@ -66,7 +70,8 @@
                             name="listing[location]"
                             id="location"
                             placeholder="Mumbai, India"
-                            class="form-control border border-2 border-secondary-subtle" />
+                            class="form-control border border-2 border-secondary-subtle"
+                            required />
                     </div>
 
                     <button class="btn btn-primary w-100 fw-bold border-0 add-new-listing-btn">
