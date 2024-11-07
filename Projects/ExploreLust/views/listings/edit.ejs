@@ -8,7 +8,11 @@
             <div class="border border-dark border-2 rounded-2 mx-5 my-4 p-5 bg-light">
                 <h3 class="mb-4 fw-bold">Edit your Listing</h3>
 
-                <form action="/listings/<%= listing._id %>?_method=PUT" method="post">
+                <form
+                    action="/listings/<%= listing._id %>?_method=PUT"
+                    method="post"
+                    class="needs-validation"
+                    novalidate>
                     <!-- Inside the `name` we have created the key of object to names, so we can access it as object in `req.body`. -->
                     <div class="mb-4">
                         <label for="title" class="form-label fw-bold">Title</label>
@@ -17,7 +21,9 @@
                             name="listing[title]"
                             id="title"
                             value="<%= listing.title %>"
-                            class="form-control border border-2 border-secondary-subtle" />
+                            class="form-control border border-2 border-secondary-subtle"
+                            required />
+                        <div class="invalid-feedback">Title required!</div>
                     </div>
 
                     <div class="mb-4">
@@ -25,9 +31,10 @@
                         <textarea
                             type="text"
                             name="listing[description]"
-                            class="form-control border border-2 border-secondary-subtle">
-                    <%= listing.description %>
-                </textarea>
+                            id="description"
+                            class="form-control border border-2 border-secondary-subtle"
+                            required><%= listing.description %></textarea>
+                        <div class="invalid-feedback">Enter short description!</div>
                     </div>
 
                     <div class="mb-4">
@@ -37,7 +44,9 @@
                             name="listing[image]"
                             id="image"
                             value="<%= listing.image %>"
-                            class="form-control border border-2 border-secondary-subtle" />
+                            class="form-control border border-2 border-secondary-subtle"
+                            required />
+                        <div class="invalid-feedback">Please enter valid link for image!</div>
                     </div>
 
                     <div class="row">
@@ -48,7 +57,9 @@
                                 name="listing[price]"
                                 id="price"
                                 value="<%= listing.price %>"
-                                class="form-control border border-2 border-secondary-subtle" />
+                                class="form-control border border-2 border-secondary-subtle"
+                                required />
+                            <div class="invalid-feedback">Enter valid price!</div>
                         </div>
 
                         <div class="mb-4 col-md-8">
@@ -58,7 +69,9 @@
                                 name="listing[country]"
                                 id="country"
                                 value="<%= listing.country %>"
-                                class="form-control border border-2 border-secondary-subtle" />
+                                class="form-control border border-2 border-secondary-subtle"
+                                required />
+                            <div class="invalid-feedback">Enter valid country name!</div>
                         </div>
                     </div>
 
@@ -69,7 +82,9 @@
                             name="listing[location]"
                             id="location"
                             value="<%= listing.location %>"
-                            class="form-control border border-2 border-secondary-subtle" />
+                            class="form-control border border-2 border-secondary-subtle"
+                            required />
+                        <div class="invalid-feedback">Enter valid location!</div>
                     </div>
 
                     <button class="btn btn-dark w-100 fw-bold border-0 edit-listing-btn">
