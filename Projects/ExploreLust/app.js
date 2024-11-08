@@ -4,6 +4,7 @@ const Listing = require("./models/listing.js");
 const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
+const wrapAsync = require("./utils/wrapAsync.js");
 
 const app = express();
 app.set("view engine", "ejs");
@@ -14,11 +15,6 @@ app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public"))); // configuring Express.js to serve static files from the /public directory.
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/ExploreLust";
-
-/* Server setup */
-app.listen(8080, () => {
-    console.log("Server is running on localhost: 8080");
-});
 
 /* Database connectivity setup */
 main()
@@ -56,13 +52,13 @@ app.get("/listings/:id", async (req, res) => {
 });
 
 // Create Route: /listings/new - To create a new listing in DB.
-app.post("/listings/new", async (req, res) => {
-    // let { title, description, price, location, country } = req.body; // This is the old way of getting form data.
-    /* This is the new way of getting form data.
-    Here we are taking data from `req.body.listing` object and passing it to Listing model and saving it to DB. */
-    await new Listing(req.body.listing).save();
-    res.redirect("/listings");
-});
+app.post(
+    "/listings/new",
+    wrapAsync(async (req, res, next) => {
+        await new Listing(req.body.listing).save();
+        res.redirect("/listings");
+    }),
+);
 
 // New form Route: /listings/:id/edit - To edit listing.
 app.get("/listings/:id/edit", async (req, res) => {
@@ -84,4 +80,14 @@ app.delete("/listings/:id/delete", async (req, res) => {
     let deleted = await Listing.findByIdAndDelete(id);
     console.log(deleted);
     res.redirect(`/listings`);
+});
+
+// Middlewares
+app.use((err, req, res, next) => {
+    res.send("Something Went Wrong!");
+});
+
+/* Server setup */
+app.listen(8080, () => {
+    console.log("Server is running on localhost: 8080");
 });
