@@ -6,6 +6,7 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const wrapAsync = require("./utils/wrapAsync.js");
 const ExpressError = require("./utils/ExpressError.js");
+const { listingSchema } = require("./schema.js");
 
 const app = express();
 app.set("view engine", "ejs");
@@ -27,6 +28,16 @@ main()
 async function main() {
     await mongoose.connect(MONGO_URL);
 }
+
+// Schema Validator Middleware
+const validateListing = (req, res, next) => {
+    let { error } = listingSchema.validate(req.body); // Validating data inside req.body using joi's schema.
+    if (error) {
+        throw new ExpressError(400, error.message); // If there is error, then throw it.
+    } else {
+        next(); // If there is no error, call next middleware.
+    }
+};
 
 /* All Routes */
 // home route
@@ -61,8 +72,8 @@ app.get(
 // Create Route: /listings/new - To create a new listing in DB.
 app.post(
     "/listings/new",
+    validateListing,
     wrapAsync(async (req, res, next) => {
-        if (!req.body.listing) throw new ExpressError(400, "Send valid data for listing.");
         await new Listing(req.body.listing).save();
         res.redirect("/listings");
     }),
@@ -81,8 +92,8 @@ app.get(
 // Update Route: /listings/:id/edit - To update data in DB.
 app.put(
     "/listings/:id",
+    validateListing,
     wrapAsync(async (req, res) => {
-        if (!req.body.listing) throw new ExpressError(400, "Send valid data for listing.");
         const { id } = req.params;
         await Listing.findByIdAndUpdate(id, { ...req.body.listing });
         res.redirect(`/listings/${id}`);
