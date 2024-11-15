@@ -1,0 +1,15 @@
+{
+  "name": "mongodb-relationships",
+  "version": "1.0.0",
+  "description": "This package created to learn, practice and see the implementation of MongoDB Relationships.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sarvesh Deverukhakar",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1",
+    "mongoose": "^8.8.1"
+  }
+}
