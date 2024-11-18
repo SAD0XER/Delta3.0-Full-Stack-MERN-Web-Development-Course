@@ -24,31 +24,9 @@ const Order = mongoose.model("Order", orderSchema);
 const Customer = mongoose.model("Customer", customerSchema);
 
 // Function to create customer data.
-const addCustomer = async () => {
-    let customer1 = new Customer({ name: "Simon Riley" }); // Creating new customer.
-
-    // Fetching orders from DB by it's item names.
-    let order1 = await Order.findOne({ item: "samosa" });
-    let order2 = await Order.findOne({ item: "puranpoli" });
-
-    // Pushing orders in customers data.
-    customer1.orders.push(order1);
-    customer1.orders.push(order2);
-
-    let result = await customer1.save();
-    console.log(result);
+const findCustomer = async () => {
+    let result = await Customer.find({}).populate("orders"); // Used to extract entire document instead of only document id.
+    console.log(result[0]);
 };
 
-addCustomer();
-
-// Added orders in the database.
-// const addOrders = async () => {
-//     let result = await Order.insertMany([
-//         { item: "samosa", price: 15 },
-//         { item: "puranpoli", price: 50 },
-//         { item: "Chocolate", price: 30 },
-//     ]);
-//     console.log(result);
-// };
-
-// addOrders();
+findCustomer();
