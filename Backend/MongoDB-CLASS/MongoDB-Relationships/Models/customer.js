@@ -29,4 +29,25 @@ const findCustomer = async () => {
     console.log(result[0]);
 };
 
-findCustomer();
+// findCustomer();
+
+const addCustomer = async () => {
+    let newCustomer = new Customer({ // Creating new customer.
+        name: "Kate Laswell",
+    });
+
+    let newOrder = new Order({ // Creating new order.
+        item: "Pohe",
+        price: 50,
+    });
+
+    newCustomer.orders.push(newOrder ); // Assigning new order ID into customers order section.
+
+    // Saving order and customer instances into DB.
+    await newOrder.save();
+    await newCustomer.save();
+
+    console.log("Added new customer.");
+};
+
+addCustomer();
