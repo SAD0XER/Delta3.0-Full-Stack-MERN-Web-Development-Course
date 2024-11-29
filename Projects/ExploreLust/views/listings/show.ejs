@@ -5,7 +5,7 @@
 
     <div class="row">
         <div class="col col-8 offset-2">
-            <h3 class="text-center fw-bold">Listing Details</h3>
+            <h3 class="fw-bold"><%= listing.title %></h3>
         </div>
 
         <div class="col-8 offset-2 my-2 mb-4">
@@ -14,7 +14,6 @@
                 class="card-img-top object-fit-cover show-img"
                 alt="Listing Image" />
             <div class="card-body">
-                <h5 class="card-title fw-bold"><%= listing.title %></h5>
                 <p class="card-text text-secondary"><%= listing.description %></p>
                 <p class="card-text">&#8377; <%= listing.price.toLocaleString("en-IN") %></p>
                 <p class="card-text"><%=listing.location%></p>
