@@ -28,5 +28,36 @@
                 </form>
             </div>
         </div>
+
+        <div class="col col-8 offset-2 mb-3">
+            <hr />
+            <h3 class="fw-bold">Rating & Reviews</h3>
+            <form>
+                <div class="mb-3 mt-4">
+                    <label for="rating" class="form-label fw-bold fs-5 m-0">Rating</label>
+                    <input
+                        type="range"
+                        min="1"
+                        max="5"
+                        id="rating"
+                        class="form-range"
+                        name="review[rating]" />
+                    <div class="d-flex justify-content-evenly fw-bold">
+                        <div class="w-100 text-start">1</div>
+                        <div class="w-100 text-center">3</div>
+                        <div class="w-100 text-end">5</div>
+                    </div>
+                </div>
+                <div class="mb-3 mt-4">
+                    <label for="review" class="form-label fw-bold fs-5 m-0">Review</label>
+                    <textarea
+                        name="review[review]"
+                        id="review"
+                        class="form-control"
+                        placeholder="Describe your experience"></textarea>
+                </div>
+                <button class="btn btn-outline-primary fw-bold border-2">Submit</button>
+            </form>
+        </div>
     </div>
 </body>
