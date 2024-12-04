@@ -32,7 +32,11 @@
         <div class="col col-8 offset-2 mb-3">
             <hr />
             <h3 class="fw-bold">Rating & Reviews</h3>
-            <form action="/listings/<%= listing.id %>/reviews" method="POST">
+            <form
+                action="/listings/<%= listing.id %>/reviews"
+                method="POST"
+                class="needs-validation"
+                novalidate>
                 <div class="mb-3 mt-4">
                     <label for="rating" class="form-label fw-bold fs-5 m-0">Rating</label>
                     <input
@@ -51,10 +55,12 @@
                 <div class="mb-3 mt-4">
                     <label for="review" class="form-label fw-bold fs-5 m-0">Review</label>
                     <textarea
-                        name="review[review]"
+                        name="review[comment]"
                         id="review"
                         class="form-control"
-                        placeholder="Describe your experience"></textarea>
+                        placeholder="Describe your experience"
+                        required></textarea>
+                    <div class="invalid-feedback">Please add some comment to submit review!</div>
                 </div>
                 <button class="btn btn-outline-primary fw-bold border-2">Submit</button>
             </form>

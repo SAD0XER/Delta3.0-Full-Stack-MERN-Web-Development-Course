@@ -7,7 +7,7 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const wrapAsync = require("./utils/wrapAsync.js");
 const ExpressError = require("./utils/ExpressError.js");
-const { listingSchema } = require("./schema.js");
+const { listingSchema, reviewSchema } = require("./schema.js");
 
 const app = express();
 app.set("view engine", "ejs");
@@ -37,6 +37,15 @@ const validateListing = (req, res, next) => {
         throw new ExpressError(400, error.message); // If there is error, then throw it.
     } else {
         next(); // If there is no error, call next middleware.
+    }
+};
+
+const validateReview = (req, res, next) => {
+    let { error } = reviewSchema.validate(req.body);
+    if (error) {
+        throw new ExpressError(400, error.message);
+    } else {
+        next();
     }
 };
 
@@ -113,17 +122,21 @@ app.delete(
 );
 
 // Review Route: /listings/:id/reviews - To add review in respective listing.
-app.post("/listings/:id/reviews", async (req, res) => {
-    let listing = await Listing.findById(req.params.id);
-    let newReview = new Review(req.body.review);
+app.post(
+    "/listings/:id/reviews",
+    validateReview,
+    wrapAsync(async (req, res) => {
+        let listing = await Listing.findById(req.params.id);
+        let newReview = new Review(req.body.review);
 
-    listing.reviews.push(newReview);
+        listing.reviews.push(newReview);
 
-    await newReview.save();
-    await listing.save();
+        await newReview.save();
+        await listing.save();
 
-    res.redirect(`/listings/${listing._id}`);
-});
+        res.redirect(`/listings/${listing._id}`);
+    }),
+);
 
 // Middlewares
 app.all("*", (req, res, next) => {
