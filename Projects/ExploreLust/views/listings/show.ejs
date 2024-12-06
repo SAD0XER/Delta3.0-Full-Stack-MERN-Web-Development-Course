@@ -4,17 +4,17 @@
     <a href="/listings"><button class="btn btn-secondary mt-2">Back</button></a>
 
     <div class="row">
-        <div class="col col-8 offset-2">
+        <div class="col col-10 offset-1">
             <h3 class="fw-bold"><%= listing.title %></h3>
         </div>
 
-        <div class="col-8 offset-2 my-2 mb-4">
+        <div class="col-10 offset-1 my-2 mb-4">
             <img
                 src="<%= listing.image %>"
                 class="card-img-top object-fit-cover show-img"
                 alt="Listing Image" />
-            <div class="card-body">
-                <p class="card-text text-secondary"><%= listing.description %></p>
+            <div class="card-body mx-2">
+                <p class="card-text text-secondary mt-2"><%= listing.description %></p>
                 <p class="card-text">&#8377; <%= listing.price.toLocaleString("en-IN") %></p>
                 <p class="card-text"><%=listing.location%></p>
                 <p class="card-text"><%= listing.country %></p>
@@ -23,19 +23,21 @@
                     action="/listings/<%= listing._id%>/delete?_method=DELETE"
                     method="post"
                     class="d-flex justify-content-between">
-                    <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark border-0 px-5">Edit</a>
-                    <button class="btn btn-danger px-5">Delete</button>
+                    <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark border-0 px-5 w-25">Edit</a>
+                    <button class="btn btn-danger px-5 w-25">Delete</button>
                 </form>
             </div>
         </div>
 
-        <div class="col col-8 offset-2 mb-3">
-            <hr />
-            <h3 class="fw-bold">Rating & Reviews</h3>
+        <!-- Rating Section -->
+        <hr />
+        <div class="col col-10 offset-1 mb-3">
+            <h4 class="mb-0 fs-4"><b>Rate this place</b></h4>
+            <small class="text-secondary">Tell others what you think.</small>
             <form
                 action="/listings/<%= listing.id %>/reviews"
                 method="POST"
-                class="needs-validation"
+                class="needs-validation px-3"
                 novalidate>
                 <div class="mb-3 mt-4">
                     <label for="rating" class="form-label fw-bold fs-5 m-0">Rating</label>
@@ -46,7 +48,7 @@
                         id="rating"
                         class="form-range"
                         name="review[rating]" />
-                    <div class="d-flex justify-content-evenly fw-bold">
+                    <div class="d-flex justify-content-evenly ">
                         <div class="w-100 text-start">1</div>
                         <div class="w-100 text-center">3</div>
                         <div class="w-100 text-end">5</div>
@@ -57,13 +59,40 @@
                     <textarea
                         name="review[comment]"
                         id="review"
-                        class="form-control"
+                        class="form-control border-2 border-success"
                         placeholder="Describe your experience"
+                        rows="4"
                         required></textarea>
                     <div class="invalid-feedback">Please add some comment to submit review!</div>
                 </div>
-                <button class="btn btn-outline-primary fw-bold border-2">Submit</button>
+                <button class="btn btn-outline-success fw-bold border-2 px-5 w-25">Submit</button>
             </form>
+
+        <!-- Rating and Review Section -->
+        <hr />
+        <h4 class="fs-4"><b>Rating and reviews</b></h4>
+            <div class="row">
+                <% for(review of listing.reviews) {%>
+                    <div class="card col-5 m-4 p-2">
+                        <div class="card-body">
+                            <h5 class="card-title">Name Title</h5>
+                            <div class="d-flex align-items-center">
+                                <% for(let i=1; i <=review.rating; i++) {%>
+                                    <i class="fa-solid fa-star"></i>
+                                <% } %>
+                                <% for(let i=1; i <=(5-review.rating); i++) {%>
+                                    <i class="fa-regular fa-star"></i>
+                                <% } %>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <small><%= review.createdAt %></small>
+                            </div>
+                            <p class="card-text">
+                                <%= review.comment %>
+                            </p>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
         </div>
     </div>
 </body>
