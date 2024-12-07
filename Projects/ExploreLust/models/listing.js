@@ -1,5 +1,6 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose"); // Importing/Requiring mongoose from package.
 const Schema = mongoose.Schema; // Importing mongoose module and Schema.
+const Review = require("./review.js");
 
 /* Schema defining */
 const listingSchema = new Schema({
@@ -20,6 +21,13 @@ const listingSchema = new Schema({
   location: String,
   country: String,
   reviews: [{ type: Schema.Types.ObjectId, ref: "Review" }]
+});
+
+// Post Mongoose Middleware
+listingSchema.post("findOneAndDelete", async (listing) => {
+  if (listing) {
+    await Review.deleteMany({ _id: { $in: listing.reviews } });
+  }
 });
 
 /* Model creating and exporting */
