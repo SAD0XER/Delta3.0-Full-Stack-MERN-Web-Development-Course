@@ -121,7 +121,7 @@ app.delete(
     }),
 );
 
-// Review Route: /listings/:id/reviews - To add review in respective listing.
+// Add Review Route: /listings/:id/reviews - To add review in respective listing.
 app.post(
     "/listings/:id/reviews",
     validateReview,
@@ -137,6 +137,16 @@ app.post(
         res.redirect(`/listings/${listing._id}`);
     }),
 );
+
+// Delete Review Route: /listings/:id/reviews/:reviewsId
+app.delete("/listings/:id/reviews/:reviewId", wrapAsync(async (req, res) => {
+    let { id, reviewId } = req.params;
+
+    await Listing.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });
+    await Review.findByIdAndDelete(reviewId);
+
+    res.redirect(`/listings/${id}`);
+}));
 
 // Middlewares
 app.all("*", (req, res, next) => {
