@@ -7,7 +7,8 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const wrapAsync = require("./utils/wrapAsync.js");
 const ExpressError = require("./utils/ExpressError.js");
-const { listingSchema, reviewSchema } = require("./schema.js");
+const { reviewSchema } = require("./schema.js");
+const listings = require("./routes/listing.js");
 
 const app = express();
 app.set("view engine", "ejs");
@@ -30,16 +31,6 @@ async function main() {
     await mongoose.connect(MONGO_URL);
 }
 
-// Schema Validator Middleware
-const validateListing = (req, res, next) => {
-    let { error } = listingSchema.validate(req.body); // Validating data inside req.body using joi's schema.
-    if (error) {
-        throw new ExpressError(400, error.message); // If there is error, then throw it.
-    } else {
-        next(); // If there is no error, call next middleware.
-    }
-};
-
 const validateReview = (req, res, next) => {
     let { error } = reviewSchema.validate(req.body);
     if (error) {
@@ -55,71 +46,8 @@ app.get("/", (req, res) => {
     res.send("Home route of project ExploreLust is working.");
 });
 
-// Index Route: /listings - To see all titles.
-app.get(
-    "/listings",
-    wrapAsync(async (req, res) => {
-        const allListings = await Listing.find({}); //To extract all listing data from database.
-        res.render("./listings/index.ejs", { listings: allListings }); //Passing all listings to index.ejs with key name as `listings`.
-    }),
-);
-
-// New Form Route: /listings/new - To create a new listing.
-app.get("/listings/new", (req, res) => {
-    res.render("./listings/new.ejs");
-});
-
-// Show Route: /listings/:id - To see a single list.
-app.get(
-    "/listings/:id",
-    wrapAsync(async (req, res) => {
-        const { id } = req.params;
-        const listing = await Listing.findById(id).populate("reviews"); // populate method to get actual documents from the references stored in 'reviews'.
-        res.render("./listings/show.ejs", { listing });
-    }),
-);
-
-// Create Route: /listings/new - To create a new listing in DB.
-app.post(
-    "/listings/new",
-    validateListing,
-    wrapAsync(async (req, res, next) => {
-        await new Listing(req.body.listing).save();
-        res.redirect("/listings");
-    }),
-);
-
-// New form Route: /listings/:id/edit - To edit listing.
-app.get(
-    "/listings/:id/edit",
-    wrapAsync(async (req, res) => {
-        const { id } = req.params;
-        const listing = await Listing.findById(id);
-        res.render("./listings/edit.ejs", { listing });
-    }),
-);
-
-// Update Route: /listings/:id/edit - To update data in DB.
-app.put(
-    "/listings/:id",
-    validateListing,
-    wrapAsync(async (req, res) => {
-        const { id } = req.params;
-        await Listing.findByIdAndUpdate(id, { ...req.body.listing });
-        res.redirect(`/listings/${id}`);
-    }),
-);
-
-// Delete Route: /listings/:id/delete - To delete listing from DB.
-app.delete(
-    "/listings/:id/delete",
-    wrapAsync(async (req, res) => {
-        const { id } = req.params;
-        let deleted = await Listing.findByIdAndDelete(id);
-        console.log(deleted);
-        res.redirect(`/listings`);
-    }),
-);
+// Express Routers
+app.use("/listings", listings);
 
 // Add Review Route: /listings/:id/reviews - To add review in respective listing.
 app.post(
