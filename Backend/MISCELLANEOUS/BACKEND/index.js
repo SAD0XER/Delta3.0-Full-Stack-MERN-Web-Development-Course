@@ -3,12 +3,18 @@ const app = express();
 const session = require("express-session");
 const port = 8080;
 
-app.use(session({ secret: "BishopTakesRook", resave: false, saveUninitialized: true }));
+const sessionOption = { secret: "BishopTakesRook", resave: false, saveUninitialized: true };
 
-app.get("/requestcount", (req, res) => {
-    if (req.session.count) req.session.count++;
-    else req.session.count = 1; // If 'count' variable doesn't exit in the 'req.session', then create and initialize it.
-    res.send(`Sending Request for ${req.session.count} times.`);
+app.use(session(sessionOption));
+
+app.get("/register", (req, res) => {
+    let { name = "NoName" } = req.query;
+    req.session.name = name;
+    res.redirect("/hello");
+});
+
+app.get("/hello", (req, res) => {
+    res.send(`Hello, ${req.session.name}`);
 });
 
 app.listen(port, () => {
