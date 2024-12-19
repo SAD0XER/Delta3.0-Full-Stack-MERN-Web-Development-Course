@@ -4,6 +4,7 @@ const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
+const session = require("express-session");
 
 // Requiring Express Router files.
 const listings = require("./routes/listing.js");
@@ -19,6 +20,15 @@ app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/ExploreLust";
+
+// express-session parameters.
+const sessionOptions = {
+    secret: "Session Secret",
+    resave: false,
+    saveUninitialized: true,
+};
+
+app.use(session(sessionOptions));
 
 /* Database connectivity setup */
 main()
