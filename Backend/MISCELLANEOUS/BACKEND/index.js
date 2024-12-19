@@ -13,15 +13,26 @@ const sessionOption = { secret: "BishopTakesRook", resave: false, saveUninitiali
 app.use(session(sessionOption));
 app.use(flash());
 
+// connect-flash: One time msg flash service.
+app.use((req, res, next) => {
+    res.locals.successMsg = req.flash("success");
+    res.locals.errorMsg = req.flash("error");
+    next();
+});
+
 app.get("/register", (req, res) => {
-    let { name = "NoName" } = req.query;
+    let { name = "There." } = req.query;
     req.session.name = name;
-    req.flash("success", "User registered successfully!");
+    if (name === "There.") {
+        req.flash("error", "User not registered!");
+    } else {
+        req.flash("success", "User registered successfully!");
+    }
     res.redirect("/hello");
 });
 
 app.get("/hello", (req, res) => {
-    res.render("./hello.ejs", { name: req.session.name, flashMsg: req.flash("success") });
+    res.render("./hello.ejs", { name: req.session.name });
 });
 
 app.listen(port, () => {
