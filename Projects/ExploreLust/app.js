@@ -6,6 +6,9 @@ const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
 const session = require("express-session");
 const flash = require("connect-flash");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+const User = require("./models/user.js");
 
 // Requiring Express Router files.
 const listings = require("./routes/listing.js");
@@ -36,6 +39,14 @@ const sessionOptions = {
 
 app.use(session(sessionOptions));
 app.use(flash());
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate())); // It is to use static authenticate method of model in LocalStrategy.
+
+// use static serialize and deserialize of model for passport session support.
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // Flsh Message Middleware.
 app.use((req, res, next) => {
