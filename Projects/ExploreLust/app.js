@@ -60,6 +60,17 @@ app.get("/", (req, res) => {
     res.send("Home route of project ExploreLust is working.");
 });
 
+// Testing the User module by creating demo user.
+app.get("/demouser", async (req, res) => {
+    let fakeUser = new User({
+        email: "deltastudent@yahoo.com",
+        username: "deltastudent",
+    });
+
+    let registeredUser = await User.register(fakeUser, "pa55w0rd");
+    res.send(registeredUser);
+});
+
 // Express Routers
 app.use("/listings", listings);
 app.use("/listings/:id/reviews", reviews);
