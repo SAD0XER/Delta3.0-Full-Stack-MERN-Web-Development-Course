@@ -4,6 +4,7 @@ const wrapAsync = require("../utils/wrapAsync.js");
 const ExpressError = require("../utils/ExpressError.js");
 const Listing = require("../models/listing.js");
 const { listingSchema } = require("../schema.js");
+const { isLoggedIn } = require("../utils/middleware.js");
 
 // Schema Validator Middleware
 const validateListing = (req, res, next) => {
@@ -25,7 +26,7 @@ router.get(
 );
 
 // New Form Route: /listings/new - To create a new listing.
-router.get("/new", (req, res) => {
+router.get("/new", isLoggedIn, (req, res) => {
     res.render("../views/listings/new.ejs");
 });
 
@@ -48,6 +49,7 @@ router.get(
 // Create Route: /listings/new - To create a new listing in DB.
 router.post(
     "/new",
+    isLoggedIn,
     validateListing,
     wrapAsync(async (req, res, next) => {
         await new Listing(req.body.listing).save();
@@ -59,6 +61,7 @@ router.post(
 // New form Route: /listings/:id/edit - To edit listing.
 router.get(
     "/:id/edit",
+    isLoggedIn,
     wrapAsync(async (req, res) => {
         const { id } = req.params;
         const listing = await Listing.findById(id);
@@ -75,6 +78,7 @@ router.get(
 // Update Route: /listings/:id/edit - To update data in DB.
 router.put(
     "/:id",
+    isLoggedIn,
     validateListing,
     wrapAsync(async (req, res) => {
         const { id } = req.params;
@@ -87,6 +91,7 @@ router.put(
 // Delete Route: /listings/:id/delete - To delete listing from DB.
 router.delete(
     "/:id/delete",
+    isLoggedIn,
     wrapAsync(async (req, res) => {
         const { id } = req.params;
         let deleted = await Listing.findByIdAndDelete(id);
