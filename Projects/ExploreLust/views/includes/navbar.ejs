@@ -1,15 +1,23 @@
 <nav class="navbar navbar-expand-md bg-light border-bottom sticky-top">
-  <div class="container-fluid">
+    <div class="container-fluid">
     <a class="navbar-brand mx-4" href="/"><i class="fa-regular fa-compass"></i></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
-      <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav fw-medium">
-        <a class="nav-link" href="/">Home</a>
-        <a class="nav-link" href="/listings">All Listings</a>
-        <a class="nav-link" href="/listings/new">Add New Listings</a>
-      </div>
+        <div class="navbar-nav fw-bold">
+            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/listings">All Listings</a>
+            <a class="nav-link" href="/listings/new">Add New Listings</a>
+        </div>
     </div>
-  </div>
+
+    <div class="navbar-nav fw-bold ms-auto">
+        <% if (!currentUser) { %>
+            <a class="nav-link" href="/login">Log In</a>
+            <a class="nav-link" href="/signup">Sign Up</a>
+        <% } else { %>
+            <a class="nav-link" href="/logout">Log Out</a>
+        <% } %>
+    </div>
 </nav>
