@@ -2,8 +2,9 @@
 
 <div class="row">
     <div class="col-6 offset-3">
-        <div class="border border-secondary border-1 rounded-3 mx-5 my-4 p-5">
-            <h1 class="mb-4 fw-bold text-center">Log In</h1>
+        <div class="border border-secondary border-1 rounded-3 mx-5 my-4 px-5 py-4">
+            <h1 class="mb-2 fw-bold text-center">Log In</h1>
+            <small class="d-block mb-4 text-center">to continue to ExploreLust!</small>
 
             <form action="/login" method="post" class="needs-validation" novalidate>
                 <div class="mb-4">
@@ -12,7 +13,7 @@
                         type="text"
                         name="username"
                         id="username"
-                        class="form-control border border-2 border-secondary-subtle"
+                        class="form-control border border-2 border-secondary-subtle p-3"
                         required />
                 </div>
 
@@ -22,11 +23,13 @@
                         type="password"
                         name="password"
                         id="password"
-                        class="form-control border border-2 border-secondary-subtle"
+                        class="form-control border border-2 border-secondary-subtle p-3"
                         required />
                 </div>
 
-                <button class="btn btn-success w-100 fw-bold border-0">LogIn</button>
+                <button class="btn btn-success w-100 fw-bold border-0 mb-4 p-2">LogIn</button>
+
+                <small class="d-block text-center">Don't have an account? <a href="/signup">Sign Up</a></small>
             </form>
         </div>
     </div>

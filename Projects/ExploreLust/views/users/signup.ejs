@@ -2,8 +2,9 @@
 
 <div class="row">
     <div class="col-6 offset-3">
-        <div class="border border-secondary border-1 rounded-3 mx-5 my-4 p-5">
-            <h1 class="mb-4 fw-bold text-center">Sign Up</h1>
+        <div class="border border-secondary border-1 rounded-3 mx-5 my-4 px-5 py-4">
+            <h1 class="mb-2 fw-bold text-center">Sign Up</h1>
+            <small class="d-block mb-3 text-center">Create your account here</small>
 
             <form action="/signup" method="post" class="needs-validation" novalidate>
                 <div class="mb-4">
@@ -12,7 +13,7 @@
                         type="text"
                         name="username"
                         id="username"
-                        class="form-control border border-2 border-secondary-subtle"
+                        class="form-control border border-1 border-secondary-subtle p-2"
                         required />
                 </div>
 
@@ -22,7 +23,7 @@
                         type="text"
                         name="email"
                         id="email"
-                        class="form-control border border-2 border-secondary-subtle"
+                        class="form-control border border-1 border-secondary-subtle p-2"
                         required />
                 </div>
 
@@ -32,11 +33,13 @@
                         type="password"
                         name="password"
                         id="password"
-                        class="form-control border border-2 border-secondary-subtle"
+                        class="form-control border border-1 border-secondary-subtle p-2"
                         required />
                 </div>
 
-                <button class="btn btn-success w-100 fw-bold border-0">SignUp</button>
+                <button class="btn btn-success w-100 fw-bold border-0 mb-4 p-2">SignUp</button>
+
+                <small class="d-block text-center">Already have an account? <a href="/login">Login</a></small>
             </form>
         </div>
     </div>
