@@ -35,7 +35,7 @@ router.get(
     "/:id",
     wrapAsync(async (req, res) => {
         const { id } = req.params;
-        const listing = await Listing.findById(id).populate("reviews"); // populate method to get actual documents from the references stored in 'reviews'.
+        const listing = await Listing.findById(id).populate("reviews").populate("owner"); // populate method to get actual documents from the references stored in 'reviews' etcetera.
 
         // Handling case if listing does not found.
         if (!listing) {
@@ -52,7 +52,9 @@ router.post(
     isLoggedIn,
     validateListing,
     wrapAsync(async (req, res, next) => {
-        await new Listing(req.body.listing).save();
+        const newListing = new Listing(req.body.listing);
+        newListing.owner = req.user._id;
+        await newListing.save();
         req.flash("success", "New Listing Added!");
         res.redirect("/listings");
     }),
@@ -94,7 +96,7 @@ router.delete(
     isLoggedIn,
     wrapAsync(async (req, res) => {
         const { id } = req.params;
-        let deleted = await Listing.findByIdAndDelete(id);
+        await Listing.findByIdAndDelete(id);
         req.flash("success", "Listing Deleted!");
         res.redirect(`/listings`);
     }),

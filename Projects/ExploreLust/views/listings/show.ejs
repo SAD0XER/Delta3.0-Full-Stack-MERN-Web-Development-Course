@@ -8,16 +8,17 @@
             <h3 class="fw-bold"><%= listing.title %></h3>
         </div>
 
+        <!-- Listing Card -->
         <div class="col-10 offset-1 my-2 mb-4">
             <img
                 src="<%= listing.image %>"
                 class="card-img-top object-fit-cover show-img"
                 alt="Listing Image" />
+                <!-- Listing Card Body  -->
             <div class="card-body mx-2">
-                <p class="card-text text-secondary mt-2"><%= listing.description %></p>
+                <p class="card-text text-light-emphasis mt-2"><%= listing.description %></p>
                 <p class="card-text">&#8377; <%= listing.price.toLocaleString("en-IN") %></p>
-                <p class="card-text"><%=listing.location%></p>
-                <p class="card-text"><%= listing.country %></p>
+                <p class="card-text"><%=listing.location%>, <%=listing.country%>.</p>
 
                 <form
                     action="/listings/<%= listing._id%>/delete?_method=DELETE"
@@ -26,6 +27,8 @@
                     <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark border-0 px-5 w-25">Edit</a>
                     <button class="btn btn-danger px-5 w-25">Delete</button>
                 </form>
+                <hr />
+                <small class="card-text">Hosted by <%=listing.owner.username%></smal>
             </div>
         </div>
 
@@ -48,7 +51,7 @@
                         id="rating"
                         class="form-range"
                         name="review[rating]" />
-                    <div class="d-flex justify-content-evenly ">
+                    <div class="d-flex justify-content-evenly">
                         <div class="w-100 text-start">1</div>
                         <div class="w-100 text-center">3</div>
                         <div class="w-100 text-end">5</div>
@@ -68,32 +71,30 @@
                 <button class="btn btn-outline-success fw-bold border-2 px-5 w-25">Submit</button>
             </form>
 
-        <!-- Rating and Review Section -->
-        <hr />
-        <h4 class="fs-4"><b>Rating and reviews</b></h4>
+            <!-- Rating and Review Section -->
+            <hr />
+            <h4 class="fs-4"><b>Rating and reviews</b></h4>
             <div class="row">
                 <% for(review of listing.reviews) {%>
-                    <div class="card col-5 ms-5 me-1 mt-4 mb-1 ps-2 py-2">
-                        <div class="card-body d-flex flex-column justify-content-between">
-                            <h5 class="card-title fw-bold">Name Title</h5>
-                            <div class="d-flex align-items-center">
-                                <% for(let i=1; i <= review.rating; i++) {%>
-                                    <i class="fa-solid fa-star"></i>
-                                <% } %>
-                                <% for(let i=1; i <= (5-review.rating); i++) {%>
-                                    <i class="fa-regular fa-star"></i>
-                                <% } %>
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                <small><%= review.createdAt %></small>
-                            </div>
-                            <p class="card-text">
-                                <%= review.comment %>
-                            </p>
-                            <form action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE" method="post">
-                                <button class="btn btn-sm btn-danger">Delete</button>
-                            </form>
+                <div class="card col-5 ms-5 me-1 mt-4 mb-1 ps-2 py-2">
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <h5 class="card-title fw-bold">Name Title</h5>
+                        <div class="d-flex align-items-center">
+                            <% for(let i=1; i <= review.rating; i++) {%>
+                            <i class="fa-solid fa-star"></i>
+                            <% } %> <% for(let i=1; i <= (5-review.rating); i++) {%>
+                            <i class="fa-regular fa-star"></i>
+                            <% } %> &nbsp;&nbsp;&nbsp;&nbsp;
+                            <small><%= review.createdAt %></small>
                         </div>
+                        <p class="card-text"><%= review.comment %></p>
+                        <form
+                            action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
+                            method="post">
+                            <button class="btn btn-sm btn-danger">Delete</button>
+                        </form>
                     </div>
+                </div>
                 <% } %>
             </div>
         </div>

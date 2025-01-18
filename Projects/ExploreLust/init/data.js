@@ -208,44 +208,6 @@ const sampleListings = [
     location: "Yellowstone",
     country: "United States",
   },
-  {
-    title: "Modern Apartment in Tokyo",
-    description: "Stay in the heart of Tokyo in this sleek and modern apartment with city views.",
-    image:
-      "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8dG9reW98ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60",
-    price: 2000,
-    location: "Tokyo",
-    country: "Japan",
-  },
-  {
-    title: "Luxury Yacht in the Mediterranean",
-    description: "Sail the Mediterranean in style on this luxury yacht with all the amenities.",
-    image:
-      "https://images.unsplash.com/photo-1559137325-e0ad25c12d55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bG9kZ2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60",
-    price: 15000,
-    location: "Mediterranean Sea",
-    country: "Various",
-  },
-  {
-    title: "Penthouse Suite in Hong Kong",
-    description:
-      "Stay above the skyline in this luxurious penthouse suite with stunning views of Hong Kong.",
-    image:
-      "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8dG9reW98ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60",
-    price: 5000,
-    location: "Hong Kong",
-    country: "Hong Kong",
-  },
-  {
-    title: "Romantic Cottage in Provence",
-    description:
-      "Get away from it all in this romantic cottage surrounded by lavender fields in Provence.",
-    image:
-      "https://images.unsplash.com/photo-1602391833977-358a52198938?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzJ8fGNhbXBpbmd8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60",
-    price: 1700,
-    location: "Provence",
-    country: "France",
-  },
 ];
 
 module.exports = { data: sampleListings };
