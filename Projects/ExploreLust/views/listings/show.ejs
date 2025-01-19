@@ -20,6 +20,7 @@
                 <p class="card-text">&#8377; <%= listing.price.toLocaleString("en-IN") %></p>
                 <p class="card-text"><%=listing.location%>, <%=listing.country%>.</p>
 
+                <% if (currentUser && currentUser._id.equals(listing.owner._id)) { %>
                 <form
                     action="/listings/<%= listing._id%>/delete?_method=DELETE"
                     method="post"
@@ -27,6 +28,7 @@
                     <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark border-0 px-5 w-25">Edit</a>
                     <button class="btn btn-danger px-5 w-25">Delete</button>
                 </form>
+                <% } %>
                 <hr />
                 <small class="card-text">Hosted by <%=listing.owner.username%></smal>
             </div>
