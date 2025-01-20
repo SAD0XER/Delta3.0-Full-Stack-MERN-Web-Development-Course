@@ -1,20 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const wrapAsync = require("../utils/wrapAsync.js");
-const ExpressError = require("../utils/ExpressError.js");
 const Listing = require("../models/listing.js");
-const { listingSchema } = require("../schema.js");
-const { isLoggedIn, isOwner } = require("../utils/middleware.js");
-
-// Schema Validator Middleware
-const validateListing = (req, res, next) => {
-    let { error } = listingSchema.validate(req.body); // Validating data inside req.body using joi's schema.
-    if (error) {
-        throw new ExpressError(400, error.message); // If there is error, then throw it.
-    } else {
-        next(); // If there is no error, call next middleware.
-    }
-};
+const { isLoggedIn, isOwner, validateListing } = require("../utils/middleware.js");
 
 // Index Route: /listings - To see all titles.
 router.get(
