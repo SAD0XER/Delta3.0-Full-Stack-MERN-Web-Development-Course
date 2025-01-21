@@ -20,6 +20,7 @@
                 <p class="card-text">&#8377; <%= listing.price.toLocaleString("en-IN") %></p>
                 <p class="card-text"><%=listing.location%>, <%=listing.country%>.</p>
 
+                <!-- Checking for Authorized User -->
                 <% if (currentUser && currentUser._id.equals(listing.owner._id)) { %>
                 <form
                     action="/listings/<%= listing._id%>/delete?_method=DELETE"
@@ -35,6 +36,7 @@
         </div>
 
         <!-- Rating Section -->
+        <% if (currentUser) {%> <!-- Checking User is Authorized to create Review or not.-->
         <hr />
         <div class="col col-10 offset-1 mb-3">
             <h4 class="mb-0 fs-4"><b>Rate this place</b></h4>
@@ -72,6 +74,8 @@
                 </div>
                 <button class="btn btn-outline-success fw-bold border-2 px-5 w-25">Submit</button>
             </form>
+        <% }%>
+
 
             <!-- Rating and Review Section -->
             <hr />
@@ -80,7 +84,7 @@
                 <% for(review of listing.reviews) {%>
                 <div class="card col-5 ms-5 me-1 mt-4 mb-1 ps-2 py-2">
                     <div class="card-body d-flex flex-column justify-content-between">
-                        <h5 class="card-title fw-bold">Name Title</h5>
+                        <h5 class="card-title fw-bold">@<%= review.author.username%></h5>
                         <div class="d-flex align-items-center">
                             <% for(let i=1; i <= review.rating; i++) {%>
                             <i class="fa-solid fa-star"></i>
@@ -90,11 +94,15 @@
                             <small><%= review.createdAt %></small>
                         </div>
                         <p class="card-text"><%= review.comment %></p>
+
+                        <!-- Checking User is Authorized to delete Review or not. -->
+                        <% if (currentUser && currentUser._id.equals(review.author._id)) { %>
                         <form
                             action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
                             method="post">
                             <button class="btn btn-sm btn-danger">Delete</button>
                         </form>
+                        <% } %>
                     </div>
                 </div>
                 <% } %>

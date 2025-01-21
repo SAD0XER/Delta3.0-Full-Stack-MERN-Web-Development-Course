@@ -23,7 +23,9 @@ router.get(
     "/:id",
     wrapAsync(async (req, res) => {
         const { id } = req.params;
-        const listing = await Listing.findById(id).populate("reviews").populate("owner"); // populate method to get actual documents from the references stored in 'reviews' etcetera.
+        const listing = await Listing.findById(id)
+            .populate({ path: "reviews", populate: { path: "author" } })
+            .populate("owner");
 
         // Handling case if listing does not found.
         if (!listing) {
