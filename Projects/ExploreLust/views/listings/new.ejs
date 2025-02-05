@@ -7,7 +7,12 @@
         <div class="col-10 offset-1">
             <div class="border border-secondary border-2 rounded-3 mx-5 my-4 p-5 bg-light">
                 <h3 class="mb-4 fw-bold">Create New Listing</h3>
-                <form action="/listings" method="post" class="needs-validation" novalidate>
+                <form
+                    action="/listings"
+                    method="post"
+                    class="needs-validation"
+                    novalidate
+                    enctype="multipart/form-data">
                     <!-- Inside the `name` we have created the key of object to names, so we can access it as object in `req.body`. -->
                     <div class="mb-4">
                         <label for="title" class="form-label fw-bold">Title</label>
@@ -34,12 +39,13 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="image" class="form-label fw-bold">Image Link/URL</label>
+                        <label for="image" class="form-label fw-bold">Upload Listing Image</label>
                         <input
-                            type="text"
+                            type="file"
                             name="listing[image]"
                             id="image"
-                            class="form-control border border-2 border-secondary-subtle" />
+                            class="form-control border border-2 border-secondary-subtle"
+                            required />
                     </div>
 
                     <div class="row">
@@ -80,9 +86,7 @@
                         <div class="invalid-feedback">Enter valid location!</div>
                     </div>
 
-                    <button class="btn btn-primary w-100 fw-bold border-0 add-new-listing-btn">
-                        Add
-                    </button>
+                    <button class="btn btn-primary w-100 fw-bold border-0 add-new-listing-btn">Add</button>
                 </form>
             </div>
         </div>

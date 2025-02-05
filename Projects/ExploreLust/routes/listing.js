@@ -4,6 +4,8 @@ exports.router = router;
 const wrapAsync = require("../utils/wrapAsync.js");
 const { isLoggedIn, isOwner, validateListing } = require("../utils/middleware.js");
 const listingController = require("../controllers/listing.js");
+const multer = require("multer"); // pkg to parse 'multipart/form-data', used to uploading files.
+const upload = multer({ dest: "uploads/" }); // creates destination folder to store uploaded files.
 
 // New Listing Form Route: /listings/new - To create a new listing.
 router.get("/new", isLoggedIn, listingController.newListingForm);
@@ -14,7 +16,8 @@ router.get("/:id/edit", isLoggedIn, isOwner, wrapAsync(listingController.editLis
 router
     .route("/")
     .get(wrapAsync(listingController.index)) // Index Route: /listings - To see all Listings.
-    .post(isLoggedIn, validateListing, wrapAsync(listingController.saveNewListing)); // Create Route: /listings - To create a new listing in DB.
+    // .post(isLoggedIn, validateListing, wrapAsync(listingController.saveNewListing)); // Create Route: /listings - To create a new listing in DB.
+    .post(isLoggedIn, upload.single("listing[image]"), wrapAsync(listingController.saveNewListing)); // Create Route: /listings - To create a new listing in DB.
 
 router
     .route("/:id")
