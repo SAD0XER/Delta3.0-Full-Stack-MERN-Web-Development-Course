@@ -17,8 +17,12 @@ router.get("/:id/edit", isLoggedIn, isOwner, wrapAsync(listingController.editLis
 router
     .route("/")
     .get(wrapAsync(listingController.index)) // Index Route: /listings - To see all Listings.
-    // .post(isLoggedIn, validateListing, wrapAsync(listingController.saveNewListing)); // Create Route: /listings - To create a new listing in DB.
-    .post(isLoggedIn, upload.single("listing[image]"), wrapAsync(listingController.saveNewListing)); // Create Route: /listings - To create a new listing in DB.
+    .post(
+        isLoggedIn,
+        upload.single("listing[image]"),
+        validateListing,
+        wrapAsync(listingController.saveNewListing),
+    ); // Create Route: /listings - To create a new listing in DB.
 
 router
     .route("/:id")
