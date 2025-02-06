@@ -5,7 +5,8 @@ const wrapAsync = require("../utils/wrapAsync.js");
 const { isLoggedIn, isOwner, validateListing } = require("../utils/middleware.js");
 const listingController = require("../controllers/listing.js");
 const multer = require("multer"); // pkg to parse 'multipart/form-data', used to uploading files.
-const upload = multer({ dest: "uploads/" }); // creates destination folder to store uploaded files.
+const { storage } = require("../cloudConfig.js");
+const upload = multer({ storage }); // creates destination folder to store uploaded files.
 
 // New Listing Form Route: /listings/new - To create a new listing.
 router.get("/new", isLoggedIn, listingController.newListingForm);
