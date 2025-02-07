@@ -53,7 +53,14 @@ module.exports.editListingForm = async (req, res) => {
 // Update Edited Listing data in DB.
 module.exports.updateListing = async (req, res) => {
     const { id } = req.params;
-    await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+    let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+
+    // Checking if file exist or not.
+    if (req.file) {
+        const { path: url, filename } = req.file;
+        listing.image = { url, filename };
+        await listing.save();
+    }
     req.flash("success", "Listing Updated!");
     res.redirect(`/listings/${id}`);
 };

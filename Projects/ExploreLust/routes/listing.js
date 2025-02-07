@@ -27,7 +27,13 @@ router
 router
     .route("/:id")
     .get(wrapAsync(listingController.showListingDetails)) // Show Route: /listings/:id - To see a single list.
-    .put(isLoggedIn, isOwner, validateListing, wrapAsync(listingController.updateListing)) // Update Route: /listings/:id - To update data in DB.
+    .put(
+        isLoggedIn,
+        isOwner,
+        upload.single("listing[image]"),
+        validateListing,
+        wrapAsync(listingController.updateListing),
+    ) // Update Route: /listings/:id - To update data in DB.
     .delete(isLoggedIn, isOwner, wrapAsync(listingController.deleteListing)); // Delete Route: /listings/:id - To delete listing from DB.
 
 module.exports = router;
