@@ -38,13 +38,14 @@
                         <div class="invalid-feedback">Enter short description!</div>
                     </div>
 
-                    <div class="mb-4">
+                    <div class="col-10 offset-1 mb-4">
+                        <label class="form-label fw-bold">Current Image</label>
+                        <img src="<%= previewImage %>" class="card-img-top object-fit-cover show-img" alt="Listing Image" />
+                    </div>
+
+                    <div class="col-10 offset-1 mb-4">
                         <label for="image" class="form-label fw-bold">Upload New Image</label>
-                        <input
-                            type="file"
-                            name="listing[image]"
-                            id="image"
-                            class="form-control border border-2 border-secondary-subtle" />
+                        <input type="file" name="listing[image]" id="image" class="form-control border border-2 border-secondary-subtle" />
                     </div>
 
                     <div class="row">

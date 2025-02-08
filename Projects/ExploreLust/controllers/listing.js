@@ -47,7 +47,9 @@ module.exports.editListingForm = async (req, res) => {
         req.flash("error", "Requested editing list does not exist!");
         res.redirect("/listings");
     }
-    res.render("../views/listings/edit.ejs", { listing });
+
+    let previewImage = listing.image.url.replace("/upload", "/upload/c_auto,h_200,w_400");
+    res.render("../views/listings/edit.ejs", { listing, previewImage });
 };
 
 // Update Edited Listing data in DB.
