@@ -60,11 +60,6 @@ app.use((req, res, next) => {
     next();
 });
 
-// Home Route
-app.get("/", (req, res) => {
-    res.send("Home route of project ExploreLust is working.");
-});
-
 // Express Routers
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
