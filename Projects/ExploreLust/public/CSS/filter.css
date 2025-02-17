@@ -1,0 +1,20 @@
+#filters {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+}
+
+.filter {
+    margin: 0 1rem;
+    text-align: center;
+    opacity: 0.75;
+}
+
+.filter:hover {
+    opacity: initial;
+    cursor: pointer;
+}
+
+.filter small {
+    display: block;
+}
