@@ -1,53 +1,48 @@
 <% layout("layouts/boilerplate") %>
 
 <body>
-    <!-- Filter Section -->
-    <div id="filters">
-        <div class="filter">
-            <i class="fa-solid fa-mountain-sun"></i>
-            <small>Amazing Views</small>
+    <div id="filter-tax-switch-container">
+        <!-- Filter Section -->
+        <div class="filters-container">
+            <div class="filter">
+                <i class="fa-solid fa-mountain-sun"></i>
+                <small>Amazing Views</small>
+            </div>
+            <div class="filter">
+                <i class="fa-solid fa-fire"></i>
+                <small>Tranding</small>
+            </div>
+            <div class="filter">
+                <i class="fa-solid fa-mug-hot"></i>
+                <small>Bed & Breakfasts</small>
+            </div>
+            <div class="filter">
+                <i class="fa-regular fa-snowflake"></i>
+                <small>Arctic</small>
+            </div>
+            <div class="filter">
+                <i class="fa-solid fa-campground"></i>
+                <small>Capmping</small>
+            </div>
+            <div class="filter">
+                <i class="fa-solid fa-person-swimming"></i>
+                <small>Amazing Pools</small>
+            </div>
+            <div class="filter">
+                <i class="fa-brands fa-fort-awesome"></i>
+                <small>Castles</small>
+            </div>
         </div>
-        <div class="filter">
-            <i class="fa-solid fa-fire"></i>
-            <small>Tranding</small>
-        </div>
-        <div class="filter">
-            <i class="fa-solid fa-mountain"></i>
-            <small>Mountains</small>
-        </div>
-        <div class="filter">
-            <i class="fa-solid fa-mug-hot"></i>
-            <small>Bed & Breakfasts</small>
-        </div>
-        <div class="filter">
-            <i class="fa-solid fa-mountain-city"></i>
-            <small>Top Cities</small>
-        </div>
-        <div class="filter">
-            <i class="fa-regular fa-snowflake"></i>
-            <small>Arctic</small>
-        </div>
-        <div class="filter">
-            <i class="fa-solid fa-campground"></i>
-            <small>Capmping</small>
-        </div>
-        <div class="filter">
-            <i class="fa-solid fa-person-swimming"></i>
-            <small>Amazing Pools</small>
-        </div>
-        <div class="filter">
-            <i class="fa-brands fa-fort-awesome"></i>
-            <small>Castles</small>
-        </div>
-        <div class="filter">
-            <i class="fa-solid fa-person-skiing"></i>
-            <small>Skiing</small>
-        </div>
-        <div class="filter">
-            <i class="fa-solid fa-sailboat"></i>
-            <small>Boats</small>
+
+        <!-- Tax Switch Section -->
+        <div class="tax-toggle-container">
+            <div class="form-check-reverse form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onclick="texSwitchToggle()">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Display total before taxes</label>
+            </div>
         </div>
     </div>
+
 
     <!-- All Listing Section -->
     <div class="card-container row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
@@ -68,6 +63,7 @@
                     <h6 class="card-title"><%= listing.title %></h6>
                     <p class="card-text">
                         &#8377;<%= listing.price.toLocaleString("en-IN") %><span> per guest</span>
+                        <small><i class="tax-info">&nbsp;&nbsp;&nbsp;&nbsp;+18% GST</i></small>
                     </p>
                 </div>
             </div>

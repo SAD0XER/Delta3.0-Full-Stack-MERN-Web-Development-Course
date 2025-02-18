@@ -1,3 +1,4 @@
+// Function for form validation.
 (() => {
     "use strict";
 
@@ -20,3 +21,13 @@
         );
     });
 })();
+
+// JavaScript for Tax Switch Toggle.
+let taxSwitchToggle = document.getElementById("flexSwitchCheckDefault");
+let texSwitchToggle = () => {
+    let taxInfo = document.getElementsByClassName("tax-info");
+    for (info of taxInfo) {
+        if (taxSwitchToggle.checked) info.style.display = "inline";
+        else info.style.display = "none";
+    }
+};

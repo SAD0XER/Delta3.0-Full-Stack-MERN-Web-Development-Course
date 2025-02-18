@@ -1,15 +1,14 @@
-#filters {
-    display: flex;
-    flex-wrap: wrap;
+#filter-tax-switch-container {
+    display: inline-flex;
     margin: 2rem 0;
 }
 
 .filter {
+    display: inline-block;
     margin: 0 1rem;
     text-align: center;
     opacity: 0.75;
 }
-
 .filter:hover {
     opacity: initial;
     cursor: pointer;
@@ -17,4 +16,24 @@
 
 .filter small {
     display: block;
+}
+
+.tax-toggle-container {
+    display: flex;
+    align-items: center;
+    border: solid 0.1px lightgray;
+    border-radius: 0.5rem;
+    padding: 0.25rem 1rem;
+}
+.tax-toggle-container:hover {
+    border-color: initial;
+}
+
+.form-check-label {
+    font-size: small;
+    font-weight: bold;
+}
+
+.tax-info {
+    display: none;
 }
