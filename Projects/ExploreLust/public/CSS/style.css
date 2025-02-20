@@ -23,6 +23,39 @@ body {
   color: #222222;
 }
 
+.search-box {
+  border-radius: 1.25rem;
+  box-shadow: 0 0 0.1rem 0.1rem lightgray;
+}
+.search-box:hover {
+  border-color: lightgray;
+  box-shadow: 0 0 0.1rem 0.1rem lightgray;
+  background-color: lightgray;
+}
+.search-box:focus {
+  border-color: lightgray;
+  box-shadow: 0 0 0.1rem 0.1rem lightgray;
+  background-color: initial;
+}
+.search-box::placeholder {
+  font-size: small;
+  color: gray;
+}
+
+.search-btn {
+  border: 1px solid lightgray;
+  border-radius: 1.25rem;
+  display: flex;
+  align-items: center;
+  color: white;
+  background-color: #ff385c;
+  padding: 0.5rem 0.75rem;
+}
+.search-btn:focus, .fa-magnifying-glass:focus {
+  color: #ff385c;
+  background-color: white;
+}
+
 /* Footer */
 .foot-info {
   display: flex;
