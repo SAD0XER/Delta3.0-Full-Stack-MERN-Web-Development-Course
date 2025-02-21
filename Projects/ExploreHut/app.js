@@ -27,7 +27,8 @@ app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/Explore-Hut";
+// const MONGO_URL = "mongodb://127.0.0.1:27017/Explore-Hut"; // Connection link of Local MongoDB Database.
+const cloudDatabaseUrl = process.env.ATLAS_DB_URL; // Connection link of Cloud MongoDB (Atlas) Database.
 
 // express-session parameters.
 const sessionOptions = {
@@ -77,7 +78,7 @@ app.use((err, req, res, next) => {
 
 /* Database connectivity setup */
 async function main() {
-    await mongoose.connect(MONGO_URL);
+    await mongoose.connect(cloudDatabaseUrl);
     console.log("Database connected.");
 }
 
