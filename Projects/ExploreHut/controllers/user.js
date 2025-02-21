@@ -16,7 +16,7 @@ module.exports.saveSignupUser = async (req, res) => {
         // Login User after successful User registration.
         req.login(registeredUser, (error) => {
             if (error) return next(error);
-            req.flash("success", "Welcome to ExploreLust!");
+            req.flash("success", "Welcome to Explore Hut!");
             res.redirect("/listings");
         });
     } catch (error) {

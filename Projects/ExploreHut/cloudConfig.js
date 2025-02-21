@@ -10,7 +10,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
-        folder: "ExploreLust-Dev",
+        folder: "Explore-Hut_Dev",
         allowedFormats: ["png", "jpg", "jpeg", "gif", "tiff", "bmp", "pdf"],
     },
 });

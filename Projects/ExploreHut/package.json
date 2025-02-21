@@ -1,12 +1,12 @@
 {
-  "name": "explorelust",
+  "name": "explore-hut",
   "version": "1.0.0",
-  "description": "This package is the project 'ExploreLust', it is building while learning at the same time.",
+  "description": "This package is the project 'Explore Hut', it is building while learning at the same time.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Sarvesh Devrukhakar",
+  "author": "Sarvesh Devrukhkar",
   "license": "ISC",
   "dependencies": {
     "cloudinary": "^2.5.1",
