@@ -8,6 +8,7 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
 const session = require("express-session");
+const MongoStore = require("connect-mongo");
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
@@ -30,8 +31,25 @@ app.use(express.static(path.join(__dirname, "/public")));
 // const MONGO_URL = "mongodb://127.0.0.1:27017/Explore-Hut"; // Connection link of Local MongoDB Database.
 const cloudDatabaseUrl = process.env.ATLAS_DB_URL; // Connection link of Cloud MongoDB (Atlas) Database.
 
+// MongoDB session store for 'Connect' and 'Express'.
+const store = MongoStore.create({
+    mongoUrl: cloudDatabaseUrl,
+    crypto: {
+        secret: "Session Secret",
+    },
+    touchAfter: 24 * 3600,
+});
+
+// Handling Error if session store fails.
+store.on("error", () => {
+    console.log("ERROR in MONGO SESSION STORE!");
+    console.log(error);
+    console.error(error);
+});
+
 // express-session parameters.
 const sessionOptions = {
+    store: store,
     secret: "Session Secret",
     resave: false,
     saveUninitialized: true,
