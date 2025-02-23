@@ -28,14 +28,13 @@ app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
-// const MONGO_URL = "mongodb://127.0.0.1:27017/Explore-Hut"; // Connection link of Local MongoDB Database.
 const cloudDatabaseUrl = process.env.ATLAS_DB_URL; // Connection link of Cloud MongoDB (Atlas) Database.
 
 // MongoDB session store for 'Connect' and 'Express'.
 const store = MongoStore.create({
     mongoUrl: cloudDatabaseUrl,
     crypto: {
-        secret: "Session Secret",
+        secret: process.env.SECRET,
     },
     touchAfter: 24 * 3600,
 });
@@ -50,7 +49,7 @@ store.on("error", () => {
 // express-session parameters.
 const sessionOptions = {
     store: store,
-    secret: "Session Secret",
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {

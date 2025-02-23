@@ -1,4 +1,7 @@
 {
+  "engines": {
+    "node": "v20.11.1"
+  },
   "name": "explore-hut",
   "version": "1.0.0",
   "description": "This package is the project 'Explore Hut', it is building while learning at the same time.",
